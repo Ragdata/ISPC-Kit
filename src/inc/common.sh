@@ -39,34 +39,34 @@ DEFAULT_N="[Y/${bold}N${NC}]"
 rootDir=/root/.ispc
 if [[ ! -d $rootDir ]]; then mkdir "$rootDir"; fi
 
-#configDir="$baseDir/cfg"
-#if [[ ! -d $configDir ]]; then mkdir "$configDir"; fi
-#docsDir="$baseDir"/docs
-#if [[ ! -d $docsDir ]]; then mkdir "$docsDir"; fi
-#
-#logDir="$rootDir"/logs
-#if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
-#
-#srcDir="$baseDir"/src
-#if [[ ! -d $srcDir ]]; then mkdir "$srcDir"; fi
-#
-#appDir="$srcDir"/app
-#if [[ ! -d $appDir ]]; then mkdir "$appDir"; fi
-#etcDir="$srcDir"/etc
-#if [[ ! -d $etcDir ]]; then mkdir "$etcDir"; fi
-#incDir="$srcDir"/inc
-#if [[ ! -d $incDir ]]; then mkdir "$incDir"; fi
-#libDir="$srcDir"/lib
-#if [[ ! -d $libDir ]]; then mkdir "$libDir"; fi
-#
-#sqlDir="$baseDir"/sql
-#if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
-#nginxDir="$baseDir"/cfg/nginx
-#if [[ ! -d $nginxDir ]]; then mkdir "$nginxDir"; fi
-##- FILES -----------------------------------------------------------
-#DEF="$configDir/.defaults"
-#REG="$configDir/.registry"
-##-------------------------------------------------------------------
-## GLOBALS
-##-------------------------------------------------------------------
-#declare -A PASSWORDS
+configDir="$baseDir"/cfg
+if [[ ! -d $configDir ]]; then mkdir "$configDir"; fi
+docsDir="$baseDir"/docs
+if [[ ! -d $docsDir ]]; then mkdir "$docsDir"; fi
+
+logDir="$rootDir"/logs
+if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
+
+srcDir="$baseDir"/src
+if [[ ! -d $srcDir ]]; then mkdir "$srcDir"; fi
+
+appDir="$srcDir"/app
+if [[ ! -d $appDir ]]; then mkdir "$appDir"; fi
+etcDir="$srcDir"/etc
+if [[ ! -d $etcDir ]]; then mkdir "$etcDir"; fi
+incDir="$srcDir"/inc
+if [[ ! -d $incDir ]]; then mkdir "$incDir"; fi
+libDir="$srcDir"/lib
+if [[ ! -d $libDir ]]; then mkdir "$libDir"; fi
+
+sqlDir="$baseDir"/sql
+if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
+nginxDir="$baseDir"/cfg/nginx
+if [[ ! -d $nginxDir ]]; then mkdir "$nginxDir"; fi
+#- FILES -----------------------------------------------------------
+DEF="$configDir/.defaults"
+REG="$configDir/.registry"
+#-------------------------------------------------------------------
+# GLOBALS
+#-------------------------------------------------------------------
+declare -A PASSWORDS
