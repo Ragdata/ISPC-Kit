@@ -73,6 +73,8 @@ wakeRegistry()
 #-------------------------------------------------------------------
 initLog
 echoLog "FLAG = $flag"
+echo -n "Press [ENTER] to continue: "
+read -n 1 -r
 if [[ "$RES" == 0 ]]; then
     declare -A REGISTRY
     if [[ -f "$REG" ]]; then wakeRegistry; else buildRegistry; fi
