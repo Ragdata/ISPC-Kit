@@ -64,8 +64,8 @@ if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
 nginxDir="$baseDir"/cfg/nginx
 if [[ ! -d $nginxDir ]]; then mkdir "$nginxDir"; fi
 #- FILES -----------------------------------------------------------
-DEF="$configDir/.defaults"
-REG="$configDir/.registry"
+DEF="$configDir"/.defaults
+REG="$configDir"/.registry
 #-------------------------------------------------------------------
 # GLOBALS
 #-------------------------------------------------------------------

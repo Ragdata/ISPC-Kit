@@ -13,6 +13,20 @@
 #-------------------------------------------------------------------
 RES=0
 #-------------------------------------------------------------------
+# GET ARGS
+#-------------------------------------------------------------------
+if [[ $# ]]; then
+    if [[ $# -ge 1 ]] && [[ $1 =~ $isLoc ]]; then REGISTRY[LOC]=$1; shift "$@"; fi
+else
+    REGISTRY[LOC]=${DEFAULTS[LOC]}
+fi
+if [[ $# ]] && [[ $1 =~ $isFlag ]]; then
+    case $1 in
+        "-h"|"-help")   flag="help";;
+        "-t"|"-test")   flag="test";;
+    esac
+fi
+#-------------------------------------------------------------------
 # FUNCTIONS
 #-------------------------------------------------------------------
 buildRegistry()
@@ -72,10 +86,10 @@ wakeRegistry()
 # MAIN
 #-------------------------------------------------------------------
 initLog
-echoLog "FLAG = $flag"
-echo -n "Press [ENTER] to continue: "
-read -n 1 -r
-if [[ "$RES" == 0 ]]; then
-    declare -A REGISTRY
-    if [[ -f "$REG" ]]; then wakeRegistry; else buildRegistry; fi
-fi
+#echoLog "FLAG = $flag"
+#echo -n "Press [ENTER] to continue: "
+#read -n 1 -r
+#if [[ "$RES" == 0 ]]; then
+#    declare -A REGISTRY
+#    if [[ -f "$REG" ]]; then wakeRegistry; else buildRegistry; fi
+#fi
