@@ -417,6 +417,14 @@ serverSummary()
     echo -n "Press [ENTER] to continue: "
     read -n 1 -r
 }
+
+testOutput()
+{
+    for key in "${!REGISTRY[@]}"
+    do
+        echo "$key = ${REGISTRY[$key]}"
+    done
+}
 #-------------------------------------------------------------------
 # INITIALISE
 #-------------------------------------------------------------------
