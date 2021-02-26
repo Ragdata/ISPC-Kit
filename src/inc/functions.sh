@@ -440,9 +440,4 @@ testOutput()
 #-------------------------------------------------------------------
 # INITIALISE
 #-------------------------------------------------------------------
-if [[ $flag == "test" ]]; then
-    echo "In function.sh"
-    echo -n "Press [ENTER] to continue: "
-    read -n 1 -r
-fi
 source "$incDir"/registry.sh

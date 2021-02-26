@@ -55,7 +55,11 @@ wakeRegistry()
     if [[ ! -f "$REG" ]]; then
         errorExit "ERROR: Registry file does not exist!"
     fi
-
+    if [[ $flag == "test" ]]; then
+       echo "wakeRegistry()"
+       echo -n "Press [ENTER] to continue"
+       read -n 1 -r
+    fi
     declare -A REGISTRY
 
     while IFS='' read -r LINE || [ -n "${LINE}" ]; do
@@ -68,6 +72,12 @@ wakeRegistry()
 # MAIN
 #-------------------------------------------------------------------
 initLog
+if [[ $flag == "test" ]]; then
+    echo "RES = $RES"
+    echo "REG = $REG"
+    echo -n "Press [ENTER] to continue: "
+    read -n 1 -r
+fi
 if [[ "$RES" == 0 ]]; then
     declare -A REGISTRY
     if [[ -f "$REG" ]]; then wakeRegistry; else buildRegistry; fi
