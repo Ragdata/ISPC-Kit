@@ -424,6 +424,9 @@ testOutput()
     do
         echo "$key = ${REGISTRY[$key]}"
     done
+
+    echo -en "Press [ENTER] to continue: "
+    read -n 1 -r
 }
 #-------------------------------------------------------------------
 # INITIALISE
