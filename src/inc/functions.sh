@@ -125,10 +125,11 @@ checkSWAP()
 
     # allocate swap space if required and desired
     if [[ $TOTAL_SWAP -lt 4194000 ]] && [[ $flag != "test" ]]; then
+        echo
         if [[ $TOTAL_SWAP -gt 0 ]]; then
             echoLog "There is currently $PRINT_SWAP_MiB MiB allocated swap space, but 4GiB is recommended"
         fi
-        echo -e "Would you like to allocate 4GiB swap space? $DEFAULT_Y"
+        echo -en "Would you like to allocate 4GiB swap space? $DEFAULT_Y "
         read -n 1 -r
         if [[ $REPLY =~ $AFFIRM ]] || [ -z "$REPLY" ]; then
             echoLog "Attempting to allocate swap space"
