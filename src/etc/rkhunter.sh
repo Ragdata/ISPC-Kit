@@ -11,20 +11,17 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing RKHunter ..."
-log "spacer"
-log "RKHUNTER"
-log "line"
+echoLog "Installing RKHunter"
+echoLog "spacer"
 
 apt_install rkhunter
 
-echo
-echo -e "${yellow}RKHunter${NC} Successfully Installed!"
-echo
+echoLog "spacer"
+echoLog "${yellow}RKHunter${NC} Successfully Installed!"
+echoLog "spacer"
 
-echo "Configure RKHunter ..."
-log "spacer"
-log "Configure RKHunter"
+echoLog "Configure RKHunter"
+echoLog "spacer"
 
 sed -i 's/UPDATE_MIRRORS.*/UPDATE_MIRRORS=1/' /etc/rkhunter.conf
 sed -i 's/MIRRORS_MODE.*/MIRRORS_MODE=0/' /etc/rkhunter.conf
@@ -34,12 +31,12 @@ sed -i 's/CRON_DAILY_RUN.*/CRON_DAILY_RUN="true"/' /etc/default/rkhunter.conf
 sed -i 's/CRON_DB_UPDATE.*/CRON_DB_UPDATE="true"/' /etc/default/rkhunter.conf
 sed -i 's/APT_AUTOGEN.*/APT_AUTOGEN="true"/' /etc/default/rkhunter.conf
 
-log "Updated /etc/default/rkhunter.conf"
+echoLog "Updated /etc/default/rkhunter.conf"
 
 rkhunter --update
-log "rkhunter --update"
+echoLog "rkhunter --update"
 rkhunter --propupd
-log "rkhunter --propupd"
+echoLog "rkhunter --propupd"
 
-echo
-echo -e "${yellow}RKHunter${NC} Successfully Configured!"
+echoLog "spacer"
+echoLog "${yellow}RKHunter${NC} Successfully Configured!"

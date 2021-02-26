@@ -9,22 +9,17 @@
 # License:      MIT License
 # Copyright:    2021 ~ Aequitas Veritas Pty Ltd ~ All Rights Reserved
 #-------------------------------------------------------------------
-echo "Installing Firewall (UFW) ..."
-log "spacer"
-log "FIREWALL (UFW)"
-log "line"
+echoLog "Installing Firewall (UFW)"
+echoLog "spacer"
 
 apt_install ufw
 
-echo
-echo -e "${yellow}UFW${NC} Successfully Installed!"
-echo
+echoLog "spacer"
+echoLog "${yellow}UFW${NC} Successfully Installed!"
+echoLog "spacer"
 
-echo "Configuring UFW ... "
-log "spacer"
-log "Configuring UFW"
-log "line"
-echo
+echoLog "Configuring UFW"
+echoLog "spacer"
 
 sed -i "s/^IPV6=.*/IPV6=yes/" /etc/default/ufw
 
@@ -34,5 +29,5 @@ ufw default allow outgoing
 log "ufw allow ssh : 22"
 ufw allow 22/tcp
 
-echo
-echo -e "${yellow}DONE!${NC}"
+echoLog
+echoLog "${yellow}DONE!${NC}"

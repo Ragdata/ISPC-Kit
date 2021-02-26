@@ -11,13 +11,10 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing uWSGI ..."
-log "spacer"
-log "uWSGI"
-log "line"
-echo
+echoLog "Installing uWSGI ..."
+echoLog "spacer"
 
 apt_install uwsgi uwsgi-dev uwsgi-extra uwsgi-plugins-all
 
-echo
-echo -e "${yellow}uWSGI${NC} Successfully Installed!\n"
+echoLog
+echoLog "${yellow}uWSGI${NC} Successfully Installed!\n"

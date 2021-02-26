@@ -11,15 +11,11 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing Database Server (MariaDB) ..."
-log "spacer"
-log "Database Server (MariaDB)"
-log "line"
-echo
+echoLog "Installing Database Server (MariaDB)"
+echoLog "spacer"
 
-echo "Purging problematic mysql stubs ... "
-log "Purging problematic mysql stubs ..."
-echo
+echoLog "Purging problematic mysql stubs"
+echoLog "spacer"
 
 apt_remove mysql-common
 
@@ -27,21 +23,24 @@ cp -r /etc/mysql /var/lib/mysql ~/
 rm -Rf /etc/mysql
 rm -Rf /var/lib/mysql
 
-echo
-echo -e "${yellow}DONE${NC}"
+echoLog
+echoLog "${yellow}DONE${NC}"
 
 PASSWORDS[MYSQL_ROOT]=$(getPassword 16)
-log "Set MySQL Root Password Non-Interactively"
+echoLog "Set MySQL Root Password Non-Interactively"
 echo "mariadb-server mysql-server/root_password password ${PASSWORDS[MYSQL_ROOT]}" | debconf-set-selections
 echo "mariadb-server mysql-server/root_password_again password ${PASSWORDS[MYSQL_ROOT]}" | debconf-set-selections
+echoLog "Installing MariaDB"
+echoLog "spacer"
 
 apt_install mariadb-client mariadb-server
 
-echo "Securing MySQL ..."
+echoLog "spacer"
+echoLog "Securing MySQL"
 
 # Make sure nobody can access server without a password
 mysql -e "UPDATE mysql.user SET PASSWORD = PASSWORD('${PASSWORDS[MYSQL_ROOT]}') WHERE User = 'root'"
-log "Set MySQL root password"
+echoLog "Set MySQL root password"
 # Kill anonymous users
 mysql -e "DELETE FROM mysql.user WHERE User=''"
 mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')"
@@ -49,40 +48,38 @@ log "Removed anonymous user accounts"
 # Kill off the demo database
 mysql -e "DROP DATABASE IF EXISTS test"
 mysql -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'"
-log "Dropped 'Demo' and 'Test' databases"
+echoLog "Dropped 'Demo' and 'Test' databases"
 # Make our changes take effect
 mysql -e "FLUSH PRIVILEGES"
 
-echo
-echo -e "${yellow}DONE${NC}"
+echoLog "spacer"
+echoLog "${yellow}DONE${NC}"
 
 sed -i 's/^bind-address/^#bind-address/' /etc/mysql/my.cnf
 
 if [[ ${SERVICES[UFW]} == 1 ]]; then
     if [[ ! -f /etc/default/ufw ]]; then
-        echo -e "${yellow}WARNING: UFW is not yet installed! It should have been installed LONG BEFORE NOW!${NC}"
+        echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed LONG BEFORE NOW!${NC}"
     else
-        echo "Opening Firewall Ports for MySQL ..."
-        log "Opening firewall ports for MySQL"
-        echo
+        echoLog "Opening Firewall Ports for MySQL ..."
+        echoLog "spacer"
 
-        log "ufw allow 3306/tcp"
+        echoLog "ufw allow 3306/tcp"
         ufw allow 3306/tcp
-        log "ufw allow 3306/udp"
+        echoLog "ufw allow 3306/udp"
         ufw allow 3306/udp
 
-        echo
-        echo -e "${yellow}DONE${NC}"
+        echoLog "spacer"
+        echoLog "${yellow}DONE${NC}"
     fi
 fi
 
-echo
-echo -e "${yellow}MariaDB${NC} Successfully Installed!"
-log "spacer"
-echo
-echo -e "Securing MariaDB ..."
-log "Securing MariaDB"
-log "spacer"
+echoLog
+echoLog "${yellow}MariaDB${NC} Successfully Installed!"
+echoLog "spacer"
+
+echoLog "Securing MariaDB ..."
+echoLog "spacer"
 
 if [[ ! -d /etc/mysql/ssl ]]; then
     cd /etc/mysql || exit 1
@@ -90,63 +87,62 @@ if [[ ! -d /etc/mysql/ssl ]]; then
     cd ssl || exit 1
 fi
 
-log "Generating CA Key ..."
+echoLog "Generating CA Key"
 openssl genrsa 2048 > ca-key.pem
-log "Generating CA Cert ..."
+echoLog "Generating CA Cert"
 if [ -n "${DEFAULTS[SSL_COUNTRY]}" ]; then
     openssl req -new -x509 -nodes -days 365000 -key ca-key.pem -out ca-cert.pem \
         -subj "/C=${DEFAULTS[SSL_COUNTRY]}/ST=${DEFAULTS[SSL_STATE]}/L=${DEFAULTS[SSL_LOCALITY]}/O=${DEFAULTS[SSL_ORGANIZATION]}/OU=${DEFAULTS[SSL_ORGUNIT]}/CN=${REGISTRY[FQDN]}/emailAddress=${DEFAULTS[ADMIN_EMAIL]}"
 else
     openssl req -new -x509 -nodes -days 365000 -key ca-key.pem -out ca-cert.pem
 fi
-log "Generating Server Key ..."
+echoLog "Generating Server Key"
 if [ -n "${DEFAULTS[SSL_COUNTRY]}" ]; then
     openssl req -newkey rsa:2048 -days 365000 -nodes -keyout server-key.pem -out server-req.pem \
         -subj "/C=${DEFAULTS[SSL_COUNTRY]}/ST=${DEFAULTS[SSL_STATE]}/L=${DEFAULTS[SSL_LOCALITY]}/O=${DEFAULTS[SSL_ORGANIZATION]}/OU=${DEFAULTS[SSL_ORGUNIT]}/CN=${REGISTRY[FQDN]}/emailAddress=${DEFAULTS[ADMIN_EMAIL]}"
 else
     openssl req -newkey rsa:2048 -days 365000 -nodes -keyout server-key.pem -out server-req.pem
 fi
-log "Generating Server Certificate ..."
+echoLog "Generating Server Certificate"
 if [ -n "${DEFAULTS[SSL_COUNTRY]}" ]; then
     openssl x509 -req -in server-req.pem -days 365000 -CA ca-cert.pem -CAkey ca-key.pem -set_serial 01 -out server-cert.pem \
         -subj "/C=${DEFAULTS[SSL_COUNTRY]}/ST=${DEFAULTS[SSL_STATE]}/L=${DEFAULTS[SSL_LOCALITY]}/O=${DEFAULTS[SSL_ORGANIZATION]}/OU=${DEFAULTS[SSL_ORGUNIT]}/CN=${REGISTRY[FQDN]}/emailAddress=${DEFAULTS[ADMIN_EMAIL]}"
 else
     openssl x509 -req -in server-req.pem -days 365000 -CA ca-cert.pem -CAkey ca-key.pem -set_serial 01 -out server-cert.pem
 fi
-log "Generating TLS/SSL Certificate ..."
+echoLog "Generating TLS/SSL Certificate"
 if [ -n "${DEFAULTS[SSL_COUNTRY]}" ]; then
     openssl req -newkey rsa:2048 -days 365000 -nodes -keyout client-key.pem -out client-req.pem \
         -subj "/C=${DEFAULTS[SSL_COUNTRY]}/ST=${DEFAULTS[SSL_STATE]}/L=${DEFAULTS[SSL_LOCALITY]}/O=${DEFAULTS[SSL_ORGANIZATION]}/OU=${DEFAULTS[SSL_ORGUNIT]}/CN=${REGISTRY[FQDN]}/emailAddress=${DEFAULTS[ADMIN_EMAIL]}"
 else
     openssl req -newkey rsa:2048 -days 365000 -nodes -keyout client-key.pem -out client-req.pem
 fi
-log "Processing Client RSA ..."
+echoLlog "Processing Client RSA"
 if [ -n "${DEFAULTS[SSL_COUNTRY]}" ]; then
     openssl rsa -in client-key.pem -out client-key.pem \
         -subj "/C=${DEFAULTS[SSL_COUNTRY]}/ST=${DEFAULTS[SSL_STATE]}/L=${DEFAULTS[SSL_LOCALITY]}/O=${DEFAULTS[SSL_ORGANIZATION]}/OU=${DEFAULTS[SSL_ORGUNIT]}/CN=${REGISTRY[FQDN]}/emailAddress=${DEFAULTS[ADMIN_EMAIL]}"
 else
     openssl rsa -in client-key.pem -out client-key.pem
 fi
-log "Signing the client certificate ..."
+echoLog "Signing the client certificate"
 if [ -n "${DEFAULTS[SSL_COUNTRY]}" ]; then
     openssl x509 -req -in client-req.pem -days 365000 -CA ca-cert.pem -set_serial 01 -out client-cert.pem \
         -subj "/C=${DEFAULTS[SSL_COUNTRY]}/ST=${DEFAULTS[SSL_STATE]}/L=${DEFAULTS[SSL_LOCALITY]}/O=${DEFAULTS[SSL_ORGANIZATION]}/OU=${DEFAULTS[SSL_ORGUNIT]}/CN=${REGISTRY[FQDN]}/emailAddress=${DEFAULTS[ADMIN_EMAIL]}"
 else
     openssl x509 -req -in client-req.pem -days 365000 -CA ca-cert.pem -set_serial 01 -out client-cert.pem
 fi
-log "Verify certificates ..."
+echoLog "Verify certificates"
 if [ -n "${DEFAULTS[SSL_COUNTRY]}" ]; then
     openssl verify -CAfile ca-cert.pem server-cert.pem client-cert.pem \
         -subj "/C=${DEFAULTS[SSL_COUNTRY]}/ST=${DEFAULTS[SSL_STATE]}/L=${DEFAULTS[SSL_LOCALITY]}/O=${DEFAULTS[SSL_ORGANIZATION]}/OU=${DEFAULTS[SSL_ORGUNIT]}/CN=${REGISTRY[FQDN]}/emailAddress=${DEFAULTS[ADMIN_EMAIL]}"
 else
     openssl verify -CAfile ca-cert.pem server-cert.pem client-cert.pem
 fi
-log "Certificates Finalised!"
+echoLog "Certificates Finalised!"
 
-echo
-echo "${yellow}MariaDB${NC} Successfully Installed, but required post-installation attention"
-log "MariaDB requires post-installation attention"
-echo
+echoLog "spacer"
+echoLog "${yellow}MariaDB${NC} Successfully Installed, but required post-installation attention"
 
+
+#echoLog "MariaDB requires post-installation attention"
 #pico /etc/mysql/mariadb.conf.d/50-server.cnf
-

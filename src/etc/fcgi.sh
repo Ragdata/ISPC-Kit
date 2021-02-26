@@ -11,13 +11,10 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing FCGI ..."
-log "spacer"
-log "FCGI"
-log "line"
-echo
+echoLog "Installing FCGI"
+echoLog "spacer"
 
 apt_install fcgiwrap
 
-echo
-echo -e "${yellow}FCGI${NC} Successfully Installed!\n"
+echoLog "spacer"
+echoLog "${yellow}FCGI${NC} Successfully Installed!\n"
