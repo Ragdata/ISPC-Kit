@@ -33,3 +33,13 @@ fi
 clear
 # display help file?
 if [[ $flag == "help" ]]; then cat "$docsDir"/.helpinstall; exit 0; fi
+
+loadSource "$libDir/locale"
+echoLog "spacer"
+loadSource "$libDir/basics"
+echoLog "spacer"
+loadSource "$libDir/lemp"
+echoLog "spacer"
+loadSource "$libDir/primary"
+echoLog "spacer"
+loadSource "$libDir/ispconfig"
