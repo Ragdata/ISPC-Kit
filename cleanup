@@ -10,6 +10,4 @@
 # Copyright:    2021 ~ Aequitas Veritas Pty Ltd ~ All Rights Reserved
 #-------------------------------------------------------------------
 if [[ -d /root/.ispc ]]; then rm -f /root/.ispc/logs/*; fi
-if [[ -d cfg ]]; then
-    rm -f .ipv* .reg*
-fi
+if [[ -d cfg ]]; then rm -f cfg/.ipv* cfg/.reg*; fi
