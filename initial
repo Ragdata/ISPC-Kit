@@ -32,7 +32,7 @@ fi
 #-------------------------------------------------------------------
 clear
 # display test output?
-if [[ $flag == "test" ]]; then testOutput; fi
+#if [[ $flag == "test" ]]; then testOutput; fi
 # display help file?
 if [[ $flag == "help" ]]; then cat "$docsDir"/.helpinit; exit 0; fi
 # check if system initialised
