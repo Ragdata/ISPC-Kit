@@ -1,9 +1,22 @@
-Usage:      bash launch <file> <arg1> <arg2>
-=================================================
-<file> should be the filename of the module to
-execute without path or extension.
-If no arguments are passed, then <arg1> defaults to
-the default locale - en_AU.UTF-8
-=================================================
--h, -help           Display Help File (this file)
--t, -test           Set TEST MODE
+Usage:      bash launch <arg1> <arg2> <file1> ... <fileN>
+====================================================================
+If you want to modify the system locale, then you should pass
+it as the first argument
+
+If no argument for locale is passed, then <arg1> defaults to the
+default locale - en_AU.UTF-8
+
+If you want to set one of the flags below, then:
+    - If you are NOT passing a locale, pass it as the first argument
+    - If you ARE also passing a locale, pass it as the second argument
+
+<file1> ... <fileN> is a list of filenames that you want to execute.
+Those files can be in any of the following directories:
+    - src/app
+    - src/etc
+    - src/lib
+====================================================================
+  FLAG                  DESCRIPTION
+====================================================================
+-h, -help               Display Help File (this file)
+-t, -test               Set TEST MODE
