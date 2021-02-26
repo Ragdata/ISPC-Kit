@@ -11,35 +11,33 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing Quota ..."
-log "spacer"
-log "QUOTA"
-log "line"
-echo
+echoLog "Installing Quota"
+echoLog "spacer"
 
 apt_install quota quotatool
 
-log "spacer"
+echoLog "spacer"
 
-echo
-echo -e "${yellow}Quota${NC} Successfully Installed!"
-echo
+echoLog "spacer"
+echoLog "${yellow}Quota${NC} Successfully Installed!"
+echoLog "spacer"
 
 if ! [ -f /proc/user_beancounters ]; then
-    echo "Initialising Quota, this may take a while ... "
-    log "Initialising Quota"
-    echo
+    echoLog "Initialising Quota, this may take a while"
+    echoLog "spacer"
+
     if [ "$(grep -c ',usrjquota=quota.user,grpjquota=quota.group,jqfmt=vfsv0' /etc/fstab)" -eq 0 ]; then
         sed -i '/\/[[:space:]]\+/ {/tmpfs/!s/errors=remount-ro/errors=remount-ro,usrjquota=quota.user,grpjquota=quota.group,jqfmt=vfsv0/}' /etc/fstab
         sed -i '/\/[[:space:]]\+/ {/tmpfs/!s/defaults/defaults,usrjquota=quota.user,grpjquota=quota.group,jqfmt=vfsv0/}' /etc/fstab
     fi
-    echo
-    echo "Remounting Filesystem with Quotas Applied ... "
-    log "Remounting File System"
-    echo
+
+    echoLog "spacer"
+    echoLog "Remounting Filesystem with Quotas Applied"
+
     if ! mount -o remount /; then errorExit "QUOTA ERROR: Failed to mount modified filesystem"; fi
     quotacheck -avugm
     quotaon -avug
-    echo
-    echo -e "${yellow}Quota${NC} Successfully Applied!"
+
+    echoLog "spacer"
+    echoLog "${yellow}Quota${NC} Successfully Applied!"
 fi

@@ -11,22 +11,20 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing Mailman (Mailing List Manager) ..."
-log "spacer"
-log "MAILING LIST MANAGER (Mailman)"
-log "line"
-echo
+echoLog "Installing Mailman (Mailing List Manager)"
+echoLog "spacer"
 
 apt_install mailman
 
-echo
-echo -e "${yellow}Mailman${NC} Successfully Installed!"
-echo
-echo "Configure Mailman Mailing List Manager ... "
-log "Configure Mailing List Manager"
-echo
+echoLog "spacer"
+echoLog "${yellow}Mailman${NC} Successfully Installed!"
+
+echoLog "spacer"
+echoLog "Configure Mailman Mailing List Manager ... "
+echoLog "spacer"
+
 newlist mailman
-echo
+
 cat > /etc/aliases <<EOF
 ## mailman mailing list
 mailman: "|/var/lib/mailman/mail/mailman post mailman"
@@ -40,12 +38,12 @@ mailman-request: "|/var/lib/mailman/mail/mailman request mailman"
 mailman-subscribe: "|/var/lib/mailman/mail/mailman subscribe mailman"
 mailman-unsubscribe: "|/var/lib/mailman/mail/mailman unsubscribe mailman"
 EOF
-echo
+
 newaliases
-echo
+
 service postfix restart
 
 if ! service mailman start; then errorExit "MAILMAN ERROR: Failed to start Mailing List Manager"; fi
 
-echo
-echo -e "${yellow}Mailman${NC} Successfully Configured!"
+echoLog
+echoLog "${yellow}Mailman${NC} Successfully Configured!"

@@ -11,11 +11,8 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing Dovecot POP3/IMAP Server and Mail Signing Utilities ..."
-log "spacer"
-log "POP3/IMAP SERVER (Dovecot) + MAIL SIGNING (OpenDKIM + OpenDMARC)"
-log "line"
-echo
+echoLog "Installing Dovecot POP3/IMAP Server and Mail Signing Utilities"
+echoLog "spacer"
 
 PASSWORDS[OPENDMARC]=$(getPassword)
 
@@ -28,28 +25,27 @@ echo "opendmarc opendmarc/mysql/app-pass ${PASSWORDS[OPENDMARC]}" | debconf-set-
 
 apt_install dovecot-imapd dovecot-pop3d dovecot-mysql dovecot-sieve dovecot-lmtpd opendkim opendkim-tools opendmarc
 
-echo
-echo -e "${yellow}Dovecot${NC} Installed Successfully"
-echo
+echoLog "spacer"
+echoLog "${yellow}Dovecot${NC} Installed Successfully"
+echoLog "spacer"
 
 if [[ ! -f /etc/default/ufw ]]; then
-    echo -e "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
+    echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
 else
-    echo "Opening Firewall Ports for POP3/IMAP/POP3S/IMAPS ... "
-    log "Opening Firewall Ports for POP3/IMAP/POP3S/IMAPS"
-    echo
+    echoLog "Opening Firewall Ports for POP3/IMAP/POP3S/IMAPS"
+    echoLog "spacer"
 
-    log "ufw allow pop3 : 110"
+    echoLog "ufw allow pop3 : 110"
     ufw allow 110/tcp
-    log "ufw allow pop3s : 995"
+    echoLog "ufw allow pop3s : 995"
     ufw allow 995/tcp
-    log "ufw allow imap: 143"
+    echoLog "ufw allow imap: 143"
     ufw allow 143/tcp
-    log "ufw allow imaps: 993"
+    echoLog "ufw allow imaps: 993"
     ufw allow 993/tcp
 
     #ufw enable
 
-    echo
-    echo -e "${yellow}DONE!${NC}"
+    echoLog "spacer"
+    echoLog "${yellow}DONE!${NC}"
 fi

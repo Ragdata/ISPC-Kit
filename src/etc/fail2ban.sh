@@ -11,20 +11,17 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing Anti-Intrusion Protection (Fail2Ban) ..."
-log "spacer"
-log "ANTI-INTRUSION (Fail2Ban)"
-log "line"
+echoLog "Installing Anti-Intrusion Protection (Fail2Ban) ..."
+echoLog "spacer"
 
 apt_install fail2ban
 
-echo
-echo -e "${yellow}Fail2Ban${NC} Successfully Installed!"
-echo
+echoLog "spacer"
+echoLog "${yellow}Fail2Ban${NC} Successfully Installed!"
+echoLog "spacer"
 
-echo "Configuring Fail2Ban ..."
-log "spacer"
-log "Configuring Fail2Ban"
+echoLog "Configuring Fail2Ban"
+echoLog "spacer"
 
 cat > /etc/fail2ban/jail.local <<EOF
 [dovecot]
@@ -49,7 +46,5 @@ maxretry = 5
 
 EOF
 
-echo
-echo -e "${yellow}Fail2Ban${NC} Successfully Configured!"
-log "Fail2Ban Successfully configured"
-echo
+echoLog
+echoLog "${yellow}Fail2Ban${NC} Successfully Configured!"

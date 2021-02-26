@@ -11,15 +11,12 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing JailKit ..."
-log "spacer"
-log "JAILKIT"
-log "line"
-echo
+echoLog "Installing JailKit ..."
+echoLog "spacer"
 
 apt_install jailkit
 
-log "spacer"
+echoLog "spacer"
 
-echo
-echo -e "${yellow}Jailkit${NC} Successfully Installed!"
+echoLog "spacer"
+echoLog "${yellow}Jailkit${NC} Successfully Installed!"

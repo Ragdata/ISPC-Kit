@@ -11,16 +11,14 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing Webstats ..."
-log "spacer"
-log "WEBSTATS"
-log "line"
-echo
+echoLog "Installing Webstats ..."
+echoLog "spacer"
 
 apt_install vlogger webalizer awstats geoip-database libclass-dbi-mysql-perl
 
-log "spacer"
+echoLog "spacer"
 
 sed -i 's/^/#/' /etc/cron.d/awstats
-echo
-echo -e "${yellow}Webstats${NC} Successfully Installed!"
+
+echoLog "spacer"
+echoLog "${yellow}Webstats${NC} Successfully Installed!"

@@ -11,13 +11,10 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing DNS Server (Bind9) ..."
-log "spacer"
-log "DNS SERVER (Bind9)"
-log "line"
-echo
+echoLog "Installing DNS Server (Bind9)"
+echoLog "spacer"
 
 apt_install bind9 dnsutils haveged resolvconf
 
-echo
-echo -e "${green}Bind9${NC} Successfully Installed!"
+echoLog "spacer"
+echoLog "${green}Bind9${NC} Successfully Installed!"

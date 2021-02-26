@@ -11,58 +11,47 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing Antivirus / Antimalware Utilities ..."
-log "spacer"
-log "ANTIVIRUS / ANTIMALWARE"
-log "line"
-echo
+echoLog "Installing Antivirus / Antimalware Utilities"
+echoLog "spacer"
 
 apt_install amavisd-new spamassassin clamav clamav-daemon clamav-docs
 
-log "spacer"
+echoLog "spacer"
 
 apt_install libnet-ldap-perl libauthen-sasl-perl libio-string-perl libio-socket-ssl-perl libnet-ident-perl libnet-dns-perl libmail-dkim-perl
 
-log "spacer"
+echoLog "spacer"
 
 apt_install postgrey razor pyzor
 
-log "spacer"
+echoLog "spacer"
+echoLog "${yellow}Antivirus${NC} Installed Successfully!"
 
-echo
-echo -e "${yellow}Antivirus${NC} Installed Successfully!"
-echo
+echoLog "Stopping SpamAssassin Service"
+echoLog "spacer"
 
-echo "Stopping SpamAssassin Service ..."
-log "Stopping SpamAssassing"
-echo
 service spamassassin stop
 systemctl disable spamassassin
-echo
-echo -e "${yellow}SpamAssassing${NC} Stopped Successfully!"
-echo
 
-echo "Configuring Antivirus ..."
-log "spacer"
-log "Configuring Antivirus"
-echo
+echoLog "spacer"
+echoLog "${yellow}SpamAssassing${NC} Stopped Successfully!"
+echoLog "spacer"
+
+echoLog "Configuring Antivirus"
+echoLog "spacer"
 
 sed -i "s/AllowSupplementaryGroups false/AllowSupplementaryGroups true/" /etc/clamav/clamd.conf
 echo "\$myhostname = \"${REGISTRY[FQDN]}\";" >> /etc/amavis/conf.d/05-node_id
 
-echo "Updating FreshClam AV Database ..."
-log "spacer"
-log "Updating FreshClam AV Database"
-echo
+echoLog "Updating FreshClam AV Database"
+echoLog "spacer"
 
 freshclam
 
-echo "Restarting ClamAV ..."
-log "spacer"
-log "Restarting ClamAV"
-echo
+echoLog "Restarting ClamAV"
+echoLog "spacer"
 
 if ! service clamav-daemon restart; then errorExit "ANTIVIRUS ERROR: ClamAV failed to restart"; fi
 
-echo
-echo -e "${yellow}DONE${NC}"
+echoLog "spacer"
+echoLog "${yellow}DONE${NC}"
