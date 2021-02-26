@@ -23,7 +23,7 @@ For the moment, all you need is a freshly-installed VPS or bare metal server wit
 ## Version Control
 [Semantic Versioning 2.0.0](https://semver.org/)
 
-### Current Release Version
+### :pushpin: Current Release Version
 
 #### v-0.1.0: Initial Release Candidate
 
