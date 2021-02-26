@@ -36,7 +36,7 @@ if [[ $flag == "help" ]]; then cat "$docsDir"/.helpinit; exit 0; fi
 # check if system initialised
 if [ -n "${REGISTRY[INIT]}" ]; then errorExit "ERROR: System is already initialised!"; fi
 # initalise system
-. "$libDir/init"
+loadSource "$libDir/init"
 checkSWAP
 REGISTRY[INIT]=1
 sleepRegistry
