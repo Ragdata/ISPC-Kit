@@ -1,0 +1,15 @@
+#-------------------------------------------------------------------
+# init
+#-------------------------------------------------------------------
+# ISPC Kit - ISPConfig 3 Installer
+#
+# File:         init
+# Author:       Ragdata
+# Date:         27/02/2021 0847
+# License:      MIT License
+# Copyright:    2021 ~ Aequitas Veritas Pty Ltd ~ All Rights Reserved
+#-------------------------------------------------------------------
+if [[ -d /root/.ispc ]]; then rm -f /root/.ispc/*; fi
+if [[ -d cfg ]]; then
+    rm -f .ipv* .reg*
+fi
