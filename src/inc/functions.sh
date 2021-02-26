@@ -307,6 +307,13 @@ initLog()
     touch "$LOG"
     log "LOG Initialised"
     log "line"
+
+    if [[ $flag == "test" ]]; then
+        echo "initLog()"
+        echo "logFile: $LOG"
+        echo -n "Press [ENTER] to continue: "
+        read -n 1 -r
+    fi
 }
 
 loadSource()
@@ -420,15 +427,22 @@ serverSummary()
 
 testOutput()
 {
+    echo "REGISTRY has ${#REGISTRY[@]} entries"
+    echo
     for key in "${!REGISTRY[@]}"
     do
         echo "$key = ${REGISTRY[$key]}"
     done
-
+    echo
     echo -en "Press [ENTER] to continue: "
     read -n 1 -r
 }
 #-------------------------------------------------------------------
 # INITIALISE
 #-------------------------------------------------------------------
+if [[ $flag == "test" ]]; then
+    echo "In function.sh"
+    echo -n "Press [ENTER] to continue: "
+    read -n 1 -r
+fi
 source "$incDir"/registry.sh
