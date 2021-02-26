@@ -38,7 +38,7 @@ fi
 #-------------------------------------------------------------------
 clear
 # display help file?
-if [[ $flag == "help" ]]; then cat "$docsDir"/.helpfile; exit 0; fi
+if [[ $flag == "help" ]]; then cat "$docsDir"/.helplaunch; exit 0; fi
 # load source file
 if [[ -f $libDir/$script.sh ]]; then
     loadSource "$libDir/$script" -f

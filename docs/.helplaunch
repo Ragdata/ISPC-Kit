@@ -1,13 +1,3 @@
-Usage:      bash install <arg1> <arg2>
-=================================================
-If no arguments are passed, then $arg1 defaults to
-the default locale - en_AU.UTF-8
-=================================================
-  Flag              Description
-=================================================
--h, -help           Display Help File (this file)
--t, -test           Set TEST MODE
-
 Usage:      bash launch <file> <arg1> <arg2>
 =================================================
 <file> should be the filename of the module to

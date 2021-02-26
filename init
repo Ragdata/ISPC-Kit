@@ -32,7 +32,7 @@ fi
 #-------------------------------------------------------------------
 clear
 # display help file?
-if [[ $flag == "help" ]]; then cat "$docsDir"/.helpfile; exit 0; fi
+if [[ $flag == "help" ]]; then cat "$docsDir"/.helpinit; exit 0; fi
 # check if system initialised
 if [[ "${REGISTRY[INIT]}" == 1 ]]; then errorExit "ERROR: System is already initialised!"; fi
 # initalise system

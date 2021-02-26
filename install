@@ -32,4 +32,4 @@ fi
 #-------------------------------------------------------------------
 clear
 # display help file?
-if [[ $flag == "help" ]]; then cat "$docsDir"/.helpfile; exit 0; fi
+if [[ $flag == "help" ]]; then cat "$docsDir"/.helpinstall; exit 0; fi

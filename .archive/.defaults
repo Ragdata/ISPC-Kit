@@ -1,0 +1,78 @@
+declare -A DEFAULTS=(
+    [LOC]="en_AU.UTF-8"
+    [SSL_COUNTRY]="AU"
+    [SSL_STATE]="New South Wales"
+    [SSL_LOCALITY]="Sydney"
+    [SSL_ORGANIZATION]="Aequitas Veritas Pty Ltd"
+    [SSL_ORGUNIT]="Engineering"
+    [ADMIN_EMAIL]="admin@aever.net"
+)
+
+declare -A IPS=(
+    [MASTER]="178.128.113.129"
+    [SLAVE]="128.199.218.64"
+)
+
+declare -A MASTER=(
+    [INIT]=1
+    [USER]=1
+    [REPOS]=1
+    [BASICS]=1
+    [RUBY]=1
+    [PHP]=1
+    [PHP72]=1
+    [PHP74]=1
+    [PHP80]=1
+    [LOCALE]=1
+    [LEMP]=1
+    [UFW]=0
+    [NGINX]=1
+    [FCGI]=1
+    [UWSGI]=1
+    [MARIADB]=1
+    [RKHUNTER]=1
+    [PRIMARY]=1
+    [POSTFIX]=1
+    [DOVECOT]=1
+    [ANTIVIRUS]=1
+    [PURE-FTPD]=1
+    [FAIL2BAN]=1
+    [BIND9]=1
+    [QUOTA]=1
+    [JAILKIT]=1
+    [WEBSTATS]=1
+    [MAILMAN]=1
+    [ISPCONFIG]=1
+)
+
+declare -A SLAVE=(
+    [INIT]      =1
+    [USER]      =1
+    [REPOS]     =1
+    [BASICS]    =1
+    [RUBY]      =1
+    [PHP]       =1
+    [PHP72]     =1
+    [PHP74]     =1
+    [PHP80]     =1
+    [LOCALE]    =1
+    [LEMP]      =1
+    [UFW]       =0
+    [NGINX]     =1
+    [FCGI]      =1
+    [UWSGI]     =1
+    [MARIADB]   =1
+    [RKHUNTER]  =1
+    [PRIMARY]   =1
+    [POSTFIX]   =1
+    [DOVECOT]   =0
+    [ANTIVIRUS] =0
+    [PURE-FTPD] =0
+    [FAIL2BAN]  =0
+    [BIND9]     =1
+    [QUOTA]     =0
+    [JAILKIT]   =0
+    [WEBSTATS]  =0
+    [MAILMAN]   =0
+    [ISPCONFIG] =1
+)

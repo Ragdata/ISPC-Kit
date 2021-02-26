@@ -1,4 +1,4 @@
-Usage:      bash init <arg1> <arg2>
+Usage:      bash install <arg1> <arg2>
 =================================================
 If no arguments are passed, then $arg1 defaults to
 the default locale - en_AU.UTF-8
