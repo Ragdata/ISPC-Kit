@@ -12,26 +12,21 @@
 # MAIN
 #-------------------------------------------------------------------
 clear
-echoLog "Basic Services"
-echoLog "line"
+
+loadSource "$etcDir/system"
+echoLog "spacer"
+loadSource "$etcDir/build"
 echoLog "spacer"
 
-apt_install daemon git gnupg2 php-cli curl php-pear libsqlite3-dev sqlite3 mcrypt
 
-echoLog "spacer"
-echoLog "Build Tools"
-echoLog "line"
-
-apt_install zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev
-apt_install libffi-dev libgdbm-dev libncurses5-dev automake libtool bison
-
-echoLog "spacer"
 echoLog "Archival Tools"
 echoLog "line"
 
 apt_install arj bzip2 nomarch lzop unzip zip cabextract
 
 echoLog "spacer"
+
+
 echoLog "APT Tools"
 echoLog "line"
 
@@ -41,6 +36,8 @@ echoLog "spacer"
 echoLog "${yellow}Basic Services${NC} Installed Successfully!"
 
 echoLog "spacer"
+
+
 echoLog "Python 3 Extensions"
 echoLog "line"
 
@@ -62,6 +59,8 @@ echoLog "spacer"
 echoLog "${yellow}Python3 Extensions${NC} Successfully Installed!"
 
 echoLog "spacer"
+
+
 echoLog "Let's Encrypt Certbot"
 echoLog "line"
 
@@ -71,6 +70,8 @@ echoLog "spacer"
 echoLog "${yellow}Let's Encrypt Certbot${NC} Successfully Installed!"
 
 echoLog "spacer"
+
+
 echoLog "Snapd"
 echoLog "line"
 
@@ -80,6 +81,8 @@ echoLog "spacer"
 echoLog "${yellow}Snapd${NC} Successfully Installed!"
 
 echoLog "spacer"
+
+
 echoLog "Perl 5 + Extensions ..."
 echoLog "line"
 
@@ -90,6 +93,8 @@ echoLog "spacer"
 echoLog "${yellow}Perl 5 + Extensions${NC} Successfully Installed!"
 
 echoLog "spacer"
+
+
 echoLog "Node.js"
 echoLog "line"
 
@@ -107,6 +112,8 @@ loadSource "$etcDir/ruby"
 loadSource "$etcDir/php"
 
 echoLog "spacer"
+
+
 echoLog "Composer for PHP"
 echoLog "line"
 
@@ -116,6 +123,8 @@ echoLog "spacer"
 echoLog "${yellow}Composer${NC} Successfully Installed!"
 
 echoLog "spacer"
+
+
 echoLog "Media Extras"
 echoLog "line"
 
@@ -125,6 +134,8 @@ echoLog "spacer"
 echoLog "${yellow}Media Extras${NC} Successfully Installed!"
 
 echoLog "spacer"
+
+
 echoLog "Telegram Command-Line Client"
 echoLog "line"
 
