@@ -326,7 +326,7 @@ loadSource()
     key="${file^^}"
     # shellcheck disable=SC1087
     perm="$id[$key]"
-    default="${REGISTRY[SERVER_ID]}_DEFAULT"
+    default="${REGISTRY[SERVER_ID]}"_DEFAULT
 
     echoLog "Need permission for $key or ${!default}"
 
