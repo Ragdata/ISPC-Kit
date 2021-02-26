@@ -34,9 +34,9 @@ clear
 # display help file?
 if [[ $flag == "help" ]]; then cat "$docsDir"/.helpinit; exit 0; fi
 # check if system initialised
-if [[ "${REGISTRY[INIT]}" == 1 ]]; then errorExit "ERROR: System is already initialised!"; fi
+if [ -n "${REGISTRY[INIT]}" ]; then errorExit "ERROR: System is already initialised!"; fi
 # initalise system
-loadSource "$libDir/init"
+. "$libDir/init"
 checkSWAP
 REGISTRY[INIT]=1
 sleepRegistry
