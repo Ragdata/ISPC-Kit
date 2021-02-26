@@ -307,13 +307,6 @@ initLog()
     touch "$LOG"
     log "LOG Initialised"
     log "line"
-
-    if [[ $flag == "test" ]]; then
-        echo "initLog()"
-        echo "logFile: $LOG"
-        echo -n "Press [ENTER] to continue: "
-        read -n 1 -r
-    fi
 }
 
 loadSource()

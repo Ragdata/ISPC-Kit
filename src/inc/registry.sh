@@ -72,6 +72,7 @@ wakeRegistry()
 # MAIN
 #-------------------------------------------------------------------
 initLog
+echoLog "FLAG = $flag"
 if [[ $flag == "test" ]]; then
     echo "RES = $RES"
     echo "REG = $REG"
