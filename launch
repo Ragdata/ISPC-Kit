@@ -16,12 +16,6 @@ source "$baseDir"/src/inc/functions.sh
 #-------------------------------------------------------------------
 # GET ARGS
 #-------------------------------------------------------------------
-if [[ $# -ge 1 ]]; then
-    script=$1
-    shift "$@"
-else
-    errorExit "launch ERROR: Script name not specified!"
-fi
 if [[ $# ]]; then
     if [[ $# -ge 1 ]] && [[ $1 =~ $isLoc ]]; then REGISTRY[LOC]=$1; shift "$@"; fi
 else
@@ -32,6 +26,7 @@ if [[ $# ]] && [[ $1 =~ $isFlag ]]; then
         "-h"|"-help")   flag="help";;
         "-t"|"-test")   flag="test";;
     esac
+    shift "$@"
 fi
 #-------------------------------------------------------------------
 # MAIN
@@ -39,13 +34,17 @@ fi
 clear
 # display help file?
 if [[ $flag == "help" ]]; then cat "$docsDir"/.helplaunch; exit 0; fi
-# load source file
-if [[ -f $libDir/$script.sh ]]; then
-    loadSource "$libDir/$script" -f
-elif [[ -f $etcDir/$script.sh ]]; then
-    loadSource "$etcDir/$script" -f
-elif [[ -f $appDir/$script.sh ]]; then
-    loadSource "$appDir/$script" -f
-else
-    errorExit "launch ERROR: File $script.sh not found!"
-fi
+# load requested scripts
+for script in "$@"
+do
+    # load source file
+    if [[ -f $libDir/$script.sh ]]; then
+        loadSource "$libDir/$script" -f
+    elif [[ -f $etcDir/$script.sh ]]; then
+        loadSource "$etcDir/$script" -f
+    elif [[ -f $appDir/$script.sh ]]; then
+        loadSource "$appDir/$script" -f
+    else
+        errorExit "launch ERROR: File $script.sh not found!"
+    fi
+done
