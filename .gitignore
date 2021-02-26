@@ -1,0 +1,8 @@
+# ide
+/.idea/
+# config
+/cfg/.defaults
+/cfg/.registry
+!/cfg/nginx/*
+# logs
+/logs/*

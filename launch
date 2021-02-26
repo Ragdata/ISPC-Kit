@@ -1,0 +1,51 @@
+#-------------------------------------------------------------------
+# launch
+#-------------------------------------------------------------------
+# ISPC Kit - ISPConfig 3 Installer
+#
+# File:         launch
+# Author:       Ragdata
+# Date:         26/01/2021 0035
+# License:      MIT License
+# Copyright:    2021 ~ Aequitas Veritas Pty Ltd ~ All Rights Reserved
+#-------------------------------------------------------------------
+# INIT
+#-------------------------------------------------------------------
+baseDir=$(pwd)
+source "$baseDir"/src/inc/functions.sh
+#-------------------------------------------------------------------
+# GET ARGS
+#-------------------------------------------------------------------
+if [[ $# -ge 1 ]]; then
+    script=$1
+    shift "$@"
+else
+    errorExit "launch ERROR: Script name not specified!"
+fi
+if [[ $# ]]; then
+    if [[ $# -ge 1 ]] && [[ $1 =~ $isLoc ]]; then REGISTRY[LOC]=$1; shift "$@"; fi
+else
+    REGISTRY[LOC]=${DEFAULTS[LOC]}
+fi
+if [[ $# ]] && [[ $1 =~ $isFlag ]]; then
+    case $1 in
+        "-h"|"-help")   flag="help";;
+        "-t"|"-test")   flag="test";;
+    esac
+fi
+#-------------------------------------------------------------------
+# MAIN
+#-------------------------------------------------------------------
+clear
+# display help file?
+if [[ $flag == "help" ]]; then cat "$docsDir"/.helpfile; exit 0; fi
+# load source file
+if [[ -f $libDir/$script.sh ]]; then
+    loadSource "$libDir/$script" -f
+elif [[ -f $etcDir/$script.sh ]]; then
+    loadSource "$etcDir/$script" -f
+elif [[ -f $appDir/$script.sh ]]; then
+    loadSource "$appDir/$script" -f
+else
+    errorExit "launch ERROR: File $script.sh not found!"
+fi

@@ -1,0 +1,43 @@
+#-------------------------------------------------------------------
+# init
+#-------------------------------------------------------------------
+# ISPC Kit - ISPConfig 3 Installer
+#
+# File:         init
+# Author:       Ragdata
+# Date:         26/02/2021 1527
+# License:      MIT License
+# Copyright:    2021 ~ Aequitas Veritas Pty Ltd ~ All Rights Reserved
+#-------------------------------------------------------------------
+# INIT
+#-------------------------------------------------------------------
+baseDir=$(pwd)
+source "$baseDir"/src/inc/functions.sh
+#-------------------------------------------------------------------
+# GET ARGS
+#-------------------------------------------------------------------
+if [[ $# ]]; then
+    if [[ $# -ge 1 ]] && [[ $1 =~ $isLoc ]]; then REGISTRY[LOC]=$1; shift "$@"; fi
+else
+    REGISTRY[LOC]=${DEFAULTS[LOC]}
+fi
+if [[ $# ]] && [[ $1 =~ $isFlag ]]; then
+    case $1 in
+        "-h"|"-help")   flag="help";;
+        "-t"|"-test")   flag="test";;
+    esac
+fi
+#-------------------------------------------------------------------
+# MAIN
+#-------------------------------------------------------------------
+clear
+# display help file?
+if [[ $flag == "help" ]]; then cat "$docsDir"/.helpfile; exit 0; fi
+# check if system initialised
+if [[ "${REGISTRY[INIT]}" == 1 ]]; then errorExit "ERROR: System is already initialised!"; fi
+# initalise system
+loadSource "$libDir/init"
+checkSWAP
+REGISTRY[INIT]=1
+sleepRegistry
+if ! reboot; then errorExit "ERROR: Unable to reboot system - system requires reboot before continuing!"; fi
