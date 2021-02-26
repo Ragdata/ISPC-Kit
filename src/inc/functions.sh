@@ -315,8 +315,9 @@ loadSource()
     override=${2:-""}
 
     if [ -z "$filePath" ]; then errorExit "loadSource() ERROR: No filePath given!"; fi
-
     if [[ ! -f "$filePath".sh ]]; then errorExit "loadSource() ERROR: File $filePath.sh not found!"; fi
+
+    echoLog "Loading SUORCEFILE: $filePath"
 
     file="${filePath##*/}"
 
@@ -325,8 +326,11 @@ loadSource()
     key="${file^^}"
     # shellcheck disable=SC1087
     perm="$id[$key]"
+    default="${REGISTRY[SERVER_ID]}_DEFAULT"
 
-    if [[ ${!perm} == 1 ]] || [[ "$override" == "-f" ]]; then
+    echoLog "Need permission for $key or ${!default}"
+
+    if [[ ${!perm} == 1 ]] || [[ $id_DEFAULT ]] || [[ $override == "-f" ]]; then
         echoLog "Attempting to load SOURCEFILE: $filePath.sh"
         source "$filePath".sh;
         echoLog "spacer";

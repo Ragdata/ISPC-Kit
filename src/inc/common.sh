@@ -64,9 +64,15 @@ if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
 nginxDir="$baseDir"/cfg/nginx
 if [[ ! -d $nginxDir ]]; then mkdir "$nginxDir"; fi
 #- FILES -----------------------------------------------------------
+DIS="$configDir"/.defaults.dist
 DEF="$configDir"/.defaults
 REG="$configDir"/.registry
 #-------------------------------------------------------------------
 # GLOBALS
 #-------------------------------------------------------------------
+# declare global passwords array
 declare -A PASSWORDS
+# if no .defaults file, copy the .defaults.dist file in its place
+if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then
+    mv "$DIS" "$DEF"
+fi
