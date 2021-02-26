@@ -11,11 +11,8 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing Ruby3 + Extensions ..."
-log "spacer"
-log "RUBY3 + EXTENSIONS"
-log "line"
-echo
+echoLog "Installing Ruby3 + Extensions"
+echoLog "spacer"
 
 apt_install ruby ruby-dev bundler rails
 

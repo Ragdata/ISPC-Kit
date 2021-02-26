@@ -1,9 +1,9 @@
 #-------------------------------------------------------------------
-# src/etc/php.sh
+# src/etc/php80.sh
 #-------------------------------------------------------------------
 # ISPC Kit - ISPConfig 3 Installer
 #
-# File:         php.sh
+# File:         php80.sh
 # Author:       Ragdata
 # Date:         24/02/2021 1600
 # License:      MIT License
@@ -11,23 +11,19 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing PHP8.0 + Extensions ..."
-log "spacer"
-log "PHP8.0 + Extensions"
-log "line"
-echo
+echoLog "Installing PHP8.0 + Extensions"
+echoLog "spacer"
 
 apt_install php8.0
-log "PHP8.0 Extensions: " -n
-if apt install -y php8.0-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,gmp,gnupg,http,imagick,imap,intl,ldap,mailparse,mbstring,mysql,oauth,odbc,opcache,pdo,pgsql,propro,pspell,psr,raphf,readline,redis,smbclient,sqlite3,tidy,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then log "y" -c; else log "n" -c; fi
+echoLog "PHP8.0 Extensions: " -n
+if apt install -y php8.0-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,gmp,gnupg,http,imagick,imap,intl,ldap,mailparse,mbstring,mysql,oauth,odbc,opcache,pdo,pgsql,propro,pspell,psr,raphf,readline,redis,smbclient,sqlite3,tidy,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then echoLog "y" -c; else echoLog "n" -c; fi
 
-echo
-echo -e "${yellow}PHP8.0${NC} Successfully Installed!"
-echo
+echoLog "spacer"
+echoLog "${yellow}PHP8.0${NC} Successfully Installed!"
 
-echo "Configure PHP8.0 ..."
-log "spacer"
-log "Configuring PHP8.0 ..."
+echoLog "spacer"
+echoLog "Configure PHP8.0"
+echoLog "spacer"
 
 TIME_ZONE=$(cat /etc/timezone)
 
@@ -44,8 +40,8 @@ cp /etc/php/8.0/fpm/php.ini /etc/php/8.0/cli/.
 
 sed -i 's/;clear_env/clear_env/g' /etc/php/8.0/fpm/pool.d/www.conf
 
-log "Restarting PHP8.0-FPM: " -n
-if service php8.0-fpm restart; then log "SUCCESS" -c; else log "FAILURE!" -c; fi
+echoLog "Restarting PHP8.0-FPM: " -n
+if service php8.0-fpm restart; then echoLog "SUCCESS" -c; else echoLog "FAILURE!" -c; fi
 
-echo
-echo -e "${yellow}PHP8.0${NC} Configured!"
+echoLog
+echoLog "${yellow}PHP8.0${NC} Configured!"

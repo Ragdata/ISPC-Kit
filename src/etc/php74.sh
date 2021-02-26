@@ -11,23 +11,19 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing PHP7.4 + Extensions ..."
-log "spacer"
-log "PHP7.4 + Extensions"
-log "line"
-echo
+echoLog "Installing PHP7.4 + Extensions"
+echoLog "spacer"
 
 apt_install php7.4
-log "PHP7.4 Extensions: " -n
-if apt install -y php7.4-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,geoip,gmp,gnupg,http,imagick,imap,intl,json,ldap,lua,mbstring,mysql,mailparse,oauth,odbc,opcache,pcov,pdo,pgsql,pspell,propro,psr,raphf,readline,redis,sass,ssh2,smbclient,sqlite3,stomp,tideways,tidy,uploadprogress,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then log "y" -c; else log "n" -c; fi
+echoLog "PHP7.4 Extensions: " -n
+if apt install -y php7.4-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,geoip,gmp,gnupg,http,imagick,imap,intl,json,ldap,lua,mbstring,mysql,mailparse,oauth,odbc,opcache,pcov,pdo,pgsql,pspell,propro,psr,raphf,readline,redis,sass,ssh2,smbclient,sqlite3,stomp,tideways,tidy,uploadprogress,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then echoLog "y" -c; else echoLog "n" -c; fi
 
-echo
-echo -e "${yellow}PHP7.4${NC} Successfully Installed!"
-echo
+echoLog "spacer"
+echoLog "${yellow}PHP7.4${NC} Successfully Installed!"
 
-echo "Configure PHP7.4 ..."
-log "spacer"
-log "Configuring PHP7.4 ..."
+echoLog "spacer"
+echoLog "Configure PHP7.4"
+echoLog "spacer"
 
 TIME_ZONE=$(cat /etc/timezone)
 
@@ -44,8 +40,8 @@ cp /etc/php/7.4/fpm/php.ini /etc/php/7.4/cli/.
 
 sed -i 's/;clear_env/clear_env/g' /etc/php/7.4/fpm/pool.d/www.conf
 
-log "Restarting PHP7.4-FPM: " -n
-if service php7.4-fpm restart; then log "SUCCESS" -c; else log "FAILURE!" -c; fi
+echoLog "Restarting PHP7.4-FPM: " -n
+if service php7.4-fpm restart; then echoLog "SUCCESS" -c; else echoLog "FAILURE!" -c; fi
 
-echo
-echo -e "${yellow}PHP7.4${NC} Configured!"
+echoLog "spacer"
+echoLog "${yellow}PHP7.4${NC} Configured!"

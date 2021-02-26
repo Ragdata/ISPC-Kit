@@ -1,9 +1,9 @@
 #-------------------------------------------------------------------
-# src/etc/php.sh
+# src/etc/php72.sh
 #-------------------------------------------------------------------
 # ISPC Kit - ISPConfig 3 Installer
 #
-# File:         php.sh
+# File:         php72.sh
 # Author:       Ragdata
 # Date:         24/02/2021 1600
 # License:      MIT License
@@ -11,23 +11,19 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-echo "Installing PHP7.2 ..."
-log "spacer"
-log "PHP7.2 + Extensions"
-log "line"
-echo
+echoLog "Installing PHP7.2"
+echoLog "spacer"
 
 apt_install php7.2
-log "PHP7.2 Extensions: " -n
-if apt install -y php7.2-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,geoip,gmp,gnupg,http,imagick,imap,intl,json,ldap,lua,mailparse,mbstring,mysql,oauth,odbc,pcov,pdo,pgsql,pspell,psr,raphf,readline,recode,redis,smbclient,sqlite3,ssh2,stomp,tideways,tidy,uploadprogress,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then log "y" -c; else log "n" -c; fi
+echoLog "PHP7.2 Extensions: " -n
+if apt install -y php7.2-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,geoip,gmp,gnupg,http,imagick,imap,intl,json,ldap,lua,mailparse,mbstring,mysql,oauth,odbc,pcov,pdo,pgsql,pspell,psr,raphf,readline,recode,redis,smbclient,sqlite3,ssh2,stomp,tideways,tidy,uploadprogress,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then echoLog "y" -c; else echoLog "n" -c; fi
 
-echo
-echo -e "${yellow}PHP7.2${NC} Successfully Installed!"
-echo
+echoLog "spacer"
+echoLog "${yellow}PHP7.2${NC} Successfully Installed!"
 
-echo "Configure PHP7.2 ..."
-log "spacer"
-log "Configuring PHP7.2 ..."
+echoLog "spacer"
+echoLog "Configure PHP7.2"
+echoLog "spacer"
 
 TIME_ZONE=$(cat /etc/timezone)
 
@@ -44,8 +40,8 @@ cp /etc/php/7.2/fpm/php.ini /etc/php/7.2/cli/.
 
 sed -i 's/;clear_env/clear_env/g' /etc/php/7.2/fpm/pool.d/www.conf
 
-log "Restarting PHP7.2-FPM: " -n
-if service php7.2-fpm restart; then log "SUCCESS" -c; else log "FAILURE!" -c; fi
+echoLog "Restarting PHP7.2-FPM: " -n
+if service php7.2-fpm restart; then echoLog "SUCCESS" -c; else echoLog "FAILURE!" -c; fi
 
-echo
-echo -e "${yellow}PHP7.2${NC} Configured!"
+echoLog "spacer"
+echoLog "${yellow}PHP7.2${NC} Configured!"

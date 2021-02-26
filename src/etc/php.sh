@@ -11,17 +11,19 @@
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
-
 # add php repository
 if [[ ! -s /etc/apt/sources.list.d/ondrej-ubuntu-php-"$REL".list ]]; then
-    echo "Adding repository for PHP ... "
+    echoLog "Adding repository for PHP ... "
     add-apt-repository -y ppa:ondrej/php
-    echo -e "${yellow}DONE${NC}"
+    echoLog "${yellow}DONE${NC}"
     apt update
+    echoLog "spacer"
 fi
 
 loadSource "$etcDir/php72"
+echoLog "spacer"
 loadSource "$etcDir/php74"
+echoLog "spacer"
 loadSource "$etcDir/php80"
 
 update-alternatives --set php /usr/bin/php7.4
