@@ -37,7 +37,45 @@ MASTER_DEFAULT=1
 # want to install a particular file from the src/etc directory.
 # The name of this array MUST be the same as the server's SERVER_ID
 declare -A MASTER=(
-
+    [INIT]=1
+    [USER]=1
+    [REPOS]=1
+    [BASICS]=1
+    [SYSTEM]=1
+    [BUILD]=1
+    [ARCHIVE]=1
+    [APT]=1
+    [PYTHON]=1
+    [CERTBOT]=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
+    []=1
 )
 #-------------------------------------------------------------------
 # DEFAULT PERMISSION FOR SLAVE SERVER

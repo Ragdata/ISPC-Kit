@@ -14,6 +14,9 @@ echoLog "spacer"
 
 # determine name of permissions array
 id="${REGISTRY[SERVER_ID]}"
+# determine name of default permission
+default="${REGISTRY[SERVER_ID]}_DEFAULT"
+
 
 # shellcheck disable=SC1087
 php="$id[PHP]"
@@ -32,7 +35,8 @@ gluu="$id[GLUU]"
 # shellcheck disable=SC1087
 metronome="$id[METRONOME]"
 
-if [[ ${!php} == 1 ]]; then
+# shellcheck disable=SC2107
+if [ "${!php}" == 1 ] || [ -z "${!php}" && "$default" == 1 ]; then
     # add php repository
     if [[ ! -s /etc/apt/sources.list.d/ondrej-ubuntu-php-"$REL".list ]]; then
         echo "Adding repository for PHP ... "
@@ -41,7 +45,8 @@ if [[ ${!php} == 1 ]]; then
     fi
 fi
 
-if [[ ${!python} == 1 ]]; then
+# shellcheck disable=SC2107
+if [ "${!python}" == 1 ] || [ -z "${!python}" && "$default" == 1 ]; then
     # add python repository
     if [[ ! -s /etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-"$REL".list ]]; then
         echo "Adding repository for Python ... "
@@ -50,7 +55,8 @@ if [[ ${!python} == 1 ]]; then
     fi
 fi
 
-if [[ ${!nginx} == 1 ]]; then
+# shellcheck disable=SC2107
+if [ "${!nginx}" == 1 ] || [ -z "${!nginx}" && "$default" == 1 ]; then
     # add nginx repository
     if [[ ! -s /etc/apt/sources.list.d/ondrej-ubuntu-nginx-"$REL".list ]]; then
         echo "Adding repository for Nginx ... "
@@ -59,7 +65,8 @@ if [[ ${!nginx} == 1 ]]; then
     fi
 fi
 
-if [[ ${!yarn} == 1 ]]; then
+# shellcheck disable=SC2107
+if [ "${!yarn}" == 1 ] || [ -z "${!yarn}" && "$default" == 1 ]; then
     # add yarn repository
     if [[ ! -f /etc/apt/sources.list.d/yarn.list ]]; then
         echo "Adding repository for Yarn ... "
@@ -69,7 +76,8 @@ if [[ ${!yarn} == 1 ]]; then
     fi
 fi
 
-if [[ ${!erlang} == 1 ]]; then
+# shellcheck disable=SC2107
+if [ "${!erlang}" == 1 ] || [ -z "${!erlang}" && "$default" == 1 ]; then
     # add erlang repository
     if [[ ! -f /etc/apt/sources.list.d/erlang.list ]]; then
         echo "Adding repository for Erlang ... "
@@ -87,7 +95,8 @@ if [[ ${!erlang} == 1 ]]; then
     fi
 fi
 
-if [[ ${!pushbullet} == 1 ]]; then
+# shellcheck disable=SC2107
+if [ "${!pushbullet}" == 1 ] || [ -z "${!pushbullet}" && "$default" == 1 ]; then
     # add pushbullet repository
     if [[ ! -f /etc/apt/sources.list.d/atareao-ubuntu-atareao-"$REL".list ]]; then
         echo "Adding repository for Pushbullet ... "
@@ -96,7 +105,8 @@ if [[ ${!pushbullet} == 1 ]]; then
     fi
 fi
 
-if [[ ${!gluu} == 1 ]]; then
+# shellcheck disable=SC2107
+if [ "${!gluu}" == 1 ] || [ -z "${!gluu}" && "$default" == 1 ]; then
     # add gluu repository
     if [[ ! -f /etc/apt/sources.list.d/gluu-repo.list ]]; then
         echo "Adding repository for Gluu ... "
@@ -106,7 +116,8 @@ if [[ ${!gluu} == 1 ]]; then
     fi
 fi
 
-if [[ ${!metronome} == 1 ]]; then
+# shellcheck disable=SC2107
+if [ "${!metronome}" == 1 ] || [ -z "${!metronome}" && "$default" == 1 ]; then
     # add metronome repository
     if [[ ! -f /etc/apt/sources.list.d/metronome.list ]]; then
         echo "Adding Prosody Package Repository to Sources ... "

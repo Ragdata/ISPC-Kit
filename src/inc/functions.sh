@@ -330,7 +330,8 @@ loadSource()
 
     echoLog "Need permission for $key or $default"
 
-    if [[ ${!perm} == 1 ]] || [[ $id_DEFAULT ]] || [[ $override == "-f" ]]; then
+    # shellcheck disable=SC2107
+    if [ "${!perm}" == 1 ] || [ -z "${!perm}" && "$default" == 1 ] || [ "$override" == "-f" ]; then
         echoLog "Attempting to load SOURCEFILE: $filePath.sh"
         source "$filePath".sh;
         echoLog "spacer";
