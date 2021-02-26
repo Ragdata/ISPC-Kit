@@ -326,9 +326,9 @@ loadSource()
     key="${file^^}"
     # shellcheck disable=SC1087
     perm="$id[$key]"
-    default="${REGISTRY[SERVER_ID]}"_DEFAULT
+    default="${REGISTRY[SERVER_ID]}_DEFAULT"
 
-    echoLog "Need permission for $key or ${!default}"
+    echoLog "Need permission for $key or $default"
 
     if [[ ${!perm} == 1 ]] || [[ $id_DEFAULT ]] || [[ $override == "-f" ]]; then
         echoLog "Attempting to load SOURCEFILE: $filePath.sh"
