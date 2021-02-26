@@ -12,5 +12,12 @@
 # MAIN
 #-------------------------------------------------------------------
 clear
+echoLog "Initialising Server"
+echoLog "line"
+
 loadSource "$etcDir/user"
+echoLog "spacer"
 loadSource "$etcDir/repos"
+
+echoLog "spacer"
+echoLog "${yellow}Initialisation${NC} Successcul!"
