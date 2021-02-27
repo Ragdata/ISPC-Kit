@@ -58,18 +58,20 @@ if [[ $flag == "help" ]]; then cat "$docsDir"/.helplaunch; return 0; fi
 # load requested scripts
 for script in "$@"
 do
-    # load source file
-    if [[ -f $libDir/$script.sh ]]; then
-        clear
-        loadSource "$libDir/$script" -f
-    elif [[ -f $etcDir/$script.sh ]]; then
-        clear
-        loadSource "$etcDir/$script" -f
-    elif [[ -f $appDir/$script.sh ]]; then
-        clear
-        loadSource "$appDir/$script" -f
-    else
-        errorExit "launch ERROR: File $script.sh not found!"
+    if [ -n "$script" ]; then
+        # load source file
+        if [[ -f $libDir/$script.sh ]]; then
+            clear
+            loadSource "$libDir/$script" -f
+        elif [[ -f $etcDir/$script.sh ]]; then
+            clear
+            loadSource "$etcDir/$script" -f
+        elif [[ -f $appDir/$script.sh ]]; then
+            clear
+            loadSource "$appDir/$script" -f
+        else
+            errorExit "launch ERROR: File $script.sh not found!"
+        fi
     fi
 done
 
