@@ -67,8 +67,4 @@ if [[ ! -d $nginxDir ]]; then mkdir "$nginxDir"; fi
 DIS="$configDir"/.defaults.dist
 DEF="$configDir"/.defaults
 REG="$configDir"/.registry
-#-------------------------------------------------------------------
-# GLOBALS
-#-------------------------------------------------------------------
-# declare global passwords array
-declare -A PASSWORDS
+PWD="$rootDir"/.passwords

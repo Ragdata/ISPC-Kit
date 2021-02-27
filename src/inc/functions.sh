@@ -147,7 +147,7 @@ echoLog()
         errorExit "ERROR: Corwardly refusing to echo log entry with no message!"
     fi
 
-    if [ -z "$LOG" ]; then initLog fallback fi
+    if [ -z "$LOG" ]; then initLog fallback; fi
 
     if [[ $msg == "spacer" ]]; then
         echo
@@ -393,6 +393,17 @@ mkSWAP()
     echo '/swapfile.sys none swap sw 0 0' | tee -a /etc/fstab
 
     echoLog "${yellow}DONE!${NC}"
+}
+
+savePasswords()
+{
+    if [[ ${#PASSWORDS[@]} -gt 0 ]]; then
+        echo "declare -A PASSWORDS=("
+        for key in "${!PASSWORDS[@]}"
+        do
+            echo
+        done
+    fi
 }
 
 serverSummary()

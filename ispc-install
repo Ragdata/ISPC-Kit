@@ -26,8 +26,8 @@ baseDir=$PWD
 #-------------------------------------------------------------------
 # INIT
 #-------------------------------------------------------------------
-# initialise logger
-initLog
+# if .passwords file, load passwords or declare password array
+if [[ -f "$PWD" ]]; then . "$PWD"; else declare -A PASSWORDS; fi
 # if no .defaults file, copy the .defaults.dist file in its place
 if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then cp "$DIS" "$DEF"; fi
 # load .defaults
