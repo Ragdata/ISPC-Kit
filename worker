@@ -11,7 +11,10 @@
 #-------------------------------------------------------------------
 # INIT
 #-------------------------------------------------------------------
-. "$PWD"/src/inc/common.sh
+baseDir="$PWD"
+. "$baseDir"/src/inc/common.sh
+. "$incDir"/functions.sh
+. "$incDir"/registry.sh
 #-------------------------------------------------------------------
 # GET ARGS
 #-------------------------------------------------------------------
@@ -21,6 +24,12 @@ case $f in
     defaults)
         if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then cp "$DIS" "$DEF";
         elif [[ -f "$DEF" && -f "$DIS" ]]; then rm -f "$DEF"; cp "$DIS" "$DEF"; fi
+        ;;
+    netinfo)
+        # if no .registry file, build it, otherwise load it
+        if [[ ! -f "$REG" ]]; then initLog registry; buildRegistry; else . "$REG"; fi
+        getId
+        serverSummary
         ;;
     *)
         if [[ -d /root/.ispc ]]; then rm -f /root/.ispc/logs/*; fi
