@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------
+# WORKER
+#-------------------------------------------------------------------
+# ISPC Kit - ISPConfig 3 Installer
+#
+# File:         WORKER
+# Author:       Ragdata
+# Date:         27/02/2021 0847
+# License:      MIT License
+# Copyright:    2021 ~ Aequitas Veritas Pty Ltd ~ All Rights Reserved
+#-------------------------------------------------------------------
+# INIT
+#-------------------------------------------------------------------
+baseDir=$(pwd)
+. "$baseDir"/src/inc/functions.sh
+#-------------------------------------------------------------------
+# GET ARGS
+#-------------------------------------------------------------------
+f=${1:-"cleanup"}
+
+case $f in
+    "cleanup")
+        if [[ -d /root/.ispc ]]; then rm -f /root/.ispc/logs/*; fi
+        if [[ -d cfg ]]; then rm -f cfg/.ipv* cfg/.reg*; fi
+        ;;
+    "defaults")
+        if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then mv "$DIS" "$DEF"; fi
+        ;;
+esac
