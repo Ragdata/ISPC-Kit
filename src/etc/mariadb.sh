@@ -78,7 +78,7 @@ if [[ ${!ufw} == 1 ]]; then
     fi
 fi
 
-echoLog
+echoLog "spacer"
 echoLog "${yellow}MariaDB${NC} Successfully Installed!"
 echoLog "spacer"
 
