@@ -68,3 +68,4 @@ DIS="$configDir"/.defaults.dist
 DEF="$configDir"/.defaults
 REG="$configDir"/.registry
 PWD="$rootDir"/.passwords
+SQL="$sqlDir"/database.sql
