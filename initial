@@ -40,4 +40,4 @@ loadSource "$libDir/init"
 loadSource "$libDir/swap"
 REGISTRY[INIT]=1
 sleepRegistry
-if ! reboot; then errorExit "ERROR: Unable to reboot system - system requires reboot before continuing!"; fi
+reboot

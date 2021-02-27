@@ -440,7 +440,3 @@ testOutput()
     echo -en "Press [ENTER] to continue: "
     read -n 1 -r
 }
-#-------------------------------------------------------------------
-# INITIALISE REGISTRY
-#-------------------------------------------------------------------
-. "$incDir"/registry.sh

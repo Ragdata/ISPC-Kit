@@ -67,12 +67,18 @@ if [[ ! -d $nginxDir ]]; then mkdir "$nginxDir"; fi
 DIS="$configDir"/.defaults.dist
 DEF="$configDir"/.defaults
 REG="$configDir"/.registry
+#- LIBRARIES -------------------------------------------------------
+. "$incDir"/registry.sh
 #-------------------------------------------------------------------
 # GLOBALS
 #-------------------------------------------------------------------
 # declare global passwords array
 declare -A PASSWORDS
+# initialise logger
+initLog
 # if no .defaults file, copy the .defaults.dist file in its place
 if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then cp "$DIS" "$DEF"; fi
 # load .defaults
 . "$DEF"
+# if no .registry file, build it, otherwise load it
+if [[ ! -f "$REG" ]]; then buildRegistry; else . "$REG"; fi

@@ -9,10 +9,6 @@
 # License:      MIT License
 # Copyright:    2021 ~ Aequitas Veritas Pty Ltd ~ All Rights Reserved
 #-------------------------------------------------------------------
-# INIT
-#-------------------------------------------------------------------
-RES=0
-#-------------------------------------------------------------------
 # FUNCTIONS
 #-------------------------------------------------------------------
 buildRegistry()
@@ -33,10 +29,10 @@ buildRegistry()
     # display what we know
     serverSummary
     # persist registry
-    sleepRegistry
+    writeRegistry
 }
 
-sleepRegistry()
+writeRegistry()
 {
     if [[ -f "$REG" ]]; then
         ext=$(date '+%y%m%d.%I%M')
@@ -49,34 +45,5 @@ sleepRegistry()
     do
         echo "[$k]=\"${REGISTRY[$k]}\"" >> "$REG"
     done
-    # add an empty line to the bottom of the file just to make SURE that it's there
     echo ")" >> "$REG"
 }
-
-wakeRegistry()
-{
-    if [[ ! -f "$REG" ]]; then
-        errorExit "ERROR: Registry file does not exist!"
-    fi
-
-    clear
-    echoLog "Resurrecting Registry"
-    echoLog "line"
-
-    declare -A REGISTRY
-
-    while read -r line; do
-        k=${line%%=*}
-        v=${line#*=}
-        echoLog "$k = $v"
-        REGISTRY[$k]=$v
-    done < "$REG"
-
-    echo -n "Press [ENTER] to continue: "
-    read -n 1 -r
-}
-#-------------------------------------------------------------------
-# MAIN
-#-------------------------------------------------------------------
-initLog
-if [[ -f "$REG" ]]; then source "$REG"; else buildRegistry; fi
