@@ -73,6 +73,6 @@ REG="$configDir"/.registry
 # declare global passwords array
 declare -A PASSWORDS
 # if no .defaults file, copy the .defaults.dist file in its place
-if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then mv "$DIS" "$DEF"; fi
+if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then cp "$DIS" "$DEF"; fi
 # load .defaults
 . "$DEF"
