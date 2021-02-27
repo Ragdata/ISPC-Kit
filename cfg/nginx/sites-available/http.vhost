@@ -1,0 +1,22 @@
+server {
+    listen                  80;
+    listen                  [::]:80;
+
+    server_name             example.com;
+
+    # document root
+    set                     $base /var/www/example.com;
+    root                    $base/html;
+
+    # let's encrypt
+    include                 nginxconfig.io/letsencrypt.conf;
+
+    # logging
+    access_log              /var/www/example.com/logs/access.log;
+    error_log               /var/www/example.com/logs/error.log warn;
+
+    # index.php
+    index                   index.php;
+
+    include                 nginxconfig.io/general.conf;
+}
