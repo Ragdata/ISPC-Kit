@@ -221,8 +221,8 @@ getNetVars()
     IFS="." read -r REGISTRY[HOST] REGISTRY[DOMAIN] <<<"${REGISTRY[FQDN]}"
 
     ifconfig -a | awk '$2~/^flags/{_1=$1;getline;if($1~/^inet/){print _1" "$2}}' >>"$configDir"/.ipv4
-    ifconfig -a | awk '$2~/^flags/{_1=$1;getline;getline;getline;if($1~/^inet6/){print _1" "$2}}' >>"$configDir"/.ipv6_private
-    ifconfig -a | awk '$2~/^flags/{_1=$1;getline;getline;if($1~/^inet6/){print _1" "$2}}' >>"$configDir"/.ipv6_public
+    ifconfig -a | awk '$2~/^flags/{_1=$1;getline;getline;getline;if($1~/^inet6/){print _1" "$2}}' >>"$configDir"/.ipv6_public
+    ifconfig -a | awk '$2~/^flags/{_1=$1;getline;getline;if($1~/^inet6/){print _1" "$2}}' >>"$configDir"/.ipv6_private
 
     REGISTRY[IPv4_PUBLIC]=""
     REGISTRY[IPv4_PRIVATE]=""
