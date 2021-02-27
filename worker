@@ -20,8 +20,8 @@ f=${1:-"cleanup"}
 
 case $f in
     defaults)
-        if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then mv "$DIS" "$DEF";
-        elif [[ -f "$DEF" && -f "$DIS" ]]; then rm -f "$DEF"; mv "$DIS" "$DEF"; fi
+        if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then cp "$DIS" "$DEF";
+        elif [[ -f "$DEF" && -f "$DIS" ]]; then rm -f "$DEF"; cp "$DIS" "$DEF"; fi
         ;;
     *)
         if [[ -d /root/.ispc ]]; then rm -f /root/.ispc/logs/*; fi
