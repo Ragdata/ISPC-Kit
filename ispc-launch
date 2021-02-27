@@ -72,3 +72,4 @@ do
         errorExit "launch ERROR: File $script.sh not found!"
     fi
 done
+cat "$LOG"

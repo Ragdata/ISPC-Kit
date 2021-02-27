@@ -65,3 +65,6 @@ echoLog "spacer"
 loadSource "$libDir/primary"
 echoLog "spacer"
 loadSource "$libDir/ispconfig"
+
+echo
+cat "$LOG"
