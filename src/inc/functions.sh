@@ -131,6 +131,7 @@ checkSWAP()
         fi
         echo -en "Would you like to allocate 4GiB swap space? $DEFAULT_Y "
         read -n 1 -r
+        echoLog "User Input: $REPLY"
         if [[ $REPLY =~ $AFFIRM ]] || [ -z "$REPLY" ]; then
             echoLog "Attempting to allocate swap space"
             mkSWAP
