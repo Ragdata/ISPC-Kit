@@ -44,7 +44,7 @@ sleepRegistry()
         touch "$REG"
     fi
 
-    echo "declare -A REGISTRY=("
+    echo "declare -A REGISTRY=(" >> "$REG"
     for k in "${!REGISTRY[@]}"
     do
         echo "[$k]=\"${REGISTRY[$k]}\"" >> "$REG"
