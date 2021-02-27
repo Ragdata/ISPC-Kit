@@ -4,7 +4,7 @@
 # The DEFAULTS array holds default values for
 # variables used by the system
 declare -A DEFAULTS=(
-    [LOC]="en_US.UTF-8"
+    [LOC]="en_AU.UTF-8"
     [SSL_COUNTRY]="AU"
     [SSL_STATE]="New South Wales"
     [SSL_LOCALITY]="Sydney"
@@ -40,6 +40,9 @@ declare -A MASTER=(
     [INIT]=1
     [USER]=1
     [REPOS]=1
+
+    [LOCALE]=1
+
     [BASICS]=1
     [SYSTEM]=1
     [BUILD]=1
@@ -47,35 +50,38 @@ declare -A MASTER=(
     [APT]=1
     [PYTHON]=1
     [CERTBOT]=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
-    []=1
+    [SNAPD]=1
+    [PERL]=1
+    [RUBY]=1
+    [PHP]=1
+    [PHP72]=1
+    [PHP74]=1
+    [PHP80]=1
+    [COMPOSER]=1
+    [MULTIMEDIA]=1
+    [TELEGRAM]=1
+
+    [LEMP]=1
+    [UFW]=0
+    [NGINX]=1
+    [FCGI]=1
+    [UWSGI]=1
+    [MARIADB]=1
+    [RKHUNTER]=1
+
+    [PRIMARY]=1
+    [POSTFIX]=1
+    [DOVECOT]=1
+    [ANTIVIRUS]=1
+    [PURE-FTPD]=1
+    [FAIL2BAN]=1
+    [BIND9]=1
+    [QUOTA]=1
+    [JAILKIT]=1
+    [WEBSTATS]=1
+    [MAILMAN]=1
+
+    [ISPCONFIG]=1
 )
 #-------------------------------------------------------------------
 # DEFAULT PERMISSION FOR SLAVE SERVER
@@ -87,5 +93,49 @@ SLAVE_DEFAULT=0
 #-------------------------------------------------------------------
 # Just as each server should also get its own Permissions Array
 declare -A SLAVE=(
+    [INIT]=1
+    [USER]=1
+    [REPOS]=1
 
+    [LOCALE]=1
+
+    [BASICS]=1
+    [SYSTEM]=1
+    [BUILD]=1
+    [ARCHIVE]=1
+    [APT]=1
+    [PYTHON]=1
+    [CERTBOT]=1
+    [SNAPD]=1
+    [PERL]=1
+    [RUBY]=1
+    [PHP]=1
+    [PHP72]=1
+    [PHP74]=1
+    [PHP80]=1
+    [COMPOSER]=1
+    [MULTIMEDIA]=1
+    [TELEGRAM]=1
+
+    [LEMP]=1
+    [UFW]=0
+    [NGINX]=1
+    [FCGI]=1
+    [UWSGI]=1
+    [MARIADB]=1
+    [RKHUNTER]=1
+
+    [PRIMARY]=1
+    [POSTFIX]=1
+    [DOVECOT]=0
+    [ANTIVIRUS]=0
+    [PURE-FTPD]=0
+    [FAIL2BAN]=0
+    [BIND9]=1
+    [QUOTA]=0
+    [JAILKIT]=0
+    [WEBSTATS]=0
+    [MAILMAN]=0
+
+    [ISPCONFIG]=1
 )
