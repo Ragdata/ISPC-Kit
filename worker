@@ -19,11 +19,12 @@ baseDir=$(pwd)
 f=${1:-"cleanup"}
 
 case $f in
-    "cleanup")
+    defaults)
+        if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then mv "$DIS" "$DEF";
+        elif [[ -f "$DEF" && -f "$DIS" ]]; then rm -f "$DEF"; mv "$DIS" "$DEF"; fi
+        ;;
+    *)
         if [[ -d /root/.ispc ]]; then rm -f /root/.ispc/logs/*; fi
         if [[ -d cfg ]]; then rm -f cfg/.ipv* cfg/.reg*; fi
-        ;;
-    "defaults")
-        if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then mv "$DIS" "$DEF"; fi
         ;;
 esac
