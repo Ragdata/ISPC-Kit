@@ -409,7 +409,7 @@ savePasswords()
         echo "declare -A PASSWORDS=(" >> "$PWD"
         for key in "${!PASSWORDS[@]}"
         do
-            echo "[$key]=\"${PASSWORDS[$key]}\""
+            echo "[$key]=\"${PASSWORDS[$key]}\"" >> "$PWD"
         done
         echo ")" >> "$PWD"
     fi
