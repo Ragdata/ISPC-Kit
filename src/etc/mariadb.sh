@@ -57,7 +57,11 @@ echoLog "${yellow}DONE${NC}"
 
 sed -i 's/^bind-address/^#bind-address/' /etc/mysql/my.cnf
 
-if [[ ${SERVICES[UFW]} == 1 ]]; then
+id="${REGISTRY[SERVER_ID]}"
+# shellcheck disable=SC1087
+ufw="$id[UFW]"
+
+if [[ ${!ufw} == 1 ]]; then
     if [[ ! -f /etc/default/ufw ]]; then
         echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed LONG BEFORE NOW!${NC}"
     else

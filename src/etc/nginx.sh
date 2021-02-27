@@ -60,7 +60,11 @@ if nginx -t; then echoLog "SUCCESS!" -c; else echoLog "FAILURE!" -c; echo -e "${
 echoLog "Restarting Nginx ... " -n
 if service nginx restart; then echoLog "SUCCESS!" -c; else echoLog "FAILURE!" -c; fi
 
-if [[ ${SERVICES[UFW]} == 1 ]]; then
+id="${REGISTRY[SERVER_ID]}"
+# shellcheck disable=SC1087
+ufw="$id[UFW]"
+
+if [[ ${!ufw} == 1 ]]; then
     if [[ ! -f /etc/default/ufw ]]; then
         echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
     else
