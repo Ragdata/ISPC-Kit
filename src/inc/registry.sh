@@ -68,7 +68,7 @@ wakeRegistry()
         v=${line#*=}
         echoLog "$k = $v"
         REGISTRY[$k]=$v
-    done <<< "$REG"
+    done < "$REG"
 
     echo -n "Press [ENTER] to continue: "
     read -n 1 -r

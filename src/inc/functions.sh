@@ -249,7 +249,7 @@ getNetVars()
             REGISTRY[IPv4_PRIVATE]=$(echo "$line" | awk -F': ' '{print $2}')
             echoLog "Private IPv4 Address: ${REGISTRY[IPv4_PRIVATE]}"
         fi
-    done <<< "$configDir"/.ipv4
+    done < "$configDir"/.ipv4
 
     REGISTRY[IPv6_PUBLIC]=""
 
@@ -259,7 +259,7 @@ getNetVars()
             REGISTRY[IPv6_PUBLIC]=$(echo "$line" | awk -F': ' '{print $2}')
             echoLog "Public IPv6 Address discovered on Interface $IFX - ${REGISTRY[IPv6_PUBLIC]}"
         fi
-    done <<< "$configDir"/.ipv6_public
+    done < "$configDir"/.ipv6_public
 
     REGISTRY[IPv6_PRIVATE]=""
 
@@ -269,7 +269,7 @@ getNetVars()
             REGISTRY[IPv6_PRIVATE]=$(echo "$line" | awk -F': ' '{print $2}')
             echoLog "Private IPv6 Address discovered on Interface $IFX - ${REGISTRY[IPv6_PRIVATE]}"
         fi
-    done <<< "$configDir"/.ipv6_private
+    done < "$configDir"/.ipv6_private
 
     REGISTRY[IPv4_GATEWAY]=$(ip route | awk '/default/ {print ($3 == "via") ? $4:$3}')
     if [[ -n "${REGISTRY[IPv4_GATEWAY]}" ]]; then
