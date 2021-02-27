@@ -1,4 +1,4 @@
-Usage:      bash init <arg1> <arg2>
+Usage:      bash ispc-initial <arg1> <arg2>
 ====================================================================
 If you want to modify the system locale, then you should pass
 it as the first argument

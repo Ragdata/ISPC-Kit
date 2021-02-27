@@ -1,4 +1,4 @@
-Usage:      bash launch <arg1> <arg2> <file1> ... <fileN>
+Usage:      bash ispc-launch <arg1> <arg2> <file1> ... <fileN>
 ====================================================================
 If you want to modify the system locale, then you should pass
 it as the first argument

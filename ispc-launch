@@ -1,9 +1,10 @@
+#!/bin/bash
 #-------------------------------------------------------------------
-# launch
+# ispc-launch
 #-------------------------------------------------------------------
 # ISPC Kit - ISPConfig 3 Installer
 #
-# File:         launch
+# File:         ispc-launch
 # Author:       Ragdata
 # Date:         26/01/2021 0035
 # License:      MIT License

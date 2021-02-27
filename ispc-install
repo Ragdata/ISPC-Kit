@@ -1,9 +1,10 @@
+#!/bin/bash
 #-------------------------------------------------------------------
-# install
+# ispc-install
 #-------------------------------------------------------------------
 # ISPC Kit - ISPConfig 3 Installer
 #
-# File:         install
+# File:         ispc-install
 # Author:       Ragdata
 # Date:         26/01/2021 0012 (1212am!!)
 # License:      MIT License
