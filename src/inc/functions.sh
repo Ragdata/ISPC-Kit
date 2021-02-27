@@ -326,7 +326,7 @@ loadSource()
     id="${REGISTRY[SERVER_ID]}"
     key="${file^^}"
     # shellcheck disable=SC1087
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    perm="$id[$key]"
+    perm="$id[$key]"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    perm="$id[$key]"
     default="${REGISTRY[SERVER_ID]}_DEFAULT"
 
     if [[ ${!perm} == 1 || ( -z ${!perm} && ${!default} == 1 ) || $override == "-f" ]]; then
