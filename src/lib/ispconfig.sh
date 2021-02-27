@@ -30,8 +30,14 @@ php -q install.php
 
 cd - || return 1
 
-ufw allow 8080/tcp
-ufw allow 8081/tcp
+id="${REGISTRY[SERVER_ID]}"
+# shellcheck disable=SC1087
+ufw="$id[UFW]"
+
+if [[ ${!ufw} == 1 ]]; then
+    ufw allow 8080/tcp
+    ufw allow 8081/tcp
+fi
 
 echoLog "spacer"
 echoLog "${yellow}ISPConfig${NC} Successfully Installed!"
