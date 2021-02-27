@@ -36,6 +36,8 @@ echoLog "spacer"
 echoLog "Writing to Database"
 echoLog "spacer"
 
-mysql -u root -p"${PASSWORDS[MYSQL_ROOT]}" < "$sqlDir"/database.sql
+echoLog "Database Import " -n
+if ! mysql -u root -p"${PASSWORDS[MYSQL_ROOT]}" < "$sqlDir"/database.sql; then echoLog "FAILED!" -c; else echoLog "SUCCEEDED!" -c; fi
 
+echoLog "spacer"
 echoLog "DONE!"
