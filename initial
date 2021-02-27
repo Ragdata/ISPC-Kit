@@ -37,7 +37,7 @@ if [[ $flag == "help" ]]; then cat "$docsDir"/.helpinit; exit 0; fi
 if [ -n "${REGISTRY[INIT]}" ]; then errorExit "ERROR: System is already initialised!"; fi
 # initalise system
 loadSource "$libDir/init"
-checkSWAP
+loadSource "$libDir/swap"
 REGISTRY[INIT]=1
 sleepRegistry
 if ! reboot; then errorExit "ERROR: Unable to reboot system - system requires reboot before continuing!"; fi
