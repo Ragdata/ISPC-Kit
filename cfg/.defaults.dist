@@ -41,7 +41,7 @@ declare -A MASTER=(
     [USER]=1
     [REPOS]=1
 
-    [SWAP]=1
+    [SYSWP]=1
 
     [LOCALE]=1
 
@@ -99,7 +99,7 @@ declare -A SLAVE=(
     [USER]=1
     [REPOS]=1
 
-    [SWAP]=1
+    [SYSWP]=1
 
     [LOCALE]=1
 
