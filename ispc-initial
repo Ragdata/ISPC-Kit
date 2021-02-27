@@ -18,7 +18,7 @@ baseDir=$PWD
 # GET ARGS
 #-------------------------------------------------------------------
 if [[ $# ]]; then
-    if [[ $# -ge 1 ]] && [[ $1 =~ $isLoc ]]; then REGISTRY[LOC]=$1; shift "$@"; fi
+    if [[ $# -ge 1 ]] && [[ $1 =~ $isLoc ]]; then REGISTRY[LOC]=$1; shift; fi
 else
     REGISTRY[LOC]=${DEFAULTS[LOC]}
 fi
@@ -27,6 +27,7 @@ if [[ $# ]] && [[ $1 =~ $isFlag ]]; then
         "-h"|"-help")   flag="help";;
         "-t"|"-test")   flag="test";;
     esac
+    shift
 fi
 #-------------------------------------------------------------------
 # MAIN
