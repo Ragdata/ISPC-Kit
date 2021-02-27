@@ -49,6 +49,7 @@ if [[ $# ]] && [[ $1 =~ $isFlag ]]; then
     esac
     shift
 fi
+if [[ $# && $1 == "apt_remove" ]]; then flag=$1; shift; fi
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
@@ -59,8 +60,11 @@ if [[ $flag == "help" ]]; then cat "$docsDir"/.helplaunch; return 0; fi
 for script in "$@"
 do
     if [ -n "$script" ]; then
-        # load source file
-        if [[ -f $libDir/$script.sh ]]; then
+        # handle purge case - in this case '$script' == package_name
+        if [[ $flag == "apt_remove" ]]; then
+            clear
+            apt_remove_pkg "$script"
+        elif [[ -f $libDir/$script.sh ]]; then
             clear
             loadSource "$libDir/$script" -f
         elif [[ -f $etcDir/$script.sh ]]; then
