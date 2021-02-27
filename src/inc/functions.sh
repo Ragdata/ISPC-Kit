@@ -32,7 +32,7 @@ apt_install()
 apt_install_pkg()
 {
     package=${1:-""}
-    logTrans=${2:-0}
+    logTrans=${2:-1}
     hardFail=${3:-0}
 
     if [ -z "$package" ]; then errorExit "apt_install_pkg ERROR: Package name not specified!"; fi
