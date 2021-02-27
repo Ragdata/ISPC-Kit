@@ -398,11 +398,19 @@ mkSWAP()
 savePasswords()
 {
     if [[ ${#PASSWORDS[@]} -gt 0 ]]; then
-        echo "declare -A PASSWORDS=("
+        # backup old password file
+        if [[ -f "$PWD" ]]; then
+            ext=$(date '+%y%m%d.%I%M')
+            mv "$PWD" "$PWD"."$ext"
+            touch "$PWD"
+        fi
+        # write new password file
+        echo "declare -A PASSWORDS=(" >> "$PWD"
         for key in "${!PASSWORDS[@]}"
         do
-            echo
+            echo "[$key]=\"${PASSWORDS[$key]}\""
         done
+        echo ")" >> "$PWD"
     fi
 }
 

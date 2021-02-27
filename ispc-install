@@ -67,4 +67,8 @@ echoLog "spacer"
 loadSource "$libDir/ispconfig"
 
 echo
+savePasswords
 cat "$LOG"
+if [[ ${#PASSWORDS[@]} -gt 0 ]]; then
+    cat "$PWD"
+fi

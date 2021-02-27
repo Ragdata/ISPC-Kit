@@ -72,5 +72,10 @@ do
         errorExit "launch ERROR: File $script.sh not found!"
     fi
 done
+
+echo
 savePasswords
 cat "$LOG"
+if [[ ${#PASSWORDS[@]} -gt 0 ]]; then
+    cat "$PWD"
+fi
