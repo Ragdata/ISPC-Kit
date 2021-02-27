@@ -25,9 +25,13 @@ rm -Rf /var/lib/mysql
 
 echoLog "spacer"
 echoLog "${yellow}DONE${NC}"
+if [ -z "${PASSWORDS[MYSQL_ROOT]}" ]; then
+    PASSWORDS[MYSQL_ROOT]=$(getPassword 16)
+    echoLog "Set MySQL Root Password Non-Interactively"
+else
+    echoLog "Used existing MYSQL Root Password"
+fi
 
-PASSWORDS[MYSQL_ROOT]=$(getPassword 16)
-echoLog "Set MySQL Root Password Non-Interactively"
 echo "mariadb-server mysql-server/root_password password ${PASSWORDS[MYSQL_ROOT]}" | debconf-set-selections
 echo "mariadb-server mysql-server/root_password_again password ${PASSWORDS[MYSQL_ROOT]}" | debconf-set-selections
 echoLog "Installing MariaDB"
