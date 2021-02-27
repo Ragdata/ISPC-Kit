@@ -22,13 +22,9 @@ wget http://www.ispconfig.org/downloads/ISPConfig-3-stable.tar.gz
 
 tar zfx ISPConfig-3-stable.tar.gz
 
-cd - || return 1
-
 cd /tmp/ispconfig3_install/install || return 1
 
 php -q install.php
-
-cd - || return 1
 
 id="${REGISTRY[SERVER_ID]}"
 # shellcheck disable=SC1087
