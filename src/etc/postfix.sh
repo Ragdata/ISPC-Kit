@@ -56,24 +56,26 @@ echo
 echo -e "${yellow}DONE${NC}"
 echo
 
-if [[ ! -f /etc/default/ufw ]]; then
-    echo -e "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
-else
-    echo "Opening Firewall Ports for SMTP/SMTPS ... "
-    log "Opening Firewall Ports for SMTP/SMTPS"
-    echo
+if [[ ${SERVICES[UFW]} == 1 ]]; then
+    if [[ ! -f /etc/default/ufw ]]; then
+        echo -e "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
+    else
+        echo "Opening Firewall Ports for SMTP/SMTPS ... "
+        log "Opening Firewall Ports for SMTP/SMTPS"
+        echo
 
-    log "ufw allow smtp : 25"
-    ufw allow 25/tcp
-    log "ufw allow smtps : 465"
-    ufw allow 465/tcp
-    log "ufw allow submission: 587"
-    ufw allow 587/tcp
+        log "ufw allow smtp : 25"
+        ufw allow 25/tcp
+        log "ufw allow smtps : 465"
+        ufw allow 465/tcp
+        log "ufw allow submission: 587"
+        ufw allow 587/tcp
 
-    #ufw enable
+        #ufw enable
 
-    echo
-    echo -e "${yellow}DONE!${NC}"
+        echo
+        echo -e "${yellow}DONE!${NC}"
+    fi
 fi
 
 if ! service postfix restart; then errorExit "POSTFIX ERROR: Postfix failed to restart"; fi

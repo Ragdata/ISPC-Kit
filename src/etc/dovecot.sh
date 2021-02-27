@@ -29,23 +29,25 @@ echoLog "spacer"
 echoLog "${yellow}Dovecot${NC} Installed Successfully"
 echoLog "spacer"
 
-if [[ ! -f /etc/default/ufw ]]; then
-    echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
-else
-    echoLog "Opening Firewall Ports for POP3/IMAP/POP3S/IMAPS"
-    echoLog "spacer"
+if [[ ${SERVICES[UFW]} == 1 ]]; then
+    if [[ ! -f /etc/default/ufw ]]; then
+        echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
+    else
+        echoLog "Opening Firewall Ports for POP3/IMAP/POP3S/IMAPS"
+        echoLog "spacer"
 
-    echoLog "ufw allow pop3 : 110"
-    ufw allow 110/tcp
-    echoLog "ufw allow pop3s : 995"
-    ufw allow 995/tcp
-    echoLog "ufw allow imap: 143"
-    ufw allow 143/tcp
-    echoLog "ufw allow imaps: 993"
-    ufw allow 993/tcp
+        echoLog "ufw allow pop3 : 110"
+        ufw allow 110/tcp
+        echoLog "ufw allow pop3s : 995"
+        ufw allow 995/tcp
+        echoLog "ufw allow imap: 143"
+        ufw allow 143/tcp
+        echoLog "ufw allow imaps: 993"
+        ufw allow 993/tcp
 
-    #ufw enable
+        #ufw enable
 
-    echoLog "spacer"
-    echoLog "${yellow}DONE!${NC}"
+        echoLog "spacer"
+        echoLog "${yellow}DONE!${NC}"
+    fi
 fi

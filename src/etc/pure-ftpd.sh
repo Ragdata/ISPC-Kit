@@ -38,23 +38,25 @@ service openbsd-inetd restart
 
 if ! service pure-ftpd-mysql restart; then errorExit "PURE-FTPd ERROR: Pure-FTPd failed to restart"; fi
 
-if [[ ! -f /etc/default/ufw ]]; then
-    echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
-else
-    echoLog "Opening Firewall Ports for FTP/TLS/FTPS"
-    echoLog "spacer"
+if [[ ${SERVICES[UFW]} == 1 ]]; then
+    if [[ ! -f /etc/default/ufw ]]; then
+        echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
+    else
+        echoLog "Opening Firewall Ports for FTP/TLS/FTPS"
+        echoLog "spacer"
 
-    echoLog "ufw allow ftp : 21"
-    ufw allow 21/tcp
-    echoLog "ufw allow ftps : 990"
-    ufw allow 990/tcp
-    echoLog "ufw allow ftps-data: 989"
-    ufw allow 989/tcp
-    echoLog "ufw allow passive ftp: 40110:40210"
-    ufw allow 40110:40210/tcp
+        echoLog "ufw allow ftp : 21"
+        ufw allow 21/tcp
+        echoLog "ufw allow ftps : 990"
+        ufw allow 990/tcp
+        echoLog "ufw allow ftps-data: 989"
+        ufw allow 989/tcp
+        echoLog "ufw allow passive ftp: 40110:40210"
+        ufw allow 40110:40210/tcp
 
-    echoLog "spacer"
-    echoLog "${yellow}DONE!${NC}"
+        echoLog "spacer"
+        echoLog "${yellow}DONE!${NC}"
+    fi
 fi
 
 echoLog "spacer"
