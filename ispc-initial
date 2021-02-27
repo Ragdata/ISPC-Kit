@@ -10,10 +10,30 @@
 # License:      MIT License
 # Copyright:    2021 ~ Aequitas Veritas Pty Ltd ~ All Rights Reserved
 #-------------------------------------------------------------------
-# INIT
+# PERFORM COMPATIBILITY CHECKS
+#-------------------------------------------------------------------
+if [ "${BASH_VERSION:0:1}" -lt 4 ]; then
+    echo "ISPC Kit requires a minimum Bash version of 4 - you need to upgrade before you can use this package."
+    exit 1
+fi
+#-------------------------------------------------------------------
+# LOAD LIBRARIES
 #-------------------------------------------------------------------
 baseDir=$PWD
-. "$baseDir"/src/inc/functions.sh
+. "$baseDir"/src/inc/common.sh
+. "$incDir"/functions.sh
+. "$incDir"/registry.sh
+#-------------------------------------------------------------------
+# INIT
+#-------------------------------------------------------------------
+# initialise logger
+initLog
+# if no .defaults file, copy the .defaults.dist file in its place
+if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then cp "$DIS" "$DEF"; fi
+# load .defaults
+. "$DEF"
+# if no .registry file, build it, otherwise load it
+if [[ ! -f "$REG" ]]; then buildRegistry; else . "$REG"; fi
 #-------------------------------------------------------------------
 # GET ARGS
 #-------------------------------------------------------------------

@@ -9,17 +9,6 @@
 # License:      MIT License
 # Copyright:    2021 ~ Aequitas Veritas Pty Ltd ~ All Rights Reserved
 #-------------------------------------------------------------------
-# PERFORM COMPATIBILITY CHECKS
-#-------------------------------------------------------------------
-if [ "${BASH_VERSION:0:1}" -lt 4 ]; then
-    echo "ISPC Kit requires a minimum Bash version of 4 - you need to upgrade before you can use this package."
-    exit 1
-fi
-#-------------------------------------------------------------------
-# LOAD COMMON ELEMENTS
-#-------------------------------------------------------------------
-. "$baseDir"/src/inc/common.sh
-#-------------------------------------------------------------------
 # FUNCTIONS
 #-------------------------------------------------------------------
 apt_install()
