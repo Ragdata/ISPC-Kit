@@ -43,12 +43,14 @@ sleepRegistry()
         mv "$REG" "$REG"."$ext"
         touch "$REG"
     fi
+
+    echo "declare -A REGISTRY=("
     for k in "${!REGISTRY[@]}"
     do
-        echo "$k=\"${REGISTRY[$k]}\"" >> "$REG"
+        echo "[$k]=\"${REGISTRY[$k]}\"" >> "$REG"
     done
     # add an empty line to the bottom of the file just to make SURE that it's there
-    echo " " >> "$REG"
+    echo ")" >> "$REG"
 }
 
 wakeRegistry()
@@ -77,4 +79,4 @@ wakeRegistry()
 # MAIN
 #-------------------------------------------------------------------
 initLog
-if [[ -f "$REG" ]]; then wakeRegistry; else buildRegistry; fi
+if [[ -f "$REG" ]]; then source "$REG"; else buildRegistry; fi

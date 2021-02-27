@@ -332,7 +332,6 @@ loadSource()
     echoLog "PERM: $perm"
     echoLog "DEFAULT: $default"
 
-
     if [[ ${!perm} == 1 || ( -z ${!perm} && ${!default} == 1 ) || $override == "-f" ]]; then
         echoLog "spacer"
         echoLog "Attempting to load SOURCEFILE: $filePath.sh"
