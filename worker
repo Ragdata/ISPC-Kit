@@ -28,3 +28,5 @@ case $f in
         if [[ -d cfg ]]; then rm -f cfg/.ipv* cfg/.reg*; fi
         ;;
 esac
+
+exit 0

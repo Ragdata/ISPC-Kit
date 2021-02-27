@@ -18,6 +18,7 @@ RES=0
 buildRegistry()
 {
     echoLog "Building Registry"
+    declare -A REGISTRY
     # determine release name
     if [[ ! -x /usr/bin/lsb_release ]]; then
         echoLog "spacer"
@@ -44,7 +45,7 @@ sleepRegistry()
     fi
     for k in "${!REGISTRY[@]}"
     do
-        echo "\"$k\"=\"${REGISTRY[$k]}\"" >> "$REG"
+        echo "$k=\"${REGISTRY[$k]}\"" >> "$REG"
     done
     # add an empty line to the bottom of the file just to make SURE that it's there
     echo " " >> "$REG"
@@ -65,14 +66,9 @@ wakeRegistry()
     while IFS='' read -r LINE || [ -n "${LINE}" ]; do
         REGISTRY[${LINE%%=*}]=${LINE#*=}
     done < "$REG"
-    # set bit to avoid overwriting resurrected registry
-    RES=1
 }
 #-------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------
 initLog
-if [[ "$RES" == 0 ]]; then
-    declare -A REGISTRY
-    if [[ -f "$REG" ]]; then wakeRegistry; else buildRegistry; fi
-fi
+if [[ -f "$REG" ]]; then wakeRegistry; else buildRegistry; fi
