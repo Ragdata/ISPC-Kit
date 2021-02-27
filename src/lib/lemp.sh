@@ -26,6 +26,8 @@ loadSource "$etcDir/uwsgi"
 echoLog "spacer"
 loadSource "$etcDir/mariadb"
 echoLog "spacer"
+loadSource "$libDir/database"
+echoLog "spacer"
 loadSource "$etcDir/rkhunter"
 
 echoLog "spacer"

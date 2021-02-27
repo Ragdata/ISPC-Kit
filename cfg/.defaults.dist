@@ -15,12 +15,22 @@ declare -A DEFAULTS=(
 #-------------------------------------------------------------------
 # SERVER IP ADDRESSES
 #-------------------------------------------------------------------
-# The IPS array needs one entry per server you're installing
+# The IPS array needs one entry per server you're installing.
 # The Array Key should be the SERVER_ID of the host,
 # the Value should be its IPv4 Public IP Address
 declare -A IPS=(
     [MASTER]="178.128.113.129"
     [SLAVE]="128.199.218.64"
+)
+#-------------------------------------------------------------------
+# SERVER FQDN HOSTNAMES
+#-------------------------------------------------------------------
+# The FQDNS array needs one entry per server you're installing.
+# The Array Key should be the SERVER_ID of the host,
+# the Value should be its fully-qualified domain name (full hostname)
+declare -A FQDNS=(
+    [MASTER]="ns1.aever.net"
+    [SLAVE]="ns2.aever.net"
 )
 #-------------------------------------------------------------------
 # DEFAULT PERMISSION FOR MASTER SERVER
@@ -69,6 +79,7 @@ declare -A MASTER=(
     [FCGI]=1
     [UWSGI]=1
     [MARIADB]=1
+    [DATABASE]=1
     [RKHUNTER]=1
 
     [PRIMARY]=1
@@ -127,6 +138,7 @@ declare -A SLAVE=(
     [FCGI]=1
     [UWSGI]=1
     [MARIADB]=1
+    [DATABASE]=1
     [RKHUNTER]=1
 
     [PRIMARY]=1
