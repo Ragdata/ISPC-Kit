@@ -15,6 +15,7 @@ clear
 echoLog "Initialising Server"
 echoLog "line"
 
+echoLog "spacer"
 loadSource "$etcDir/user"
 echoLog "spacer"
 loadSource "$etcDir/repos"

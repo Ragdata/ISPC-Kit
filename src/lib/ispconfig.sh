@@ -14,6 +14,7 @@
 clear
 echoLog "Installing ISPConfig ..."
 echoLog "line"
+echoLog "spacer"
 
 cd /tmp || exit 1
 

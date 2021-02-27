@@ -13,6 +13,7 @@
 #-------------------------------------------------------------------
 clear
 
+echoLog "spacer"
 loadSource "$etcDir/system"
 echoLog "spacer"
 loadSource "$etcDir/build"

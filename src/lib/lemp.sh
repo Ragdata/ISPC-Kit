@@ -15,6 +15,7 @@ clear
 echoLog "Installing LEMP Stack"
 echoLog "line"
 
+echoLog "spacer"
 loadSource "$etcDir/ufw"
 echoLog "spacer"
 loadSource "$etcDir/nginx"
