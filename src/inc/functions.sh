@@ -372,6 +372,8 @@ log()
 mkSWAP()
 {
     swapsize=4
+
+    PART=( $(df | awk '/\/$/ {print $1,$2,$3,$4,$5}') )
     USED=${PART[-1]%?}
 
     COMP=$(( PART[1] / 5 ))
