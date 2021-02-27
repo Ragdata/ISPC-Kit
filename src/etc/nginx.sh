@@ -49,9 +49,9 @@ cp "$configDir"/nginx/sites-available/example.com.80.conf /etc/nginx/sites-avail
 
 if [ ! -f /etc/nginx/dhparam.pem ]; then
     echoLog "Creating dhparam - this could take a while"
-    cd /etc/nginx || exit 1
+    cd /etc/nginx || return 1
     openssl dhparam -out dhparam.pem 2048
-    cd - || exit 1
+    cd - || return 1
 fi
 
 echoLog "Testing Nginx Config ... " -n

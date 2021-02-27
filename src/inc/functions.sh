@@ -44,7 +44,7 @@ apt_install_pkg()
         else
             echoLog "n" -c
             if [[ "$hardFail" -eq 1 ]]; then
-                exit 1
+                return 1
             fi
         fi
     else
@@ -54,7 +54,7 @@ apt_install_pkg()
         else
             echo -e "${red}FAIL!${NC}"
             if [[ "$hardFail" -eq 1 ]]; then
-                exit 1
+                return 1
             fi
         fi
     fi
@@ -176,7 +176,7 @@ errorExit()
         log "$msg"
     fi
 
-    exit 1;
+    return 1;
 }
 
 getId()
@@ -338,7 +338,7 @@ log()
     if [ -z "$msg" ]; then
         echo -e "${red}ERROR: Corwardly refusing to write log entry with no message!${NC}"
         echo
-        exit 1
+        return 1
     fi
 
     # shellcheck disable=SC2001

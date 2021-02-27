@@ -16,19 +16,19 @@ echoLog "Installing ISPConfig ..."
 echoLog "line"
 echoLog "spacer"
 
-cd /tmp || exit 1
+cd /tmp || return 1
 
 wget http://www.ispconfig.org/downloads/ISPConfig-3-stable.tar.gz
 
 tar zfx ISPConfig-3-stable.tar.gz
 
-cd - || exit 1
+cd - || return 1
 
-cd /tmp/ispconfig3_install/install || exit 1
+cd /tmp/ispconfig3_install/install || return 1
 
 php -q install.php
 
-cd - || exit 1
+cd - || return 1
 
 ufw allow 8080/tcp
 ufw allow 8081/tcp

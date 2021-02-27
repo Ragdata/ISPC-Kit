@@ -82,9 +82,9 @@ echoLog "Securing MariaDB ..."
 echoLog "spacer"
 
 if [[ ! -d /etc/mysql/ssl ]]; then
-    cd /etc/mysql || exit 1
+    cd /etc/mysql || return 1
     mkdir ssl
-    cd ssl || exit 1
+    cd ssl || return 1
 fi
 
 echoLog "Generating CA Key"

@@ -19,11 +19,11 @@ apt_install python3-debian python3-pip python3-venv python3-django
 
 echoLog "spacer"
 
-cd /usr/bin || exit 1
+cd /usr/bin || return 1
 
 ln -s pip3 pip
 
-cd - || exit 1
+cd - || return 1
 
 echoLog "virtualenvwrapper: " -n
 if pip install virtualenvwrapper; then echoLog "y" -c; else echoLog "n" -c; fi
