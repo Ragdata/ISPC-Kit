@@ -147,6 +147,8 @@ echoLog()
         errorExit "ERROR: Corwardly refusing to echo log entry with no message!"
     fi
 
+    if [ -z "$LOG" ]; then initLog fallback fi
+
     if [[ $msg == "spacer" ]]; then
         echo
         log "spacer"
@@ -307,7 +309,7 @@ loadSource()
     if [ -z "$filePath" ]; then errorExit "loadSource() ERROR: No filePath given!"; fi
     if [[ ! -f "$filePath".sh ]]; then errorExit "loadSource() ERROR: File $filePath.sh not found!"; fi
 
-    echoLog "Checking: $filePath"
+    echo "Checking: $filePath"
 
     file="${filePath##*/}"
 
@@ -318,10 +320,13 @@ loadSource()
     perm="$id[$key]"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    perm="$id[$key]"
     default="${REGISTRY[SERVER_ID]}_DEFAULT"
 
-    echoLog "PERM: $perm"
-    echoLog "DEFAULT: $default"
+    echo "PERM: $perm"
+    echo "DEFAULT: $default"
 
     if [[ ${!perm} == 1 || ( -z ${!perm} && ${!default} == 1 ) || $override == "-f" ]]; then
+        initLog "$file"
+        echoLog "Cleared to Process $file"
+        echoLog "line"
         echoLog "spacer"
         echoLog "Attempting to load SOURCEFILE: $filePath.sh"
         echoLog "spacer"

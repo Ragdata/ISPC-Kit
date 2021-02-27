@@ -45,5 +45,5 @@ service postfix restart
 
 if ! service mailman start; then errorExit "MAILMAN ERROR: Failed to start Mailing List Manager"; fi
 
-echoLog
+echoLog "spacer"
 echoLog "${yellow}Mailman${NC} Successfully Configured!"

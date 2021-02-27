@@ -23,7 +23,7 @@ cp -r /etc/mysql /var/lib/mysql ~/
 rm -Rf /etc/mysql
 rm -Rf /var/lib/mysql
 
-echoLog
+echoLog "spacer"
 echoLog "${yellow}DONE${NC}"
 
 PASSWORDS[MYSQL_ROOT]=$(getPassword 16)
@@ -141,7 +141,7 @@ fi
 echoLog "Certificates Finalised!"
 
 echoLog "spacer"
-echoLog "${yellow}MariaDB${NC} Successfully Installed, but required post-installation attention"
+echoLog "${yellow}MariaDB${NC} Successfully Installed, but requires post-installation attention"
 
 
 #echoLog "MariaDB requires post-installation attention"
