@@ -76,3 +76,5 @@ declare -A PASSWORDS
 if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then
     mv "$DIS" "$DEF"
 fi
+# load .defaults
+. "$DEF"
