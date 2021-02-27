@@ -31,6 +31,9 @@ case $f in
         getId
         serverSummary
         ;;
+    linkpwds)
+        if [[ ! -d "$configDir"/root && -d /root/.ispc ]]; then ln -s /root/.ispc "$configDir"/root; fi
+        ;;
     *)
         if [[ -d /root/.ispc ]]; then rm -f /root/.ispc/logs/*; fi
         if [[ -d cfg ]]; then rm -f cfg/.ipv* cfg/.reg*; fi
