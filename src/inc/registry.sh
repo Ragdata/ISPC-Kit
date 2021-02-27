@@ -56,17 +56,19 @@ wakeRegistry()
     if [[ ! -f "$REG" ]]; then
         errorExit "ERROR: Registry file does not exist!"
     fi
-    echoLog "Waking Registry"
+
+    clear
+    echoLog "Resurrecting Registry"
     echoLog "line"
 
     declare -A REGISTRY
 
-    while IFS='' read -r LINE || [ -n "${LINE}" ]; do
-        k=${LINE%%=*}
-        v=${LINE#*=}
+    while read -r line; do
+        k=${line%%=*}
+        v=${line#*=}
         echoLog "$k = $v"
-        REGISTRY[${LINE%%=*}]=${LINE#*=}
-    done < "$REG"
+        REGISTRY[$k]=$v
+    done <<< "$REG"
 
     echo -n "Press [ENTER] to continue: "
     read -n 1 -r
