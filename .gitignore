@@ -3,6 +3,10 @@
 # config
 /cfg/.defaults
 /cfg/.registry
+/cfg/.remote.*
+/cfg/.network.*
+/cfg/.server.*
 !/cfg/nginx/*
 # logs
 /logs/*
+feat
