@@ -5,6 +5,9 @@
 # variables used by the system
 declare -A DEFAULTS=(
     [LOC]="en_AU.UTF-8"
+    [ADMIN_USER]="admin"
+    [ADMIN_PASSWORD]="password"
+    [ADMIN_IP]="localhost"
     [SSL_COUNTRY]="AU"
     [SSL_STATE]="New South Wales"
     [SSL_LOCALITY]="Sydney"
@@ -13,14 +16,25 @@ declare -A DEFAULTS=(
     [ADMIN_EMAIL]="admin@aever.net"
 )
 #-------------------------------------------------------------------
+# ADMIN IP ADDRESSES
+#-------------------------------------------------------------------
+# The structure of the ADMIN_IPS array is completely up to you, except
+# that it needs to reflect each location you want to have remote access
+# to your server from.  The values of this array should contain at least
+# the IP addresses of each location, but may also contain FQDN Hostnames
+# for those locations as well
+declare -A ADMIN_IPS=(
+    [HOME]="0.0.0.0"
+)
+#-------------------------------------------------------------------
 # SERVER IP ADDRESSES
 #-------------------------------------------------------------------
 # The IPS array needs one entry per server you're installing.
 # The Array Key should be the SERVER_ID of the host,
 # the Value should be its IPv4 Public IP Address
 declare -A IPS=(
-    [MASTER]="178.128.113.129"
-    [SLAVE]="128.199.218.64"
+    [MASTER]="0.0.0.0"
+    [SLAVE]="0.0.0.0"
 )
 #-------------------------------------------------------------------
 # SERVER FQDN HOSTNAMES
@@ -29,8 +43,8 @@ declare -A IPS=(
 # The Array Key should be the SERVER_ID of the host,
 # the Value should be its fully-qualified domain name (full hostname)
 declare -A FQDNS=(
-    [MASTER]="ns1.aever.net"
-    [SLAVE]="ns2.aever.net"
+    [MASTER]="ns1.example.com"
+    [SLAVE]="ns2.example.com"
 )
 #-------------------------------------------------------------------
 # DEFAULT PERMISSION FOR MASTER SERVER
