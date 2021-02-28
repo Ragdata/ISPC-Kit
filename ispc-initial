@@ -31,7 +31,9 @@ if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then cp "$DIS" "$DEF"; fi
 # load .defaults
 . "$DEF"
 # if no .registry file, build it, otherwise load it
-if [[ ! -f "$REG" ]]; then initLog registry; buildRegistry; else . "$REG"; fi
+if [[ ! -f "$REG" ]]; then initLog registry; buildRegistry; fi
+# load registry
+. "$REG"
 #-------------------------------------------------------------------
 # GET ARGS
 #-------------------------------------------------------------------

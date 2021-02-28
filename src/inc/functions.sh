@@ -310,7 +310,7 @@ loadSource()
     if [ -z "$filePath" ]; then errorExit "loadSource() ERROR: No filePath given!"; fi
     if [[ ! -f "$filePath".sh ]]; then errorExit "loadSource() ERROR: File $filePath.sh not found!"; fi
 
-    echo "Checking: $filePath"
+    echo "Checking: $filePath.sh"
 
     file="${filePath##*/}"
 
