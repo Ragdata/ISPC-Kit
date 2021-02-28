@@ -4,6 +4,7 @@
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
     <a href="https://discord.gg/54PkrM7TKq"><img src="https://shields.io/badge/Discord_Server-Online-green.svg?logo=Discord" alt="Discord Server Online" /></a>
 </p>
+<p align="center"><a href="https://github.com/sponsors/Ragdata"><img  src="https://img.shields.io/badge/Github-Sponsor_This_Project-blue?logo=Github" alt="Support Me @ GitHub" /></a></p>
 <hr />
 
 In this first iteration of the project, it will provision a single server running **Ubuntu 20.04** with the bare minimum required to make ISPConfig functional. THEN I'll think about making use of ISPConfig's horribly under-utilised Apps VHost to install and manage a suite of additional services ... I hope ...
@@ -37,10 +38,12 @@ Copyright (c) 2021 - Aequitas Veritas Pty Ltd
 
 If you're using `ISPC-Kit`, or even if you'd just like to help out, your support is most gratefully received, thank you!  Use any of the methods below to make a donation.
 
+<p align="center"><a href="https://github.com/sponsors/Ragdata"><img  src="https://img.shields.io/badge/Github-Sponsor_This_Project-blue?logo=Github" alt="Support Me @ GitHub" /></a></p>
+
 <p align="center">
-<a href="https://ko-fi.com/ragdata"><img src="https://img.shields.io/badge/Buy_Me_A-Ko_Fi-9cf?logo=Ko-fi" alt="Buy Me A Ko-fi" /></a>
-<a href="https://www.patreon.com/ragdata"><img src="https://img.shields.io/badge/Patreon-Support_This_Project-red?logo=Patreon" alt="Support Me @ Patreon" /></a>
-<a href="https://paypal.me/ragdata/25"><img src="https://img.shields.io/badge/PayPal-Donate-yellow?logo=PayPal" alt="Donate @ PayPal" /></a>
+<!-- <a href="https://ko-fi.com/ragdata"><img src="https://img.shields.io/badge/Buy_Me_A-Ko_Fi-9cf?logo=Ko-fi" alt="Buy Me A Ko-fi" /></a> -->
+<a href="https://www.patreon.com/ragdata"><img  src="https://img.shields.io/badge/Patreon-Support_This_Project-red?logo=Patreon" alt="Support Me @ Patreon" /></a>
+<!-- <a href="https://paypal.me/ragdata/25"><img src="https://img.shields.io/badge/PayPal-Donate-yellow?logo=PayPal" alt="Donate @ PayPal" /></a> -->
 </p>
 
 ## License: MIT
