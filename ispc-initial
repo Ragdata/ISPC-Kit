@@ -60,4 +60,4 @@ loadSource "$libDir/init"
 loadSource "$libDir/swap"
 REGISTRY[INIT]=1
 writeRegistry
-reboot
+echoLog "Initialisation complete - You should reboot the server now"
