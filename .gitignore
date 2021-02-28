@@ -6,7 +6,7 @@
 /cfg/.permissions.*
 /cfg/.registry
 /cfg/.remote.*
-/cfg/.server.*
+/cfg/.servers
 !/cfg/nginx/*
 # logs
 /logs/*
