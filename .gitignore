@@ -2,9 +2,10 @@
 /.idea/
 # config
 /cfg/.defaults
+/cfg/.network.*
+/cfg/.permissions.*
 /cfg/.registry
 /cfg/.remote.*
-/cfg/.network.*
 /cfg/.server.*
 !/cfg/nginx/*
 # logs
