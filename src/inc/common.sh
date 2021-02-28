@@ -1,3 +1,4 @@
+#!/bin/bash
 #-------------------------------------------------------------------
 # src/inc/common.sh
 #-------------------------------------------------------------------
@@ -19,7 +20,7 @@ bold='\e[1m'
 italic='\e[3m'
 underlined='\e[4m'
 strike='\e[9m'
-NC='\e[0m' # No Color
+NC='\e[0m'
 COLUMNS=$(tput cols)
 # regular expressions
 HOST_REGEX='^[a-z0-9][a-z0-9\-]+\.[a-z0-9\.\-]+$'
@@ -38,34 +39,40 @@ DEFAULT_N="[Y/${bold}N${NC}]"
 #-------------------------------------------------------------------
 rootDir=/root/.ispc
 if [[ ! -d $rootDir ]]; then mkdir "$rootDir"; fi
+export rootDir
+    logDir="$rootDir"/logs
+    if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
+    export logDir
 
 configDir="$baseDir"/cfg
 if [[ ! -d $configDir ]]; then mkdir "$configDir"; fi
+export configDir
+    nginxDir="$configDir"/cfg/nginx
+    if [[ ! -d $nginxDir ]]; then mkdir "$nginxDir"; fi
+    export nginxDir
+
 docsDir="$baseDir"/docs
 if [[ ! -d $docsDir ]]; then mkdir "$docsDir"; fi
-
-logDir="$rootDir"/logs
-if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
+export docsDir
 
 srcDir="$baseDir"/src
 if [[ ! -d $srcDir ]]; then mkdir "$srcDir"; fi
-
-appDir="$srcDir"/app
-if [[ ! -d $appDir ]]; then mkdir "$appDir"; fi
-etcDir="$srcDir"/etc
-if [[ ! -d $etcDir ]]; then mkdir "$etcDir"; fi
-incDir="$srcDir"/inc
-if [[ ! -d $incDir ]]; then mkdir "$incDir"; fi
-libDir="$srcDir"/lib
-if [[ ! -d $libDir ]]; then mkdir "$libDir"; fi
+export srcDir
+    appDir="$srcDir"/app
+    if [[ ! -d $appDir ]]; then mkdir "$appDir"; fi
+    etcDir="$srcDir"/etc
+    if [[ ! -d $etcDir ]]; then mkdir "$etcDir"; fi
+    incDir="$srcDir"/inc
+    if [[ ! -d $incDir ]]; then mkdir "$incDir"; fi
+    libDir="$srcDir"/lib
+    if [[ ! -d $libDir ]]; then mkdir "$libDir"; fi
 
 sqlDir="$baseDir"/sql
 if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
-nginxDir="$baseDir"/cfg/nginx
-if [[ ! -d $nginxDir ]]; then mkdir "$nginxDir"; fi
 #- FILES -----------------------------------------------------------
-DIS="$configDir"/.defaults.dist
 DEF="$configDir"/.defaults
 REG="$configDir"/.registry
-PWD="$rootDir"/.passwords
+
+PAS="$rootDir"/.passwords
+
 SQL="$sqlDir"/database.sql
