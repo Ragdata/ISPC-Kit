@@ -16,12 +16,12 @@ baseDir=$(dirname "${BASH_SOURCE[0]}")
 #-------------------------------------------------------------------
 # LOAD LIBRARIES
 #-------------------------------------------------------------------
-. "$baseDir/src/lib/common.sh" || exit 1
-. "$formats" || exit 1
-. "$functions" || exit 1
-. "$logger" || exit 1
-. "$register" || exit 1
-. "$yaml" || exit 1
+. "$baseDir/src/lib/common.sh" || return 1
+. "$formats" || return 1
+. "$functions" || return 1
+. "$logger" || return 1
+. "$register" || return 1
+. "$yaml" || return 1
 # and it really is that simple - as long as the libraries are loading with
 # no problems, that's all I need this test to do!
-exit 0
+return 0
