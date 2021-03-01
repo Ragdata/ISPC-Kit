@@ -59,11 +59,13 @@ yaml="$etcDir/yaml.sh"
 common="$libDir/common.sh"
 formats="$libDir/format.sh"
 functions="$libDir/functions.sh"
+logger="$libDir/log.sh"
 register="$libDir/registry.sh"
 #-------------------------------------------------------------------
 # DATA FILES
 #-------------------------------------------------------------------
 DEF="$cfgDir/.defaults.yml"
+NET="$cfgDir/.network.yml"
 PRM="$cfgDir/.permissions.yml"
 RMT="$cfgDir/.remote.yml"
 REG="$registry/.registry"

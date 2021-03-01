@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------
-# src/inc/functions.sh
+# src/lib/functions.sh
 #-------------------------------------------------------------------
-# ISPC Kit - ISPConfig 3 Installer
+# ISPC Kit - Functions Library
 #
 # File:         functions.sh
 # Author:       Ragdata

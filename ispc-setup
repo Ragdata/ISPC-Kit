@@ -24,10 +24,15 @@ fi
 # LOAD LIBRARIES
 #-------------------------------------------------------------------
 baseDir=$PWD
+# shellcheck source=src/lib/common.sh
 source "$baseDir/src/lib/common.sh"
+# shellcheck source=src/lib/format.sh
 source "$formats"
+# shellcheck source=src/etc/yaml.sh
 source "$yaml"
+# shellcheck source=src/lib/functions.sh
 source "$functions"
+# shellcheck source=src/lib/registry.sh
 source "$register"
 #source "$crypter"
 #source "$errors"
