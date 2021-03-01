@@ -35,13 +35,13 @@ source "$register"
 # INIT
 #-------------------------------------------------------------------
 if [[ -f "$DEF" ]]; then
-    parse_yaml "$DEF" >> /tmp/.defaults
-    while read -r line
+    parse_yaml "$DEF" > /tmp/.defaults
+    while IFS="\n" read -r line
     do
         key=${line%%=*}
         val=${line##*=}
         echo "$key=$val"
-        DEFAULTS[${key^^}]=$val
+        DEFAULTS[$key]=$val
     done < /tmp/.defaults
 else
     errorExit "ispc-setup ERROR: Config defaults file not found!"
