@@ -35,7 +35,7 @@ source "$register"
 # INIT
 #-------------------------------------------------------------------
 if [[ -f "$DEF" ]]; then
-    parse_yml "$DEF" >> /tmp/.defaults
+    parse_yaml "$DEF" >> /tmp/.defaults
     while read -r line
     do
         key=${line%%=*}
