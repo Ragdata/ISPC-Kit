@@ -11,11 +11,10 @@ on:
 jobs:
 
   shellcheck:
-    name: Shellcheck
+    name: ShellCheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-            SCVER="0.7.1"
-            wget -qO- https://github.com/koalaman/shellcheck/releases/download/v${SCVER}/shellcheck-v${SCVER}.linux.x86_64.tar.xz | tar -xJf -
-            shellcheck-v${SCVER}/shellcheck -x . ispc-setup
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -x
