@@ -1,13 +1,10 @@
 # ide
 /.idea/
 # config
-/cfg/.defaults
-/cfg/.network.*
-/cfg/.permissions.*
-/cfg/.registry
-/cfg/.remote.*
+/cfg/.defaults.yml
+/cfg/.network.yml
+/cfg/.permissions.yml
+/cfg/.remote.yml
 /cfg/.servers
 !/cfg/nginx/*
-# logs
-/logs/*
-feat
+/registry/*

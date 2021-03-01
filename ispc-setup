@@ -48,6 +48,3 @@ if [[ -f "$DEF" ]]; then
 else
     errorExit "ispc-setup ERROR: Config defaults file not found!"
 fi
-
-echo "${DEFAULTS[LOC]}"
-#if [[ ! -f "$DEF" ]]; then getDefaults; fi
