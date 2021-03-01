@@ -38,8 +38,11 @@ source "$register"
 if [[ ! -v DEFAULTS[@] ]]; then
     if [[ -f "$DEF" ]]; then
         parse_yml "$DEF" >> /tmp/.defaults
-        while IFS='=' read -r key val
+        while read -r line
         do
+            key=${line%%=*}
+            val=${line##*=}
+            echo "$key=$val"
             DEFAULTS[${key^^}]="$val"
         done < /tmp/.defaults
     else
