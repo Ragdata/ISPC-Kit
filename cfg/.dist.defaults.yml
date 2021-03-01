@@ -1,0 +1,16 @@
+#===================================================================
+# DEFAULT VALUES
+#===================================================================
+# A list of default values for the system.
+# Anything you haven't included that is important, you will be
+# asked for during the installation process.
+# Yes, it's important that the key on each line is in UPPERCASE
+#===================================================================
+LOC: en_AU.UTF-8
+EMAIL: admin@example.com
+SSL:
+  COUNTRY: AU
+  STATE: New South Wales
+  LOCALITY: Sydney
+  ORGANIZATION: Aequitas Veritas Pty Ltd
+  ORGUNIT: Engineering

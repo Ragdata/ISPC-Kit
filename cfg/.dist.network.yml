@@ -1,0 +1,43 @@
+#===================================================================
+# NETWORK CONFIGURATION
+#===================================================================
+# Include as many details as you can for every server in your network
+# that you want to run ISPC-Kit on. Anywhere item that isn't relevant,
+# or even if you just don't know the information up-front, enter as '0'.
+# The only exception is the public IPv4 address - without this, you'll
+# only get errors. Most of this information should be available from
+# your provider - probably even under your account interface.
+# And, of course, if you're only installing ISPC-Kit on a single server,
+# delete the 'SLAVE' example given here. It must still be labelled as
+# 'MASTER' though.
+#===================================================================
+MASTER:
+  IP4:
+    PUBLIC: 123.123.123.123
+      MASK: 255.255.254.0
+      GATEWAY: 45.45.45.45
+    PRIVATE: 10.10.10.10
+      MASK: 255.255.240.0
+      GATEWAY: 0
+    RESOLVERS: [1.1.1.1,8.8.8.8]
+  IP6:
+    PUBLIC: 2001:19f0:5801:1f9b:03ff:5400:be46:fe38
+      MASK: 64
+    PRIVATE: 0
+      MASK: 0
+    RESOLVERS: [2001:19f0:1704:300::4]
+SLAVE:
+  IP4:
+    PUBLIC: 123.123.123.123
+      MASK: 255.255.254.0
+      GATEWAY: 45.45.45.45
+    PRIVATE: 10.10.10.10
+      MASK: 255.255.240.0
+      GATEWAY: 0
+    RESOLVERS: [1.1.1.1,8.8.8.8]
+  IP6:
+    PUBLIC: 2001:19f0:5801:1f9b:03ff:5400:be46:fe38
+      MASK: 64
+    PRIVATE: 0
+      MASK: 0
+    RESOLVERS: [2001:19f0:1704:300::4]

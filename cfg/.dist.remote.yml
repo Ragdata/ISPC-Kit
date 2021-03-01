@@ -1,0 +1,24 @@
+#===================================================================
+# REMOTE USERS
+#===================================================================
+# For every username / IP address combination in the list below,
+# ISPC-Kit will create a database user account. When specifying IP
+# addresses, you have a choice as to the format you use (see below)
+# The important distinction here, I guess, is that these should ONLY
+# be admin-level users.
+# NOTE: You DO NOT have to include an address for localhost in the
+# list - accounts will be made for each user from localhost by default
+#===================================================================
+remote:
+  username:
+    user: username
+    pass: password
+    ips:
+      ns1.example.com: 123.123.123.123
+      ns2.example.com: 211.211.211.211
+  username2:
+    user: username2
+    pass: password
+    ips: [211.211.211.211,123.123.123.123]
+
+

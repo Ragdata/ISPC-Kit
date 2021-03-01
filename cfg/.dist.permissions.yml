@@ -1,0 +1,58 @@
+#===================================================================
+# INSTALL PERMISSIONS
+#===================================================================
+# By omitting all but the DEFAULT parameter, we're saying that we
+# want to install EVERYTHING! Then, if we add entries just for those
+# we don't want to install, it's as good as providing a full list.
+# Yes, it's important that the keys are all UPPERCASE
+#===================================================================
+MASTER:
+  DEFAULT: 1
+  PHP72: 0
+  UFW: 0
+#===================================================================
+# For reference, the SLAVE permissions list includes ALL packages
+#===================================================================
+SLAVE:
+  DEFAULT: 0
+  INIT: 1
+  LOCALE: 1
+  USER: 1
+  REPOS: 1
+  SWAP: 1
+  BASICS: 1
+  SYSTEM: 1
+  BUILD: 1
+  ARCHIVE: 1
+  APT: 1
+  PYTHON: 1
+  CERTBOT: 1
+  SNAPD: 1
+  PERL: 1
+  RUBY: 1
+  PHP: 1
+  PHP72: 1
+  PHP74: 1
+  PHP80: 1
+  COMPOSER: 1
+  MULTIMEDIA: 1
+  TELEGRAM: 1
+  LEMP: 1
+  UFW: 0
+  NGINX: 1
+  FCGI: 1
+  UWSGI: 1
+  MARIADB: 1
+  RKHUNTER: 1
+  PRIMARY: 1
+  POSTFIX: 1
+  DOVECOT: 0
+  ANTIVIRUS: 0
+  PURE_FTPD: 0
+  FAIL2BAN: 0
+  BIND9: 0
+  QUOTA: 0
+  JAILKIT: 0
+  WEBSTATS: 0
+  MAILMAN: 0
+  ISPCONFIG: 1
