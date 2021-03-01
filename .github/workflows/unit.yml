@@ -16,7 +16,7 @@ jobs:
 
   tests:
     name: ISPC-Kit Self Tests
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
 
       - name: Install sudo
@@ -30,4 +30,4 @@ jobs:
       - name: Execute Custom Tests
         run: |
           cd test
-          sudo ./test_libs.sh
+          ./test_libs.sh
