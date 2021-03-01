@@ -29,6 +29,7 @@ DEFAULT_N="[Y/${FBB}N${_A}]"
 # PATHS
 #-------------------------------------------------------------------
 rootDir=/root/.ispc
+if [[ ! -d $rootDir ]]; then mkdir "$rootDir"; fi
 logDir="$rootDir/logs"
 if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
 #- registry --------------------------------------------------------
