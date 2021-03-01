@@ -20,14 +20,14 @@ fi
 # LOAD LIBRARIES
 #-------------------------------------------------------------------
 baseDir=$PWD
-. "$baseDir"/src/inc/common.sh
-. "$incDir"/functions.sh
-. "$incDir"/registry.sh
+source "$baseDir"/src/inc/common.sh
+source "$incDir"/functions.sh
+source "$incDir"/registry.sh
 #-------------------------------------------------------------------
 # INIT
 #-------------------------------------------------------------------
-# if .passwords file, load passwords or declare password array
-if [[ -f "$PWD" ]]; then . "$PWD"; else declare -A PASSWORDS; fi
+# if .password file exists, load it, otherwise declare password array
+if [[ -f "$PWD" ]]; then source "$PWD"; else declare -A PASSWORDS; fi
 # if no .defaults file, copy the .defaults.dist file in its place
 if [[ ! -f "$DEF" ]] && [[ -f "$DIS" ]]; then cp "$DIS" "$DEF"; fi
 # load .defaults

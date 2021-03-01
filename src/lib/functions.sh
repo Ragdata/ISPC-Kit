@@ -139,37 +139,6 @@ checkSWAP()
     fi
 }
 
-echoLog()
-{
-    msg=${1:-""}
-    flag=${2:-""}
-
-    if [ -z "$msg" ]; then
-        errorExit "ERROR: Corwardly refusing to echo log entry with no message!"
-    fi
-
-    if [ -z "$LOG" ]; then initLog fallback; fi
-
-    if [[ $msg == "spacer" ]]; then
-        echo
-        log "spacer"
-    elif [[ $msg == "line" ]]; then
-        echo "======================================================"
-        log "line"
-    elif [ -n "$flag" ]; then
-        if [[ $flag == "-n" ]]; then
-            echo -en "$msg"
-            log "$msg" -n
-        elif [[ $flag == "-c" ]]; then
-            echo -e "$msg"
-            log "$msg" -c
-        fi
-    else
-        echo -e "$msg"
-        log "$msg"
-    fi
-}
-
 errorExit()
 {
     msg=${1:-""}
@@ -184,94 +153,99 @@ errorExit()
 
 getId()
 {
-    getNetVars
-    if [[ ${#IPS[@]} -gt 0 ]]; then
-        MATCH=0
-        for i in "${!IPS[@]}"
-        do
-            if [[ ${REGISTRY[IPv4_PUBLIC]} == "${IPS[$i]}" ]]; then
-                MATCH=1
-                REGISTRY[SERVER_ID]=$i
-                break;
-            fi
-        done
-        if [[ $MATCH == 0 ]]; then
-            echoLog "${red}ERROR: Unable to match current server IP - ${REGISTRY[IPv4_PUBLIC]}${NC}"
-        fi
-    else
-        REGISTRY[SERVER_ID]="MASTER"
-    fi
-    if [ -z "${REGISTRY[SERVER_ID]}" ]; then
-        REGISTRY[SERVER_ID]="MASTER"
-    fi
+
 }
 
-getNetVars()
-{
-    # check for ifconfig command
-    if [[ ! -x /usr/sbin/ifconfig ]]; then
-        echoLog "Couldn't find ifconfig command - so installing it now ..."
-        apt_install "net-tools"
-        echoLog "spacer"
-    fi
-
-    echoLog "Determining system network configuration ..."
-
-    REGISTRY[FQDN]=$(hostname -f)
-
-    IFS="." read -r REGISTRY[HOST] REGISTRY[DOMAIN] <<<"${REGISTRY[FQDN]}"
-
-    ifconfig -a | awk '$2~/^flags/{_1=$1;getline;if($1~/^inet/){print _1" "$2}}' >>"$configDir"/.ipv4
-    ifconfig -a | awk '$2~/^flags/{_1=$1;getline;getline;getline;if($1~/^inet6/){print _1" "$2}}' >>"$configDir"/.ipv6_public
-    ifconfig -a | awk '$2~/^flags/{_1=$1;getline;getline;if($1~/^inet6/){print _1" "$2}}' >>"$configDir"/.ipv6_private
-
-    REGISTRY[IPv4_PUBLIC]=""
-    REGISTRY[IPv4_PRIVATE]=""
-
-    while read -r line; do
-        IFX=$(echo "$line" | awk -F': ' '{print $1}')
-        if [[ $IFX != "lo" ]] && [ -z "${REGISTRY[IPv4_PUBLIC]}" ]; then
-            REGISTRY[IF0]="$IFX"
-            echoLog "Primary Network Interface: ${REGISTRY[IF0]}"
-            REGISTRY[IPv4_PUBLIC]=$(echo "$line" | awk -F': ' '{print $2}')
-            echoLog "Public IPv4 Address: ${REGISTRY[IPv4_PUBLIC]}"
-        elif [[ $IFX != "lo" ]] && [ -n "${REGISTRY[IPv4_PUBLIC]}" ]; then
-            REGISTRY[IF1]="$IFX"
-            echoLog "Secondary Network Interface: ${REGISTRY[IF1]}"
-            REGISTRY[IPv4_PRIVATE]=$(echo "$line" | awk -F': ' '{print $2}')
-            echoLog "Private IPv4 Address: ${REGISTRY[IPv4_PRIVATE]}"
-        fi
-    done < "$configDir"/.ipv4
-
-    REGISTRY[IPv6_PUBLIC]=""
-
-    while read -r line; do
-        IFX=$(echo "$line" | awk -F': ' '{print $1}')
-        if [[ $IFX != "lo" ]] && [ -z "${REGISTRY[IPv6_PUBLIC]}" ]; then
-            REGISTRY[IPv6_PUBLIC]=$(echo "$line" | awk -F': ' '{print $2}')
-            echoLog "Public IPv6 Address discovered on Interface $IFX - ${REGISTRY[IPv6_PUBLIC]}"
-        fi
-    done < "$configDir"/.ipv6_public
-
-    REGISTRY[IPv6_PRIVATE]=""
-
-    while read -r line; do
-        IFX=$(echo "$line" | awk -F': ' '{print $1}')
-        if [[ $IFX != "lo" ]] && [ -z "${REGISTRY[IPv6_PRIVATE]}" ]; then
-            REGISTRY[IPv6_PRIVATE]=$(echo "$line" | awk -F': ' '{print $2}')
-            echoLog "Private IPv6 Address discovered on Interface $IFX - ${REGISTRY[IPv6_PRIVATE]}"
-        fi
-    done < "$configDir"/.ipv6_private
-
-    REGISTRY[IPv4_GATEWAY]=$(ip route | awk '/default/ {print ($3 == "via") ? $4:$3}')
-    if [[ -n "${REGISTRY[IPv4_GATEWAY]}" ]]; then
-        echoLog "Found IPv4 Gateway at: ${REGISTRY[IPv4_GATEWAY]}"
-    fi
-    REGISTRY[IPv6_GATEWAY]=$(ip -6 route | awk '/default/ {print ($3 == "via") ? $4:$3}')
-    if [[ -n ${REGISTRY[IPv6_GATEWAY]} ]]; then
-        echoLog "Found IPv6 Gateway at: ${REGISTRY[IPv6_GATEWAY]}"
-    fi
-}
+#getId()
+#{
+#    getNetVars
+#    if [[ ${#IPS[@]} -gt 0 ]]; then
+#        MATCH=0
+#        for i in "${!IPS[@]}"
+#        do
+#            if [[ ${REGISTRY[IPv4_PUBLIC]} == "${IPS[$i]}" ]]; then
+#                MATCH=1
+#                REGISTRY[SERVER_ID]=$i
+#                break;
+#            fi
+#        done
+#        if [[ $MATCH == 0 ]]; then
+#            echoLog "${red}ERROR: Unable to match current server IP - ${REGISTRY[IPv4_PUBLIC]}${NC}"
+#        fi
+#    else
+#        REGISTRY[SERVER_ID]="MASTER"
+#    fi
+#    if [ -z "${REGISTRY[SERVER_ID]}" ]; then
+#        REGISTRY[SERVER_ID]="MASTER"
+#    fi
+#}
+#
+#getNetVars()
+#{
+#    # check for ifconfig command
+#    if [[ ! -x /usr/sbin/ifconfig ]]; then
+#        echoLog "Couldn't find ifconfig command - so installing it now ..."
+#        apt_install "net-tools"
+#        echoLog "spacer"
+#    fi
+#
+#    echoLog "Determining system network configuration ..."
+#
+#    REGISTRY[FQDN]=$(hostname -f)
+#
+#    IFS="." read -r REGISTRY[HOST] REGISTRY[DOMAIN] <<<"${REGISTRY[FQDN]}"
+#
+#    ifconfig -a | awk '$2~/^flags/{_1=$1;getline;if($1~/^inet/){print _1" "$2}}' >>"$configDir"/.ipv4
+#    ifconfig -a | awk '$2~/^flags/{_1=$1;getline;getline;getline;if($1~/<global>$/){print _1" "$2}}' >>"$configDir"/.ipv6_public
+#    ifconfig -a | awk '$2~/^flags/{_1=$1;getline;getline;if($1~/<link>/){print _1" "$2}}' >>"$configDir"/.ipv6_private
+#
+#    REGISTRY[IPv4_PUBLIC]=""
+#    REGISTRY[IPv4_PRIVATE]=""
+#
+#    while read -r line; do
+#        IFX=$(echo "$line" | awk -F': ' '{print $1}')
+#        if [[ $IFX != "lo" ]] && [ -z "${REGISTRY[IPv4_PUBLIC]}" ]; then
+#            REGISTRY[IF0]="$IFX"
+#            echoLog "Primary Network Interface: ${REGISTRY[IF0]}"
+#            REGISTRY[IPv4_PUBLIC]=$(echo "$line" | awk -F': ' '{print $2}')
+#            echoLog "Public IPv4 Address: ${REGISTRY[IPv4_PUBLIC]}"
+#        elif [[ $IFX != "lo" ]] && [ -n "${REGISTRY[IPv4_PUBLIC]}" ]; then
+#            REGISTRY[IF1]="$IFX"
+#            echoLog "Secondary Network Interface: ${REGISTRY[IF1]}"
+#            REGISTRY[IPv4_PRIVATE]=$(echo "$line" | awk -F': ' '{print $2}')
+#            echoLog "Private IPv4 Address: ${REGISTRY[IPv4_PRIVATE]}"
+#        fi
+#    done < "$configDir"/.ipv4
+#
+#    REGISTRY[IPv6_PUBLIC]=""
+#
+#    while read -r line; do
+#        IFX=$(echo "$line" | awk -F': ' '{print $1}')
+#        if [[ $IFX != "lo" ]] && [ -z "${REGISTRY[IPv6_PUBLIC]}" ]; then
+#            REGISTRY[IPv6_PUBLIC]=$(echo "$line" | awk -F': ' '{print $2}')
+#            echoLog "Public IPv6 Address discovered on Interface $IFX - ${REGISTRY[IPv6_PUBLIC]}"
+#        fi
+#    done < "$configDir"/.ipv6_public
+#
+#    REGISTRY[IPv6_PRIVATE]=""
+#
+#    while read -r line; do
+#        IFX=$(echo "$line" | awk -F': ' '{print $1}')
+#        if [[ $IFX != "lo" ]] && [ -z "${REGISTRY[IPv6_PRIVATE]}" ]; then
+#            REGISTRY[IPv6_PRIVATE]=$(echo "$line" | awk -F': ' '{print $2}')
+#            echoLog "Private IPv6 Address discovered on Interface $IFX - ${REGISTRY[IPv6_PRIVATE]}"
+#        fi
+#    done < "$configDir"/.ipv6_private
+#
+#    REGISTRY[IPv4_GATEWAY]=$(ip route | awk '/default/ {print ($3 == "via") ? $4:$3}')
+#    if [[ -n "${REGISTRY[IPv4_GATEWAY]}" ]]; then
+#        echoLog "Found IPv4 Gateway at: ${REGISTRY[IPv4_GATEWAY]}"
+#    fi
+#    REGISTRY[IPv6_GATEWAY]=$(ip -6 route | awk '/default/ {print ($3 == "via") ? $4:$3}')
+#    if [[ -n ${REGISTRY[IPv6_GATEWAY]} ]]; then
+#        echoLog "Found IPv6 Gateway at: ${REGISTRY[IPv6_GATEWAY]}"
+#    fi
+#}
 
 getPassword()
 {
@@ -289,17 +263,6 @@ getPassword()
     done
 
     echo "$passwd"
-}
-
-initLog()
-{
-    file=${1:-"install"}
-
-    ext=$(date '+%y%m%d.%I%M')
-    LOG="$logDir"/log."$file"."$ext"
-    touch "$LOG"
-    log "LOG Initialised"
-    log "line"
 }
 
 loadSource()
@@ -333,37 +296,6 @@ loadSource()
         echoLog "spacer"
         source "$filePath".sh;
         echoLog "spacer";
-    fi
-}
-
-log()
-{
-    msg=${1:-""}
-    flag=${2:-""}
-
-    if [ -z "$msg" ]; then
-        echo -e "${red}ERROR: Corwardly refusing to write log entry with no message!${NC}"
-        echo
-        return 1
-    fi
-
-    # shellcheck disable=SC2001
-    msg=$( echo "$msg" | sed 's/\\e\[.+m//g' )
-
-    logtime=$(date '+%y-%m-%d:%I%M%S.%3N')
-
-    if [[ $msg == "spacer" ]]; then
-        echo " " >>"$LOG"
-    elif [[ $msg == "line" ]]; then
-        echo "======================================================" >>"$LOG"
-    elif [ -n "$flag" ]; then
-        if [[ $flag == "-n" ]]; then
-            echo -en "$logtime - $msg" >>"$LOG"
-        elif [[ $flag == "-c" ]]; then
-            echo -e "$msg" >>"$LOG"
-        fi
-    else
-        echo -e "$logtime - $msg" >>"$LOG"
     fi
 }
 
@@ -439,18 +371,5 @@ serverSummary()
     echo -e "\tIPv6_GATEWAY:\t\t${REGISTRY[IPv6_GATEWAY]}"
     echo
     echo -n "Press [ENTER] to continue: "
-    read -n 1 -r
-}
-
-testOutput()
-{
-    echo "REGISTRY has ${#REGISTRY[@]} entries"
-    echo
-    for key in "${!REGISTRY[@]}"
-    do
-        echo "$key = ${REGISTRY[$key]}"
-    done
-    echo
-    echo -en "Press [ENTER] to continue: "
     read -n 1 -r
 }

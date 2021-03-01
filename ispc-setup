@@ -1,0 +1,50 @@
+#!/bin/bash
+#-------------------------------------------------------------------
+# ispc-setup
+#-------------------------------------------------------------------
+# ISPC Kit - ISPConfig 3 Installer
+#
+# File:         ispc-setup
+# Author:       Ragdata
+# Date:         28/02/2021 2334
+# License:      MIT License
+# Copyright:    2021 ~ Aequitas Veritas Pty Ltd ~ All Rights Reserved
+#-------------------------------------------------------------------
+# SET SAFEGUARDS
+#-------------------------------------------------------------------
+#set -Eeuxo pipefail
+#-------------------------------------------------------------------
+# PERFORM COMPATIBILITY CHECKS
+#-------------------------------------------------------------------
+if [ "${BASH_VERSION:0:1}" -lt 4 ]; then
+    echo "ISPC Kit requires a minimum Bash version of 4 - you need to upgrade before you can use this package."
+    return 1
+fi
+#-------------------------------------------------------------------
+# LOAD LIBRARIES
+#-------------------------------------------------------------------
+baseDir=$PWD
+source "$baseDir"/src/lib/common.sh
+source "$formats"
+source "$yaml"
+source "$functions"
+source "$register"
+#source "$crypter"
+#source "$errors"
+#-------------------------------------------------------------------
+# INIT
+#-------------------------------------------------------------------
+# determine if defaults array has been declared
+if [[ ! -v DEFAULTS[@] ]]; then
+    if [[ -f "$DEF" ]]; then
+        while IFS='=' read -r key val
+        do
+            DEFAULTS[${key^^}]="$val"
+        done < "$(parse_yaml "$DEF")"
+    else
+        errorExit "ispc-setup ERROR: Config defaults file not found!"
+    fi
+fi
+
+echo "${DEFAULTS[LOC]}"
+#if [[ ! -f "$DEF" ]]; then getDefaults; fi
