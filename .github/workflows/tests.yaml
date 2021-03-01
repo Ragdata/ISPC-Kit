@@ -14,10 +14,14 @@ jobs:
     name: Custom Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Install SUDO Package
         run: |
-          apt update && apt install sudo
+          apt update
+          apt install sudo
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
       -name: Execute Custom Tests
         run: |
           cd test
