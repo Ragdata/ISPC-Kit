@@ -35,6 +35,7 @@ source "$register"
 # INIT
 #-------------------------------------------------------------------
 if [[ -f "$DEF" ]]; then
+    if [[ -v DEFAULTS[@] ]]; then unset DEFAULTS; fi
     parse_yaml "$DEF" > /tmp/.defaults
     declare -A DEFAULTS
     while IFS=$'\n' read -r line
