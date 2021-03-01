@@ -1,0 +1,22 @@
+name: Test on Pull Request
+
+on:
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+
+  tests:
+    name: ISPC-Kit Self Tests
+    runs-on: self-hosted
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Execute Custom Tests
+        run: |
+          cd test
+          sudo . test_libs.sh

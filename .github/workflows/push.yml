@@ -1,9 +1,9 @@
-name: Unit Testing
+name: Test on Push
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
+    paths-ignore:
+      - 'docs/**'
     branches: [ master ]
 
   workflow_dispatch:
@@ -11,13 +11,9 @@ on:
 jobs:
 
   tests:
-    name: Unit Tests
+    name: ISPC-Kit Self Tests
     runs-on: self-hosted
     steps:
-      - name: Install SUDO Package
-        run: |
-          apt update
-          apt install sudo
 
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -25,4 +21,4 @@ jobs:
       - name: Execute Custom Tests
         run: |
           cd test
-          sudo ./test.sh
+          sudo . test_libs.sh

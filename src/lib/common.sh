@@ -31,25 +31,27 @@ DEFAULT_N="[Y/${FBB}N${_A}]"
 rootDir=/root/.ispc
 logDir="$rootDir/logs"
 if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
-
+#- registry --------------------------------------------------------
 registry="$baseDir/registry"
 if [[ ! -h $registry ]]; then ln -s "$rootDir" "$registry"; fi
-
+#- config ----------------------------------------------------------
 cfgDir="$baseDir/cfg"
 nginxDir="$cfgDir/nginx"
-
+#- docs ------------------------------------------------------------
 docsDir="$baseDir/docs"
-
+#- src -------------------------------------------------------------
 srcDir="$baseDir/src"
 etcDir="$srcDir/etc"
 libDir="$srcDir/lib"
-
+#- scripts ---------------------------------------------------------
 scriptsDir="$srcDir/scripts"
 appsDir="$scriptsDir/apps"
 elemDir="$scriptsDir/elem"
-
+#- sql -------------------------------------------------------------
 sqlDir="$baseDir/sql"
 if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
+#- test ------------------------------------------------------------
+testDir="$baseDir/test"
 #-------------------------------------------------------------------
 # CODE FILES
 #-------------------------------------------------------------------
