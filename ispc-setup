@@ -40,7 +40,7 @@ if [[ ! -v DEFAULTS[@] ]]; then
         while IFS='=' read -r key val
         do
             DEFAULTS[${key^^}]="$val"
-        done < "$(parse_yaml "$DEF")"
+        done <<< "$(parse_yaml "$DEF")"
     else
         errorExit "ispc-setup ERROR: Config defaults file not found!"
     fi
