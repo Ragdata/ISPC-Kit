@@ -75,8 +75,6 @@ FI=' \e[7m'         # format invert
 _FI='\e[27m'        # reset invert
 FH=' \e[8m'         # format hide
 _FH='\e[28m'        # reset hide
-
-COLUMNS=$(tput cols)
 #-------------------------------------------------------------------
 # FUNCTIONS
 #-------------------------------------------------------------------
