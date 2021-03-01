@@ -33,7 +33,7 @@ logDir="$rootDir/logs"
 if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
 
 registry="$baseDir/registry"
-if [[ ! -h $registry ]]; then ln -s "$registry" "$rootDir"; fi
+if [[ ! -h $registry ]]; then ln -s "$rootDir" "$registry"; fi
 
 cfgDir="$baseDir/cfg"
 nginxDir="$cfgDir/nginx"
