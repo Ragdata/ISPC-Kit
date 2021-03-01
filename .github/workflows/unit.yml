@@ -1,7 +1,13 @@
 name: Unit Tests
 
 on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+    branches: [ master ]
   pull_request:
+    paths-ignore:
+      - 'docs/**'
     branches: [ master ]
 
   workflow_dispatch:
@@ -12,6 +18,11 @@ jobs:
     name: ISPC-Kit Self Tests
     runs-on: self-hosted
     steps:
+
+      - name: Install sudo
+        run: |
+          apt update
+          apt install -y sudo
 
       - name: Checkout Repository
         uses: actions/checkout@v2
