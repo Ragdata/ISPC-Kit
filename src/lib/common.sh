@@ -53,10 +53,10 @@ if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
 #export crypter="$etcDir"/crypter.sh
 #export errors="$etcDir"/error.sh
 export yaml="$etcDir/yaml.sh"
-export common="$incDir/common.sh"
-export formats="$incDir/format.sh"
-export functions="$incDir/functions.sh"
-export register="$incDir/registry.sh"
+export common="$libDir/common.sh"
+export formats="$libDir/format.sh"
+export functions="$libDir/functions.sh"
+export register="$libDir/registry.sh"
 #-------------------------------------------------------------------
 # DATA FILES
 #-------------------------------------------------------------------
