@@ -1,4 +1,4 @@
-[![Linter](https://github.com/Ragdata/ispc-kit/actions/workflows/linter.yaml/badge.svg?branch=master)](https://github.com/Ragdata/ispc-kit/actions/workflows/lint.yaml)
+[![Linter](https://github.com/Ragdata/ispc-kit/actions/workflows/linter.yaml/badge.svg?branch=master)](https://github.com/Ragdata/ispc-kit/actions/workflows/linter.yaml)
 [![Unit Tests](https://github.com/Ragdata/ispc-kit/actions/workflows/unit.yml/badge.svg)](https://github.com/Ragdata/ispc-kit/actions/workflows/unit.yml)
 [![Ragdata](https://circleci.com/gh/Ragdata/ispc-kit.svg?style=svg)](https://app.circleci.com/pipelines/github/Ragdata/ispc-kit)
 
