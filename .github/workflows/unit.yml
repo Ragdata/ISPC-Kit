@@ -30,4 +30,4 @@ jobs:
       - name: Execute Custom Tests
         run: |
           cd test
-          sudo . test_libs.sh
+          sudo ./test_libs.sh
