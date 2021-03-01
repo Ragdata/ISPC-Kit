@@ -34,20 +34,17 @@ source "$register"
 #-------------------------------------------------------------------
 # INIT
 #-------------------------------------------------------------------
-# determine if defaults array has been declared
-if [[ ! -v DEFAULTS[@] ]]; then
-    if [[ -f "$DEF" ]]; then
-        parse_yml "$DEF" >> /tmp/.defaults
-        while read -r line
-        do
-            key=${line%%=*}
-            val=${line##*=}
-            echo "$key=$val"
-            DEFAULTS[${key^^}]="$val"
-        done < /tmp/.defaults
-    else
-        errorExit "ispc-setup ERROR: Config defaults file not found!"
-    fi
+if [[ -f "$DEF" ]]; then
+    parse_yml "$DEF" >> /tmp/.defaults
+    while read -r line
+    do
+        key=${line%%=*}
+        val=${line##*=}
+        echo "$key=$val"
+        DEFAULTS[${key^^}]="$val"
+    done < /tmp/.defaults
+else
+    errorExit "ispc-setup ERROR: Config defaults file not found!"
 fi
 
 echo "${DEFAULTS[LOC]}"
