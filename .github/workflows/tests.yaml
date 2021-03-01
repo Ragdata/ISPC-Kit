@@ -22,7 +22,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      -name: Execute Custom Tests
+      - name: Execute Custom Tests
         run: |
           cd test
           sudo ./test.sh
