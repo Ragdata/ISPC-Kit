@@ -39,10 +39,11 @@ cfgDir="$baseDir/cfg"
 nginxDir="$cfgDir/nginx"
 
 docsDir="$baseDir/docs"
-etcDir="$baseDir/etc"
-libDir="$baseDir/lib"
 
 srcDir="$baseDir/src"
+etcDir="$srcDir/etc"
+libDir="$srcDir/lib"
+
 scriptsDir="$srcDir/scripts"
 appsDir="$scriptsDir/apps"
 elemDir="$scriptsDir/elem"
