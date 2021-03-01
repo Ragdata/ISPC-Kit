@@ -13,15 +13,12 @@ you need to add the following to config:
 #     /etc/cloud/cloud.cfg or cloud-config from user-data
 #
 {# The value '{{hostname}}' will be replaced with the local-hostname -#}
-127.0.1.1 {{fqdn}} {{hostname}}
 127.0.0.1 localhost
-{{ip4-hosts}}
+127.0.1.1 {{fqdn}} {{hostname}}
+--ip4-hosts--
 
 # The following lines are desirable for IPv6 capable hosts
-::1 ip6-localhost ip6-loopback
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-ff02::3 ip6-allhosts
-{{ip6-hosts}}
+::1          localhost ip6-localhost ip6-loopback
+ff02::1      ip6-allnodes
+ff02::2      ip6-allrouters
+--ip6-hosts--
