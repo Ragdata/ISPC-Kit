@@ -1,4 +1,4 @@
-[![Lint](https://github.com/Ragdata/ispc-kit/actions/workflows/lint.yaml/badge.svg?branch=master)](https://github.com/Ragdata/ispc-kit/actions/workflows/lint.yaml)
+[![Linter](https://github.com/Ragdata/ispc-kit/actions/workflows/linter.yaml/badge.svg?branch=master)](https://github.com/Ragdata/ispc-kit/actions/workflows/lint.yaml)
 [![Ragdata](https://circleci.com/gh/Ragdata/ispc-kit.svg?style=svg)](https://app.circleci.com/pipelines/github/Ragdata/ispc-kit)
 
 <p align="center"><img src="https://i.imgur.com/sLpvO40.png" title="ISPC-Kit" /></p>
