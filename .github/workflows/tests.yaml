@@ -17,8 +17,9 @@ jobs:
       - name: Install SUDO Package
         run: |
           apt update && apt install sudo
-      - name: Execute Custom Tests
+      - name: Checkout ISPC-Kit Repo
         uses: actions/checkout@v2
+      -name: Execute Custom Tests
         run: |
           cd test
           sudo ./test.sh
