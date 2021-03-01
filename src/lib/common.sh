@@ -32,20 +32,22 @@ rootDir=/root/.ispc
 logDir="$rootDir/logs"
 if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
 
-registry="registry"
+registry="$baseDir/registry"
 if [[ ! -h $registry ]]; then ln -s "$registry" "$rootDir"; fi
 
-cfgDir="cfg"
+cfgDir="$baseDir/cfg"
 nginxDir="$cfgDir/nginx"
 
-docsDir="docs"
+docsDir="$baseDir/docs"
+etcDir="$baseDir/etc"
+libDir="$baseDir/lib"
 
-srcDir="src"
+srcDir="$baseDir/src"
 scriptsDir="$srcDir/scripts"
 appsDir="$scriptsDir/apps"
 elemDir="$scriptsDir/elem"
 
-sqlDir="sql"
+sqlDir="$baseDir/sql"
 if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
 #-------------------------------------------------------------------
 # CODE FILES

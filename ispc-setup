@@ -23,7 +23,8 @@ fi
 #-------------------------------------------------------------------
 # LOAD LIBRARIES
 #-------------------------------------------------------------------
-source src/lib/common.sh
+baseDir=$PWD
+source "$baseDir/src/lib/common.sh"
 source "$formats"
 source "$yaml"
 source "$functions"
