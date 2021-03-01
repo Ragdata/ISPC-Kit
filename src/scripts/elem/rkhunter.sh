@@ -17,7 +17,7 @@ echoLog "spacer"
 apt_install rkhunter
 
 echoLog "spacer"
-echoLog "${yellow}RKHunter${NC} Successfully Installed!"
+echoLog "${BR3}RKHunter${_A} Successfully Installed!"
 echoLog "spacer"
 
 echoLog "Configure RKHunter"
@@ -39,4 +39,4 @@ rkhunter --propupd
 echoLog "rkhunter --propupd"
 
 echoLog "spacer"
-echoLog "${yellow}RKHunter${NC} Successfully Configured!"
+echoLog "${BR3}RKHunter${_A} Successfully Configured!"

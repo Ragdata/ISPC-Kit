@@ -17,4 +17,4 @@ echoLog "line"
 apt_install debconf-utils binutils apt-transport-https apt-listchanges
 
 echoLog "spacer"
-echoLog "${yellow}APT Tools${NC} Installed Successfully!"
+echoLog "${BR3}APT Tools${_A} Installed Successfully!"

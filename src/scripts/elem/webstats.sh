@@ -21,4 +21,4 @@ echoLog "spacer"
 sed -i 's/^/#/' /etc/cron.d/awstats
 
 echoLog "spacer"
-echoLog "${yellow}Webstats${NC} Successfully Installed!"
+echoLog "${BR3}Webstats${_A} Successfully Installed!"

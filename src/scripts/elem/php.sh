@@ -15,7 +15,7 @@
 if [[ ! -s /etc/apt/sources.list.d/ondrej-ubuntu-php-"$REL".list ]]; then
     echoLog "Adding repository for PHP ... "
     add-apt-repository -y ppa:ondrej/php
-    echoLog "${yellow}DONE${NC}"
+    echoLog "${BR3}DONE${_A}"
     apt update
     echoLog "spacer"
 fi

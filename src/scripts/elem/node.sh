@@ -22,4 +22,4 @@ echoLog "nvm: " -n
 if su -c ubuntu curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash; then echoLog "y" -c; else echoLog "n" -c; fi
 
 echoLog "spacer"
-echoLog "${yellow}Node.js + Extensions${NC} Successfully Installed!"
+echoLog "${BR3}Node.js + Extensions${_A} Successfully Installed!"

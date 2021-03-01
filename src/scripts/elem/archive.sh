@@ -17,4 +17,4 @@ echoLog "line"
 apt_install arj bzip2 nomarch lzop unzip zip cabextract
 
 echoLog "spacer"
-echoLog "${yellow}Archival Tools${NC} Installed Successfully!"
+echoLog "${BR3}Archival Tools${_A} Installed Successfully!"

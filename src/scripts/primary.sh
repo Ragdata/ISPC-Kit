@@ -38,4 +38,4 @@ loadSource "$etcDir/mailman"
 echoLog "spacer"
 
 echoLog "spacer"
-echoLog "${yellow}Primary Services${NC} Successfully Installed!"
+echoLog "${BR3}Primary Services${_A} Successfully Installed!"

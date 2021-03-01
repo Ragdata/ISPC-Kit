@@ -21,7 +21,7 @@ echoLog "spacer"
 service apache2 stop
 update-rc.d -f apache2 remove
 
-echoLog "${yellow}DONE!${NC}"
+echoLog "${BR3}DONE!${_A}"
 echoLog "spacer"
 
 echoLog "Installing Nginx"
@@ -30,7 +30,7 @@ echoLog "spacer"
 apt_install nginx-full
 
 echoLog "spacer"
-echoLog "${yellow}Nginx${NC} Successfully Installed!"
+echoLog "${BR3}Nginx${_A} Successfully Installed!"
 
 echoLog "spacer"
 echoLog "Configuring Nginx"
@@ -55,7 +55,7 @@ if [ ! -f /etc/nginx/dhparam.pem ]; then
 fi
 
 echoLog "Testing Nginx Config ... " -n
-if nginx -t; then echoLog "SUCCESS!" -c; else echoLog "FAILURE!" -c; echo -e "${red}ERROR: Nginx failed config test${NC}"; fi
+if nginx -t; then echoLog "SUCCESS!" -c; else echoLog "FAILURE!" -c; echo -e "${BR1}ERROR: Nginx failed config test${_A}"; fi
 
 echoLog "Restarting Nginx ... " -n
 if service nginx restart; then echoLog "SUCCESS!" -c; else echoLog "FAILURE!" -c; fi
@@ -66,7 +66,7 @@ ufw="$id[UFW]"
 
 if [[ ${!ufw} == 1 ]]; then
     if [[ ! -f /etc/default/ufw ]]; then
-        echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
+        echoLog "${BR3}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${_A}"
     else
         echoLog "Opening Firewall Ports for HTTP/HTTPS ... "
         echoLog "spacer"
@@ -76,9 +76,9 @@ if [[ ${!ufw} == 1 ]]; then
         ufw allow 443/tcp
 
         echoLog "spacer"
-        echoLog "${yellow}DONE!${NC}"
+        echoLog "${BR3}DONE!${_A}"
     fi
 fi
 
 echoLog "spacer"
-echoLog "${yellow}Nginx${NC} Successfully Installed!\n"
+echoLog "${BR3}Nginx${_A} Successfully Installed!\n"

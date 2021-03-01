@@ -24,7 +24,7 @@ rm -Rf /etc/mysql
 rm -Rf /var/lib/mysql
 
 echoLog "spacer"
-echoLog "${yellow}DONE${NC}"
+echoLog "${BR3}DONE${_A}"
 if [ -z "${PASSWORDS[MYSQL_ROOT]}" ]; then
     PASSWORDS[MYSQL_ROOT]=$(getPassword 16)
     echoLog "Set MySQL Root Password Non-Interactively"
@@ -57,7 +57,7 @@ echoLog "Dropped 'Demo' and 'Test' databases"
 mysql -e "FLUSH PRIVILEGES"
 
 echoLog "spacer"
-echoLog "${yellow}DONE${NC}"
+echoLog "${BR3}DONE${_A}"
 
 sed -i 's/^bind-address/^#bind-address/' /etc/mysql/my.cnf
 
@@ -67,7 +67,7 @@ ufw="$id[UFW]"
 
 if [[ ${!ufw} == 1 ]]; then
     if [[ ! -f /etc/default/ufw ]]; then
-        echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed LONG BEFORE NOW!${NC}"
+        echoLog "${BR3}WARNING: UFW is not yet installed! It should have been installed LONG BEFORE NOW!${_A}"
     else
         echoLog "Opening Firewall Ports for MySQL ..."
         echoLog "spacer"
@@ -78,12 +78,12 @@ if [[ ${!ufw} == 1 ]]; then
         ufw allow 3306/udp
 
         echoLog "spacer"
-        echoLog "${yellow}DONE${NC}"
+        echoLog "${BR3}DONE${_A}"
     fi
 fi
 
 echoLog "spacer"
-echoLog "${yellow}MariaDB${NC} Successfully Installed!"
+echoLog "${BR3}MariaDB${_A} Successfully Installed!"
 echoLog "spacer"
 
 echoLog "Securing MariaDB ..."
@@ -149,7 +149,7 @@ fi
 echoLog "Certificates Finalised!"
 
 echoLog "spacer"
-echoLog "${yellow}MariaDB${NC} Successfully Installed, but requires post-installation attention"
+echoLog "${BR3}MariaDB${_A} Successfully Installed, but requires post-installation attention"
 
 
 #echoLog "MariaDB requires post-installation attention"

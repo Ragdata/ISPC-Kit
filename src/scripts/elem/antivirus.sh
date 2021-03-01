@@ -25,7 +25,7 @@ echoLog "spacer"
 apt_install postgrey razor pyzor
 
 echoLog "spacer"
-echoLog "${yellow}Antivirus${NC} Installed Successfully!"
+echoLog "${BR3}Antivirus${_A} Installed Successfully!"
 
 echoLog "Stopping SpamAssassin Service"
 echoLog "spacer"
@@ -34,7 +34,7 @@ service spamassassin stop
 systemctl disable spamassassin
 
 echoLog "spacer"
-echoLog "${yellow}SpamAssassing${NC} Stopped Successfully!"
+echoLog "${BR3}SpamAssassing${_A} Stopped Successfully!"
 echoLog "spacer"
 
 echoLog "Configuring Antivirus"
@@ -54,4 +54,4 @@ echoLog "spacer"
 if ! service clamav-daemon restart; then errorExit "ANTIVIRUS ERROR: ClamAV failed to restart"; fi
 
 echoLog "spacer"
-echoLog "${yellow}DONE${NC}"
+echoLog "${BR3}DONE${_A}"

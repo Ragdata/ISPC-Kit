@@ -47,8 +47,8 @@ if [ /bin/sh -ef /bin/dash ]; then
     echoLog "Changing default shell from dash to bash"
     echo "dash dash/sh boolean false" | debconf-set-selections
     dpkg-reconfigure -f noninteractive dash > /dev/null 2>&1
-    echoLog "${yellow}DONE${NC}"
+    echoLog "${BR3}DONE${_A}"
 fi
 
 echoLog "spacer"
-echoLog "${yellow}Basic Services${NC} Successfully Installed!"
+echoLog "${BR3}Basic Services${_A} Successfully Installed!"

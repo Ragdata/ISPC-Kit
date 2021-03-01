@@ -17,4 +17,4 @@ echoLog "spacer"
 apt_install bind9 dnsutils haveged resolvconf
 
 echoLog "spacer"
-echoLog "${green}Bind9${NC} Successfully Installed!"
+echoLog "${BR2}Bind9${_A} Successfully Installed!"

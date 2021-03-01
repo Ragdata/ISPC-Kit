@@ -31,4 +31,4 @@ echoLog "spacer"
 loadSource "$etcDir/rkhunter"
 
 echoLog "spacer"
-echoLog "${yellow}LEMP Stack${NC} Successfully Installed!"
+echoLog "${BR3}LEMP Stack${_A} Successfully Installed!"

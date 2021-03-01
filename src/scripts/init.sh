@@ -21,4 +21,4 @@ echoLog "spacer"
 loadSource "$etcDir/repos"
 
 echoLog "spacer"
-echoLog "${yellow}Initialisation${NC} Successful!"
+echoLog "${BR3}Initialisation${_A} Successful!"

@@ -19,7 +19,7 @@ if [[ -f /etc/init.d/sendmail ]]; then
     apt_remove sendmail
     echo
     log "spacer"
-    echo "${yellow}DONE${NC}"
+    echo "${BR3}DONE${_A}"
 fi
 
 echo "Installing Postfix SMTP Server ..."
@@ -34,7 +34,7 @@ echo "postfix postfix/mailname string ${REGISTRY[FQDN]}" | debconf-set-selection
 apt_install postfix postfix-mysql postfix-doc getmail4
 
 echo
-echo -e "${yellow}Postfix${NC} Installed Successfully"
+echo -e "${BR3}Postfix${_A} Installed Successfully"
 echo
 
 log "spacer"
@@ -53,7 +53,7 @@ sed -i "s/#  -o smtpd_sasl_auth_enable=yes/  -o smtpd_sasl_auth_enable=yes\\$(ec
 sed -i "s/#tlsproxy  unix  -       -       y       -       0       tlsproxy/tlsproxy  unix  -       -       y       -       0       tlsproxy/" /etc/postfix/master.cf
 
 echo
-echo -e "${yellow}DONE${NC}"
+echo -e "${BR3}DONE${_A}"
 echo
 
 id="${REGISTRY[SERVER_ID]}"
@@ -62,7 +62,7 @@ ufw="$id[UFW]"
 
 if [[ ${!ufw} == 1 ]]; then
     if [[ ! -f /etc/default/ufw ]]; then
-        echo -e "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
+        echo -e "${BR3}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${_A}"
     else
         echo "Opening Firewall Ports for SMTP/SMTPS ... "
         log "Opening Firewall Ports for SMTP/SMTPS"
@@ -78,7 +78,7 @@ if [[ ${!ufw} == 1 ]]; then
         #ufw enable
 
         echo
-        echo -e "${yellow}DONE!${NC}"
+        echo -e "${BR3}DONE!${_A}"
     fi
 fi
 

@@ -29,4 +29,4 @@ echoLog "virtualenvwrapper: " -n
 if pip install virtualenvwrapper; then echoLog "y" -c; else echoLog "n" -c; fi
 
 echoLog "spacer"
-echoLog "${yellow}Python3 Extensions${NC} Successfully Installed!"
+echoLog "${BR3}Python3 Extensions${_A} Successfully Installed!"

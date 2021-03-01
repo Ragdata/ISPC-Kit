@@ -20,4 +20,4 @@ ruby -v
 rails -v
 
 echo
-echo -e "${yellow}Ruby3 + Extensions${NC} Successfully Installed!"
+echo -e "${BR3}Ruby3 + Extensions${_A} Successfully Installed!"

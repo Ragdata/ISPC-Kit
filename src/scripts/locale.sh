@@ -81,7 +81,7 @@ export LC_ALL=\"${REGISTRY[LOC]}\"
                 fi
             fi
         else
-            echoLog "${red}ERROR: Configured locale (${REGISTRY[LOC]}) not supported! Skipping locale update${NC}"
+            echoLog "${BR1}ERROR: Configured locale (${REGISTRY[LOC]}) not supported! Skipping locale update${_A}"
         fi
     else
         echoLog "Locale update not required!"

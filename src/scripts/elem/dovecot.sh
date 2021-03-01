@@ -26,7 +26,7 @@ echo "opendmarc opendmarc/mysql/app-pass ${PASSWORDS[OPENDMARC]}" | debconf-set-
 apt_install dovecot-imapd dovecot-pop3d dovecot-mysql dovecot-sieve dovecot-lmtpd opendkim opendkim-tools opendmarc
 
 echoLog "spacer"
-echoLog "${yellow}Dovecot${NC} Installed Successfully"
+echoLog "${BR3}Dovecot${_A} Installed Successfully"
 echoLog "spacer"
 
 id="${REGISTRY[SERVER_ID]}"
@@ -35,7 +35,7 @@ ufw="$id[UFW]"
 
 if [[ ${!ufw} == 1 ]]; then
     if [[ ! -f /etc/default/ufw ]]; then
-        echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
+        echoLog "${BR3}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${_A}"
     else
         echoLog "Opening Firewall Ports for POP3/IMAP/POP3S/IMAPS"
         echoLog "spacer"
@@ -52,6 +52,6 @@ if [[ ${!ufw} == 1 ]]; then
         #ufw enable
 
         echoLog "spacer"
-        echoLog "${yellow}DONE!${NC}"
+        echoLog "${BR3}DONE!${_A}"
     fi
 fi

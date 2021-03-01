@@ -17,4 +17,4 @@ echoLog "spacer"
 apt_install fcgiwrap
 
 echoLog "spacer"
-echoLog "${yellow}FCGI${NC} Successfully Installed!\n"
+echoLog "${BR3}FCGI${_A} Successfully Installed!\n"

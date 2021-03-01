@@ -23,8 +23,8 @@ AFFIRM='^[Yy]$'
 NEGAT='^[Nn]$'
 RESP='^[YyNn]$'
 # printable elements
-DEFAULT_Y="[${bold}Y${NC}/N]"
-DEFAULT_N="[Y/${bold}N${NC}]"
+DEFAULT_Y="[${FBB}Y${_A}/N]"
+DEFAULT_N="[Y/${FBB}N${_A}]"
 #-------------------------------------------------------------------
 # PATHS
 #-------------------------------------------------------------------

@@ -15,7 +15,7 @@ echoLog "spacer"
 apt_install ufw
 
 echoLog "spacer"
-echoLog "${yellow}UFW${NC} Successfully Installed!"
+echoLog "${BR3}UFW${_A} Successfully Installed!"
 echoLog "spacer"
 
 echoLog "Configuring UFW"
@@ -30,4 +30,4 @@ log "ufw allow ssh : 22"
 ufw allow 22/tcp
 
 echoLog
-echoLog "${yellow}DONE!${NC}"
+echoLog "${BR3}DONE!${_A}"

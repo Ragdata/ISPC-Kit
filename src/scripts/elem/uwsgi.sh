@@ -17,4 +17,4 @@ echoLog "spacer"
 apt_install uwsgi uwsgi-dev uwsgi-extra uwsgi-plugins-all
 
 echoLog "spacer"
-echoLog "${yellow}uWSGI${NC} Successfully Installed!\n"
+echoLog "${BR3}uWSGI${_A} Successfully Installed!\n"

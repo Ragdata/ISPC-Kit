@@ -17,7 +17,7 @@ echoLog "spacer"
 apt_install fail2ban
 
 echoLog "spacer"
-echoLog "${yellow}Fail2Ban${NC} Successfully Installed!"
+echoLog "${BR3}Fail2Ban${_A} Successfully Installed!"
 echoLog "spacer"
 
 echoLog "Configuring Fail2Ban"
@@ -47,4 +47,4 @@ maxretry = 5
 EOF
 
 echoLog
-echoLog "${yellow}Fail2Ban${NC} Successfully Configured!"
+echoLog "${BR3}Fail2Ban${_A} Successfully Configured!"

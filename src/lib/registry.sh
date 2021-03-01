@@ -35,16 +35,6 @@
 #    fi
 #}
 
-assocArray()
-{
-    name=$1
-    key=${2%%=*}
-    val=${2##*=}
-
-
-}
-
-
 echoLog()
 {
     msg=${1:-""}
@@ -76,6 +66,11 @@ echoLog()
     fi
 }
 
+initialize()
+{
+
+}
+
 initLog()
 {
     file=${1:-"install"}
@@ -93,7 +88,7 @@ log()
     flag=${2:-""}
 
     if [ -z "$msg" ]; then
-        echo -e "${red}ERROR: Corwardly refusing to write log entry with no message!${NC}"
+        echo -e "${BR1}ERROR: Corwardly refusing to write log entry with no message!${_A}"
         echo
         return 1
     fi
@@ -134,6 +129,47 @@ scribe()
         errorExit "scribe() ERROR: No arguments passed!"
     fi
 }
+
+serialize()
+{
+    arrayName=${1:-""}
+
+    if [ -z "$arrayName" ]; then errorExit "serialize() ERROR: No object name passed!"; fi
+
+    fileName=${$arrayName,,}
+
+    if [[ -f "$registry/.$fileName" ]]; then
+        ext=$(date '+%y%m%d.%I%M')
+        mv "$registry/.$fileName" "$registry/.$fileName.$ext"
+        touch "$registry/.$fileName"
+    fi
+
+    array="${$arrayName[@]}"
+
+    if [[ -v "${!array}" ]]; then
+        for key in "${!array}"
+        do
+            value="$arrayName[$key]"
+            echo "$key=${!value}" >> "$registry/.$fileName"
+        done
+    else
+        errorExit "serialize() $arrayName ERROR: Object not initialized!"
+    fi
+}
+
+unserialize()
+{
+    filePath=${1:-""}
+
+    if [[ ! -f "$filePath" ]]; then errorExit "unserialize() $filePath ERROR: File does not exist!"; fi
+}
+
+
+
+
+
+
+
 
 registryInit()
 {

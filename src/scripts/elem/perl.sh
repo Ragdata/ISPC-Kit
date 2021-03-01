@@ -18,4 +18,4 @@ apt_install perl perl-openssl-defaults perl-doc libterm-readline-gnu-perl libdbi
 apt_install libsql-statement-perl libclone-perl libmldbm-perl libnet-daemon-perl
 
 echoLog "spacer"
-echoLog "${yellow}Perl 5 + Extensions${NC} Successfully Installed!"
+echoLog "${BR3}Perl 5 + Extensions${_A} Successfully Installed!"

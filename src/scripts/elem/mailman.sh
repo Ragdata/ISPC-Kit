@@ -17,7 +17,7 @@ echoLog "spacer"
 apt_install mailman
 
 echoLog "spacer"
-echoLog "${yellow}Mailman${NC} Successfully Installed!"
+echoLog "${BR3}Mailman${_A} Successfully Installed!"
 
 echoLog "spacer"
 echoLog "Configure Mailman Mailing List Manager ... "
@@ -46,4 +46,4 @@ service postfix restart
 if ! service mailman start; then errorExit "MAILMAN ERROR: Failed to start Mailing List Manager"; fi
 
 echoLog "spacer"
-echoLog "${yellow}Mailman${NC} Successfully Configured!"
+echoLog "${BR3}Mailman${_A} Successfully Configured!"

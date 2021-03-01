@@ -35,7 +35,7 @@ if [[ ! -d /home/ubuntu ]]; then
         echo "$pubkey" >> ~/.ssh/"$keyname".pub
         echo "$privkey" >> ~/.ssh/"$keyname"
         chmod 600 ~/.ssh/"$keyname"
-        echoLog "${yellow}DONE${NC}" -c
+        echoLog "${BR3}DONE${_A}" -c
     fi
 
     rsync --archive --chown=ubuntu:ubuntu ~/.ssh /home/ubuntu

@@ -19,7 +19,7 @@ echoLog "PHP8.0 Extensions: " -n
 if apt install -y php8.0-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,gmp,gnupg,http,imagick,imap,intl,ldap,mailparse,mbstring,mysql,oauth,odbc,opcache,pdo,pgsql,propro,pspell,psr,raphf,readline,redis,smbclient,sqlite3,tidy,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then echoLog "y" -c; else echoLog "n" -c; fi
 
 echoLog "spacer"
-echoLog "${yellow}PHP8.0${NC} Successfully Installed!"
+echoLog "${BR3}PHP8.0${_A} Successfully Installed!"
 
 echoLog "spacer"
 echoLog "Configure PHP8.0"
@@ -44,4 +44,4 @@ echoLog "Restarting PHP8.0-FPM: " -n
 if service php8.0-fpm restart; then echoLog "SUCCESS" -c; else echoLog "FAILURE!" -c; fi
 
 echoLog
-echoLog "${yellow}PHP8.0${NC} Configured!"
+echoLog "${BR3}PHP8.0${_A} Configured!"

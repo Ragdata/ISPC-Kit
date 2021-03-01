@@ -17,4 +17,4 @@ echoLog "line"
 apt_install snapd
 
 echoLog "spacer"
-echoLog "${yellow}Snapd${NC} Successfully Installed!"
+echoLog "${BR3}Snapd${_A} Successfully Installed!"

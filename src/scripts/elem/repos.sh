@@ -40,7 +40,7 @@ if [[ ${!php} == 1 || ( -z ${!php} && $default == 1 ) ]]; then
     if [[ ! -s /etc/apt/sources.list.d/ondrej-ubuntu-php-"$REL".list ]]; then
         echo "Adding repository for PHP ... "
         add-apt-repository -y ppa:ondrej/php
-        echo -e "${yellow}DONE${NC}"
+        echo -e "${BR3}DONE${_A}"
     fi
 fi
 
@@ -49,7 +49,7 @@ if [[ ${!python} == 1 || ( -z ${!python} && $default == 1 ) ]]; then
     if [[ ! -s /etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-"$REL".list ]]; then
         echo "Adding repository for Python ... "
         add-apt-repository -y ppa:deadsnakes/ppa
-        echo -e "${yellow}DONE${NC}"
+        echo -e "${BR3}DONE${_A}"
     fi
 fi
 
@@ -58,7 +58,7 @@ if [[ ${!nginx} == 1 || ( -z ${!nginx} && $default == 1 ) ]]; then
     if [[ ! -s /etc/apt/sources.list.d/ondrej-ubuntu-nginx-"$REL".list ]]; then
         echo "Adding repository for Nginx ... "
         add-apt-repository -y ppa:ondrej/nginx
-        echo -e "${yellow}DONE${NC}"
+        echo -e "${BR3}DONE${_A}"
     fi
 fi
 
@@ -68,7 +68,7 @@ if [[ ${!yarn} == 1 || ( -z ${!yarn} && $default == 1 ) ]]; then
         echo "Adding repository for Yarn ... "
         curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
         echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-        echo -e "${yellow}DONE${NC}"
+        echo -e "${BR3}DONE${_A}"
     fi
 fi
 
@@ -78,7 +78,7 @@ if [[ ${!erlang} == 1 || ( -z ${!erlang} && $default == 1 ) ]]; then
         echo "Adding repository for Erlang ... "
         wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | apt-key add -
         echo "deb https://packages.erlang-solutions.com/ubuntu \"$REL\" contrib" | tee /etc/apt/sources.list.d/erlang.list
-        echo -e "${yellow}DONE${NC}"
+        echo -e "${BR3}DONE${_A}"
     fi
     # add rabbitmq repository
     if [[ ! -f /etc/apt/sources.list.d/rabbitmq.list ]]; then
@@ -86,7 +86,7 @@ if [[ ${!erlang} == 1 || ( -z ${!erlang} && $default == 1 ) ]]; then
         wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc | apt-key add -
         wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | apt-key add -
         echo "deb https://dl.bintray.com/rabbitmq-erlang/debian \"$REL\" erlang-22.x" | tee /etc/apt/sources.list.d/rabbitmq.list
-        echo -e "${yellow}DONE${NC}"
+        echo -e "${BR3}DONE${_A}"
     fi
 fi
 
@@ -95,7 +95,7 @@ if [[ ${!pushbullet} == 1 || ( -z ${!pushbullet} && $default == 1 ) ]]; then
     if [[ ! -f /etc/apt/sources.list.d/atareao-ubuntu-atareao-"$REL".list ]]; then
         echo "Adding repository for Pushbullet ... "
         add-apt-repository -y ppa:atareao/atareao
-        echo -e "${yellow}DONE${NC}"
+        echo -e "${BR3}DONE${_A}"
     fi
 fi
 
@@ -105,7 +105,7 @@ if [[ ${!gluu} == 1 || ( -z ${!gluu} && $default == 1 ) ]]; then
         echo "Adding repository for Gluu ... "
         echo "deb https://repo.gluu.org/ubuntu/ \"$REL\" main" > /etc/apt/sources.list.d/gluu-repo.list
         curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
-        echo -e "${yellow}DONE${NC}"
+        echo -e "${BR3}DONE${_A}"
     fi
 fi
 
@@ -115,7 +115,7 @@ if [[ ${!metronome} == 1 || ( -z ${!metronome} && $default == 1 ) ]]; then
         echo "Adding Prosody Package Repository to Sources ... "
         echo "deb http://packages.prosody.im/debian jessie main" > /etc/apt/sources.list.d/metronome.list
         wget http://prosody.im/files/prosody-debian-packages.key -O - | apt-key add -
-        echo -e "${yellow}Prosody${NC} Successfully Added!"
+        echo -e "${BR3}Prosody${_A} Successfully Added!"
     fi
 fi
 
@@ -130,4 +130,4 @@ apt upgrade -y
 apt autoremove -y
 
 echo
-echo -e "${yellow}DONE${NC}"
+echo -e "${BR3}DONE${_A}"

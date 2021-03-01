@@ -19,7 +19,7 @@ echoLog "PHP7.2 Extensions: " -n
 if apt install -y php7.2-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,geoip,gmp,gnupg,http,imagick,imap,intl,json,ldap,lua,mailparse,mbstring,mysql,oauth,odbc,pcov,pdo,pgsql,pspell,psr,raphf,readline,recode,redis,smbclient,sqlite3,ssh2,stomp,tideways,tidy,uploadprogress,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then echoLog "y" -c; else echoLog "n" -c; fi
 
 echoLog "spacer"
-echoLog "${yellow}PHP7.2${NC} Successfully Installed!"
+echoLog "${BR3}PHP7.2${_A} Successfully Installed!"
 
 echoLog "spacer"
 echoLog "Configure PHP7.2"
@@ -44,4 +44,4 @@ echoLog "Restarting PHP7.2-FPM: " -n
 if service php7.2-fpm restart; then echoLog "SUCCESS" -c; else echoLog "FAILURE!" -c; fi
 
 echoLog "spacer"
-echoLog "${yellow}PHP7.2${NC} Configured!"
+echoLog "${BR3}PHP7.2${_A} Configured!"

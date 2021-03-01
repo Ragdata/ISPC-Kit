@@ -17,4 +17,4 @@ echoLog "line"
 apt_install certbot python3-certbot-nginx
 
 echoLog "spacer"
-echoLog "${yellow}Let's Encrypt Certbot${NC} Successfully Installed!"
+echoLog "${BR3}Let's Encrypt Certbot${_A} Successfully Installed!"

@@ -36,7 +36,7 @@ if [[ ${!ufw} == 1 ]]; then
 fi
 
 echoLog "spacer"
-echoLog "${yellow}ISPConfig${NC} Successfully Installed!"
+echoLog "${BR3}ISPConfig${_A} Successfully Installed!"
 echo
 echo -e "You can access ISPConfig at:"
 echo -e "\t https://${REGISTRY[FQDN]}:8080"

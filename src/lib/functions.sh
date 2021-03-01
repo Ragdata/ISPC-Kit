@@ -49,11 +49,11 @@ apt_install_pkg()
             fi
         fi
     else
-        echo -e "${yellow}Installing $package ...${NC}"
+        echo -e "${BR3}Installing $package ...${_A}"
         if apt install -y "$package"; then
-            echo -e "${green}DONE!${NC}"
+            echo -e "${BR2}DONE!${_A}"
         else
-            echo -e "${red}FAIL!${NC}"
+            echo -e "${BR1}FAIL!${_A}"
             if [[ "$hardFail" -eq 1 ]]; then
                 return 1
             fi
@@ -90,8 +90,8 @@ apt_remove_pkg()
     else
         echo -e "Removing $package ..."
         if apt purge -y "$package"; then
-            echo -e "${green}DONE!${NC}"
-        else echo -e "${red}FAILED!${NC}"; fi
+            echo -e "${BR2}DONE!${_A}"
+        else echo -e "${BR1}FAILED!${_A}"; fi
     fi
 }
 
@@ -109,7 +109,7 @@ checkSWAP()
     PRINT_SWAP_MB=$(printf "%'d" "$SWAP_MB")
     PRINT_SWAP_GiB=$(printf "%'d" $SWAP_GiB)
 
-    echoLog "${yellow}DONE!${NC}"
+    echoLog "${BR3}DONE!${_A}"
 
     echoLog "TOTAL SWAP: $TOTAL_SWAP ($PRINT_SWAP_MiB MiB)"
 
@@ -134,7 +134,7 @@ checkSWAP()
             PRINT_SWAP_MB=$(printf "%'d" "$SWAP_MB")
             PRINT_SWAP_GiB=$(printf "%'d" $SWAP_GiB)
             echoLog "Allocated $PRINT_SWAP_GiB GiB ($PRINT_SWAP_MB MB) swap space"
-            echoLog "${yellow}DONE${NC}"
+            echoLog "${BR3}DONE${_A}"
         fi
     fi
 }
@@ -144,7 +144,7 @@ errorExit()
     msg=${1:-""}
 
     if [ -n "$msg" ]; then
-        echo -e "${red}$msg${NC}"
+        echo -e "${BR1}$msg${_A}"
         log "$msg"
     fi
 
@@ -165,7 +165,7 @@ errorExit()
 #            fi
 #        done
 #        if [[ $MATCH == 0 ]]; then
-#            echoLog "${red}ERROR: Unable to match current server IP - ${REGISTRY[IPv4_PUBLIC]}${NC}"
+#            echoLog "${BR1}ERROR: Unable to match current server IP - ${REGISTRY[IPv4_PUBLIC]}${_A}"
 #        fi
 #    else
 #        REGISTRY[SERVER_ID]="MASTER"
@@ -320,7 +320,7 @@ mkSWAP()
 
     echo '/swapfile.sys none swap sw 0 0' | tee -a /etc/fstab
 
-    echoLog "${yellow}DONE!${NC}"
+    echoLog "${BR3}DONE!${_A}"
 }
 
 savePasswords()

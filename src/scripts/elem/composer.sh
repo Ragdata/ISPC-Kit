@@ -17,4 +17,4 @@ echoLog "line"
 apt_install composer
 
 echoLog "spacer"
-echoLog "${yellow}Composer${NC} Successfully Installed!"
+echoLog "${BR3}Composer${_A} Successfully Installed!"

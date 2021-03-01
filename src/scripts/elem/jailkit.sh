@@ -19,4 +19,4 @@ apt_install jailkit
 echoLog "spacer"
 
 echoLog "spacer"
-echoLog "${yellow}Jailkit${NC} Successfully Installed!"
+echoLog "${BR3}Jailkit${_A} Successfully Installed!"

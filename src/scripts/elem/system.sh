@@ -18,4 +18,4 @@ echoLog "spacer"
 apt_install daemon git gnupg2 php-cli curl php-pear libsqlite3-dev sqlite3 mcrypt
 
 echoLog "spacer"
-echoLog "${yellow}System Services${NC} Installed Successfully!"
+echoLog "${BR3}System Services${_A} Installed Successfully!"

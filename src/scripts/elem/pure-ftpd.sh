@@ -28,7 +28,7 @@ openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/ssl/private/pu
 chmod 600 /etc/ssl/private/pure-ftpd.pem
 
 echoLog "spacer"
-echoLog "${yellow}Pure-FTPd${NC} Successfully Installed!"
+echoLog "${BR3}Pure-FTPd${_A} Successfully Installed!"
 echoLog "spacer"
 
 echoLog "Restarting FTP Server"
@@ -44,7 +44,7 @@ ufw="$id[UFW]"
 
 if [[ ${!ufw} == 1 ]]; then
     if [[ ! -f /etc/default/ufw ]]; then
-        echoLog "${yellow}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${NC}"
+        echoLog "${BR3}WARNING: UFW is not yet installed! It should have been installed BEFORE this package!${_A}"
     else
         echoLog "Opening Firewall Ports for FTP/TLS/FTPS"
         echoLog "spacer"
@@ -59,9 +59,9 @@ if [[ ${!ufw} == 1 ]]; then
         ufw allow 40110:40210/tcp
 
         echoLog "spacer"
-        echoLog "${yellow}DONE!${NC}"
+        echoLog "${BR3}DONE!${_A}"
     fi
 fi
 
 echoLog "spacer"
-echoLog "${yellow}DONE!${NC}"
+echoLog "${BR3}DONE!${_A}"

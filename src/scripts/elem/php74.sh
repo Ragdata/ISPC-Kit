@@ -19,7 +19,7 @@ echoLog "PHP7.4 Extensions: " -n
 if apt install -y php7.4-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,geoip,gmp,gnupg,http,imagick,imap,intl,json,ldap,lua,mbstring,mysql,mailparse,oauth,odbc,opcache,pcov,pdo,pgsql,pspell,propro,psr,raphf,readline,redis,sass,ssh2,smbclient,sqlite3,stomp,tideways,tidy,uploadprogress,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then echoLog "y" -c; else echoLog "n" -c; fi
 
 echoLog "spacer"
-echoLog "${yellow}PHP7.4${NC} Successfully Installed!"
+echoLog "${BR3}PHP7.4${_A} Successfully Installed!"
 
 echoLog "spacer"
 echoLog "Configure PHP7.4"
@@ -44,4 +44,4 @@ echoLog "Restarting PHP7.4-FPM: " -n
 if service php7.4-fpm restart; then echoLog "SUCCESS" -c; else echoLog "FAILURE!" -c; fi
 
 echoLog "spacer"
-echoLog "${yellow}PHP7.4${NC} Configured!"
+echoLog "${BR3}PHP7.4${_A} Configured!"

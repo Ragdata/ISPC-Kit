@@ -17,4 +17,4 @@ echoLog "line"
 apt_install ffmpeg smbclient supervisor libmagickcore-6.q16-3-extra
 
 echoLog "spacer"
-echoLog "${yellow}Multimedia Support${NC} Successfully Installed!"
+echoLog "${BR3}Multimedia Support${_A} Successfully Installed!"

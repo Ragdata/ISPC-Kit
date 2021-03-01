@@ -17,4 +17,4 @@ echoLog "line"
 apt_install telegram-cli
 
 echoLog "spacer"
-echoLog "${yellow}Telegram-CLI${NC} Successfully Installed!"
+echoLog "${BR3}Telegram-CLI${_A} Successfully Installed!"

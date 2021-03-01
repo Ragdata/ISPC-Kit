@@ -18,4 +18,4 @@ apt_install zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev li
 apt_install libffi-dev libgdbm-dev libncurses5-dev automake libtool bison
 
 echoLog "spacer"
-echoLog "${yellow}Build Tools${NC} Installed Successfully!"
+echoLog "${BR3}Build Tools${_A} Installed Successfully!"

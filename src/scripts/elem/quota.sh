@@ -19,7 +19,7 @@ apt_install quota quotatool
 echoLog "spacer"
 
 echoLog "spacer"
-echoLog "${yellow}Quota${NC} Successfully Installed!"
+echoLog "${BR3}Quota${_A} Successfully Installed!"
 echoLog "spacer"
 
 if ! [ -f /proc/user_beancounters ]; then
@@ -39,5 +39,5 @@ if ! [ -f /proc/user_beancounters ]; then
     quotaon -avug
 
     echoLog "spacer"
-    echoLog "${yellow}Quota${NC} Successfully Applied!"
+    echoLog "${BR3}Quota${_A} Successfully Applied!"
 fi
