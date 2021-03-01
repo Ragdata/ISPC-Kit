@@ -37,10 +37,11 @@ source "$register"
 # determine if defaults array has been declared
 if [[ ! -v DEFAULTS[@] ]]; then
     if [[ -f "$DEF" ]]; then
+        parse_yml "$DEF" >> /tmp/.defaults
         while IFS='=' read -r key val
         do
             DEFAULTS[${key^^}]="$val"
-        done <<< parse_yaml "$DEF"
+        done < /tmp/.defaults
     else
         errorExit "ispc-setup ERROR: Config defaults file not found!"
     fi
