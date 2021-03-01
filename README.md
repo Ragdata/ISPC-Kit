@@ -1,3 +1,5 @@
+[![Lint](https://github.com/Ragdata/ispc-kit/actions/workflows/lint.yaml/badge.svg?branch=master)](https://github.com/Ragdata/ispc-kit/actions/workflows/lint.yaml)
+
 <p align="center"><img src="https://i.imgur.com/sLpvO40.png" title="ISPC-Kit" /></p>
 <hr />
 <p align="center">
