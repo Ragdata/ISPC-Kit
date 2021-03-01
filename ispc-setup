@@ -41,7 +41,7 @@ if [[ -f "$DEF" ]]; then
         key=${line%%=*}
         val=${line##*=}
         echo "$key=$val"
-        DEFAULTS[${key^^}]="$val"
+        DEFAULTS[${key^^}]=$val
     done < /tmp/.defaults
 else
     errorExit "ispc-setup ERROR: Config defaults file not found!"
