@@ -14,11 +14,10 @@ jobs:
     name: Custom Tests
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Install SUDO Package
         run: |
           apt update && apt install sudo
-      - name: Checkout ISPC-Kit Repo
-        uses: actions/checkout@v2
       -name: Execute Custom Tests
         run: |
           cd test
