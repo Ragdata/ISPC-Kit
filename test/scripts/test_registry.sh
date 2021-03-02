@@ -38,16 +38,15 @@ REGISTRY[IP]="192.168.0.1"
 array="$arrayName[IP]"
 echo "$array"
 echo "${!array}"
-#echo "${!array}"
-#serialize REGISTRY || exit 1
-## unset the registry(?)
-#unset REGISTRY || exit 1
-## print the file just for shits'n'giggles
-#if [[ ! -f "$registry/.registry" ]]; then exit 1;
-#else cat "$registry/.registry"; fi
-## unserialize the registry
-#unserialize "$registry/.registry" || exit 1
-## check that an expected variable exists
-#if [[ ${REGISTRY[LOC]} != "en_AU.UTF-8" ]]; then exit 1; fi
-## SUCCESS!
+serialize REGISTRY || exit 1
+# unset the registry(?)
+unset REGISTRY || exit 1
+# print the file just for shits'n'giggles
+if [[ ! -f "$registry/.registry" ]]; then exit 1;
+else cat "$registry/.registry"; fi
+# unserialize the registry
+unserialize "$registry/.registry" || exit 1
+# check that an expected variable exists
+if [[ ${REGISTRY[LOC]} != "en_AU.UTF-8" ]]; then exit 1; fi
+# SUCCESS!
 exit 0;
