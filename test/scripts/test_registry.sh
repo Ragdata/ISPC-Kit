@@ -39,7 +39,7 @@ echo
 # shellcheck disable=SC1087
 array="$arrayName[@]"
 echo "$array"
-echo "${#array}"
+echo "${!array}"
 echo
 
 serialize REGISTRY || exit 1
