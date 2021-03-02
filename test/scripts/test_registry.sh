@@ -14,6 +14,7 @@
 #-------------------------------------------------------------------
 arrayName=${1:-""}
 arrayName=${arrayName^^}
+arrayName2="NETWORK"
 baseDir="./../.."
 #-------------------------------------------------------------------
 # LOAD LIBRARIES
@@ -38,6 +39,7 @@ REGISTRY[IP]="192.168.0.1"
 echo
 # shellcheck disable=SC1087
 eval echo "\${#arrayName[@]}"
+eval echo "\${#arrayName2[@]}"
 echo
 
 serialize REGISTRY || exit 1
