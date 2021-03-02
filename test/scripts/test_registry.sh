@@ -34,7 +34,7 @@ REGISTRY[LOC]="en_AU.UTF-8"
 REGISTRY[EMAIL]="admin@aever.net"
 REGISTRY[IP]="192.168.0.1"
 # serialize the registry
-echo "$arrayName"
+echo "${arrayName[@]}"
 #array="${arrayName[@]}"
 #echo "${!array}"
 #serialize REGISTRY || exit 1
