@@ -22,7 +22,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Execute Custom Tests
+      - name: Library Loading Test
         run: |
           cd test/scripts
           sudo ./test_libs.sh
+
+      - name: Registry Initialization Test
+        run: |
+          sudo ./test_registry.sh
