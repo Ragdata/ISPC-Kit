@@ -35,7 +35,7 @@ REGISTRY[EMAIL]="admin@aever.net"
 REGISTRY[IP]="192.168.0.1"
 # serialize the registry
 # shellcheck disable=SC1087
-array="$arrayName[IP]"
+array="$arrayName[@]"
 echo "$array"
 echo "${!array}"
 serialize REGISTRY || exit 1
