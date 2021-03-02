@@ -12,6 +12,8 @@
 #-------------------------------------------------------------------
 # INITIALISE
 #-------------------------------------------------------------------
+arrayName=${1:-""}
+arrayName=${arrayName^^}
 baseDir="./../.."
 #-------------------------------------------------------------------
 # LOAD LIBRARIES
@@ -32,6 +34,8 @@ REGISTRY[LOC]="en_AU.UTF-8"
 REGISTRY[EMAIL]="admin@aever.net"
 REGISTRY[IP]="192.168.0.1"
 # serialize the registry
+array="${arrayName[@]}"
+echo "${!array}"
 serialize REGISTRY || exit 1
 # unset the registry(?)
 unset REGISTRY || exit 1
