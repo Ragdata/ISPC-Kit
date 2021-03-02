@@ -23,7 +23,7 @@ fi
 #-------------------------------------------------------------------
 # LOAD LIBRARIES
 #-------------------------------------------------------------------
-baseDir=$PWD
+export baseDir=$PWD
 # shellcheck source=src/lib/common.sh
 source "$baseDir/src/lib/common.sh"
 # shellcheck source=src/lib/format.sh
@@ -39,18 +39,15 @@ source "$register"
 #-------------------------------------------------------------------
 # INIT
 #-------------------------------------------------------------------
-
-#if [[ -f "$DEF" ]]; then
-#    if [[ -v DEFAULTS[@] ]]; then unset DEFAULTS; fi
-#    parse_yaml "$DEF" > /tmp/.defaults
-#    declare -A DEFAULTS
-#    while IFS=$'\n' read -r line
-#    do
-#        key=${line%%=*}
-#        val=${line##*=}
-#        echo "$key=$val"
-#        DEFAULTS[$key]=$val
-#    done < /tmp/.defaults
-#else
-#    errorExit "ispc-setup ERROR: Config defaults file not found!"
-#fi
+# initialise defaults array
+if [[ -f "$DEF" ]]; then
+    if [[ -v DEFAULTS[@] ]]; then unset DEFAULTS; fi
+    parse_yaml "$DEF" > /tmp/.defaults
+    unserialize /tmp/.defaults
+fi
+# initialise registry
+if [[ -f "$NET" ]]; then
+    if [[ -v REGISTRY[@] ]]; then unset REGISTRY; fi
+    parse_yaml "$REG" > /tmp/.registry
+    unserialize /tmp/.registry
+fi

@@ -61,6 +61,7 @@ serialize()
 unserialize()
 {
     filePath=${1:-""}
+    skipZero=${2:-1}
 
     if [[ ! -f "$filePath" ]]; then errorExit "unserialize() $filePath ERROR: File does not exist!"; fi
 
@@ -76,6 +77,6 @@ unserialize()
         val=${line##*=}
         # shellcheck disable=SC1087
         arrayElem="$arrayName[$key]"
-        "${!arrayElem}"="$val"
+        if [[ "$skipZero" == 1 ]] && [[ -n "$val" && "$val" != 0 ]]; then "${!arrayElem}"="$val"; fi
     done < "$filePath"
 }

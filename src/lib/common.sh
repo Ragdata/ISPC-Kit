@@ -29,30 +29,23 @@ DEFAULT_N="[Y/${FBB}N${_A}]"
 # PATHS
 #-------------------------------------------------------------------
 rootDir=/root/.ispc
-if [[ ! -d $rootDir ]]; then mkdir "$rootDir"; fi
 logDir="$rootDir/logs"
-if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
-#- registry --------------------------------------------------------
-registry="$baseDir/registry"
-if [[ ! -h $registry ]]; then ln -s "$rootDir" "$registry"; fi
-#- config ----------------------------------------------------------
 cfgDir="$baseDir/cfg"
+registry="$baseDir/registry"
 nginxDir="$cfgDir/nginx"
-#- docs ------------------------------------------------------------
 docsDir="$baseDir/docs"
-#- src -------------------------------------------------------------
 srcDir="$baseDir/src"
 etcDir="$srcDir/etc"
 libDir="$srcDir/lib"
-#- scripts ---------------------------------------------------------
 scriptsDir="$srcDir/scripts"
 appsDir="$scriptsDir/apps"
 elemDir="$scriptsDir/elem"
-#- sql -------------------------------------------------------------
 sqlDir="$baseDir/sql"
-if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
-#- test ------------------------------------------------------------
 testDir="$baseDir/test"
+if [[ ! -d $rootDir ]]; then mkdir "$rootDir"; fi
+if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
+if [[ ! -h $registry ]]; then ln -s "$rootDir" "$registry"; fi
+if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
 #-------------------------------------------------------------------
 # CODE FILES
 #-------------------------------------------------------------------
