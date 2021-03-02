@@ -35,7 +35,7 @@ serialize()
 
     if [ -z "$arrayName" ]; then errorExit "serialize() ERROR: No object name passed!"; fi
 
-    fileName=${$arrayName,,}
+    fileName=${arrayName,,}
 
     if [[ -f "$registry/.$fileName" ]]; then
         ext=$(date '+%y%m%d.%I%M')
