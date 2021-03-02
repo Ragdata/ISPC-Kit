@@ -34,10 +34,14 @@ REGISTRY[LOC]="en_AU.UTF-8"
 REGISTRY[EMAIL]="admin@aever.net"
 REGISTRY[IP]="192.168.0.1"
 # serialize the registry
+
+echo
 # shellcheck disable=SC1087
-array="$arrayName[@]"
+array="$arrayName[*]"
 echo "$array"
 echo "${!array}"
+echo
+
 serialize REGISTRY || exit 1
 # unset the registry(?)
 unset REGISTRY || exit 1
