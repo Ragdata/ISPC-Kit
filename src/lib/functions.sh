@@ -151,11 +151,6 @@ errorExit()
     return 1;
 }
 
-getNetVars()
-{
-
-}
-
 #getId()
 #{
 #    getNetVars
