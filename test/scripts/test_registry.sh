@@ -38,11 +38,11 @@ REGISTRY[IP]="192.168.0.1"
 echo
 # shellcheck disable=SC1087
 array="${arrayName}[*]"
-array2="${arrayName}[*]"
-array3="${arrayName}[*]"
+array2="${arrayName}[@]"
+array3="${arrayName}[#]"
 echo "$array || ${!array}"
-echo "$array2 || ${!array}2"
-echo "$array3 || ${!array}3"
+echo "$array2 || ${!array2}"
+echo "$array3 || ${!array3}"
 echo
 
 serialize REGISTRY || exit 1
