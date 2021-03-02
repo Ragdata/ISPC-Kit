@@ -37,9 +37,9 @@ REGISTRY[IP]="192.168.0.1"
 
 echo
 # shellcheck disable=SC1087
-array="$arrayName[@]"
+array="$arrayName"
 echo "$array"
-echo "${#array}"
+echo "${#arrayName[@]}"
 echo
 
 serialize REGISTRY || exit 1
