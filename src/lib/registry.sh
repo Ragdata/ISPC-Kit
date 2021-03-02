@@ -44,7 +44,7 @@ serialize()
     fi
 
     # shellcheck disable=SC1087
-    array="${$arrayName[@]}"
+    array="${arrayName[@]}"
 
     if [[ -v "${!array}" ]]; then
         for key in "${!array}"
