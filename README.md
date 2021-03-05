@@ -20,11 +20,11 @@ In this first iteration of the project, it will provision a single server runnin
 ## Version Control
 [Semantic Versioning 2.0.0](https://semver.org/)
 
-### :pushpin: Current Release Version
+### Current Release Version
 
 #### v-0.1.0: Initial Release Candidate
 
-### :pushpin: Version History
+### Version History
 
 #### v-0.1.0: Initial Release Candidate
 

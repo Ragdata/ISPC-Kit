@@ -1,0 +1,22 @@
+echo -n "Enter name of SSH Key registered with GitHub or 'none' to skip: "
+read -r keyname
+echo
+if [ -n "$keyname" ] && [[ $keyname != "none" ]]; then
+    echo "Paste PUBLIC Key (hit ctl-d when done):"
+    echo
+    pubkey=$(</dev/stdin)
+    echo
+    echo "Paste PRIVATE Key (hit ctl-d when done):"
+    echo
+    privkey=$(</dev/stdin)
+    echo
+    if [[ ! -d ~/.ssh ]]; then
+        mkdir ~/.ssh
+    fi
+    echo "$pubkey" >> ~/.ssh/"$keyname".pub
+    echo "$privkey" >> ~/.ssh/"$keyname"
+    chmod 600 ~/.ssh/"$keyname"
+    echo -e "${BR3}DONE${_A}" -c
+fi
+adduser ubuntu
+usermod -aG sudo ubuntu

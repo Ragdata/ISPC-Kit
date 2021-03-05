@@ -1,0 +1,25 @@
+    # add php repository
+    if [[ ! -s /etc/apt/sources.list.d/ondrej-ubuntu-php-"$REL".list ]]; then
+        echo "Adding repository for PHP ... "
+        add-apt-repository -y ppa:ondrej/php
+        echo -e "${BR3}DONE${_A}"
+    fi
+    # add python repository
+    if [[ ! -s /etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-"$REL".list ]]; then
+        echo "Adding repository for Python ... "
+        add-apt-repository -y ppa:deadsnakes/ppa
+        echo -e "${BR3}DONE${_A}"
+    fi
+    # add nginx repository
+    if [[ ! -s /etc/apt/sources.list.d/ondrej-ubuntu-nginx-"$REL".list ]]; then
+        echo "Adding repository for Nginx ... "
+        add-apt-repository -y ppa:ondrej/nginx
+        echo -e "${BR3}DONE${_A}"
+    fi
+    # add yarn repository
+    if [[ ! -f /etc/apt/sources.list.d/yarn.list ]]; then
+        echo "Adding repository for Yarn ... "
+        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+        echo -e "${BR3}DONE${_A}"
+    fi

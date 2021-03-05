@@ -2,10 +2,10 @@ server {
     listen                  443 ssl http2;
     listen                  [::]:443 ssl http2;
 
-    server_name             example.com;
+    server_name             local.my-toybox.com;
 
     # document root
-    set                     $base /var/www/example.com;
+    set                     $base /var/www/local.my-toybox.com;
     root                    $base/html;
 
     # auth_basic
@@ -14,19 +14,18 @@ server {
     #set                     $auth_user_file $base/.htpasswd
 
     # SSL
-    ssl_certificate         /etc/letsencrypt/live/example.com/fullchain.pem;
-    ssl_certificate_key     /etc/letsencrypt/live/example.com/privkey.pem;
-    ssl_trusted_certificate /etc/letsencrypt/live/example.com/chain.pem;
+	ssl_certificate /etc/ssl/certs/localhost.crt;
+	ssl_certificate_key /etc/ssl/private/localhost.key;
 
     # security
-    include                 nginxconfig.io/security.conf;
+    #include                 nginxconfig.io/security.conf;
 
     # logging
-    access_log              /var/www/example.com/logs/access.log;
-    error_log               /var/www/example.com/logs/error.log warn;
+    access_log              /var/www/local.my-toybox.com/logs/access.log;
+    error_log               /var/www/local.my-toybox.com/logs/error.log warn;
 
     # additional config
-    include                 nginxconfig.io/general.conf;
+    #include                 nginxconfig.io/general.conf;
 
     # additional includes
 
@@ -35,16 +34,36 @@ server {
         set $inc $request_uri;
         index   index.php index.shtml index.html index.htm index.pl;
         location ~ ^/(.+\.php)$ {
-            include nginxconfig.io/PHP_VER/fastcgi.conf;
+            # 404
+            try_files                       $uri =404;
+
+            # default fastcgi_params
+            include                         /etc/nginx/fastcgi_params;
+
+            # fastcgi settings
+            fastcgi_pass                    unix:/var/run/php/php7.4-fpm.sock;
+            fastcgi_index                   index.php;
+            fastcgi_buffers                 256 4k;
+            fastcgi_buffer_size             128k;
+            fastcgi_busy_buffers_size       256k;
+            fastcgi_temp_file_write_size    256k;
+            # fastcgi_buffers               8 16k;
+            # fastcgi_buffer_size           32k;
+            fastcgi_intercept_errors        on;
+
+            # fastcgi params
+            fastcgi_param DOCUMENT_ROOT     $realpath_root;
+            fastcgi_param SCRIPT_FILENAME   $realpath_root$fastcgi_script_name;
+            fastcgi_param PHP_ADMIN_VALUE   "open_basedir=$base/:/usr/lib/php/:/tmp/";
         }
         try_files $uri $uri/ /index.php?$query_string;
         # internal includes
     }
 
     # additional handles
-    include                 nginxconfig.io/phpmyadmin.conf
-    include                 nginxconfig.io/roundcube.conf
-    include                 nginxconfig.io/mailman.conf
+   #include                 nginxconfig.io/phpmyadmin.conf
+   #include                 nginxconfig.io/roundcube.conf
+   #include                 nginxconfig.io/mailman.conf
 }
 
 # subdomains redirect
@@ -52,14 +71,14 @@ server {
     listen                  443 ssl http2;
     listen                  [::]:443 ssl http2;
 
-    server_name             *.example.com;
+    server_name             *.local.my-toybox.com;
 
     # SSL
-    ssl_certificate         /etc/letsencrypt/live/example.com/fullchain.pem;
-    ssl_certificate_key     /etc/letsencrypt/live/example.come/privkey.pem;
-    ssl_trusted_certificate /etc/letsencrypt/live/example.com/chain.pem;
+    ssl_certificate         /etc/letsencrypt/live/my-toybox.com/fullchain.pem;
+    ssl_certificate_key     /etc/letsencrypt/live/my-toybox.come/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/my-toybox.com/chain.pem;
 
-    return                  301 https://example.com$request_uri;
+    return                  301 https://my-toybox.com$request_uri;
 }
 
 # HTTP redirect
@@ -67,12 +86,12 @@ server {
     listen                  80;
     listen                  [::]:80;
 
-    server_name             .example.com;
+    server_name             .my-toybox.com;
 
-    include                 nginxconfig.io/letsencrypt.conf;
+    #include                 nginxconfig.io/letsencrypt.conf;
 
     location / {
-#        return 301 https://example.com$request_uri;
+#        return 301 https://my-toybox.com$request_uri;
         error_page 497 https://$host$request_uri;
     }
 }

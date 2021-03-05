@@ -45,7 +45,6 @@ testDir="$baseDir/test"
 if [[ ! -d $rootDir ]]; then mkdir "$rootDir"; fi
 if [[ ! -d $logDir ]]; then mkdir "$logDir"; fi
 if [[ ! -h $registry ]]; then ln -s "$rootDir" "$registry"; fi
-if [[ ! -d $sqlDir ]]; then mkdir "$sqlDir"; fi
 #-------------------------------------------------------------------
 # CODE FILES
 #-------------------------------------------------------------------

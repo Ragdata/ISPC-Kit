@@ -16,7 +16,7 @@ echoLog "spacer"
 
 apt_install php8.0
 echoLog "PHP8.0 Extensions: " -n
-if apt install -y php8.0-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,gmp,gnupg,http,imagick,imap,intl,ldap,mailparse,mbstring,mysql,oauth,odbc,opcache,pdo,pgsql,propro,pspell,psr,raphf,readline,redis,smbclient,sqlite3,tidy,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then echoLog "y" -c; else echoLog "n" -c; fi
+if apt install -y php8.0-{amqp,apcu,bcmath,bz2,cgi,cli,common,curl,ds,fpm,gd,gmp,http,imagick,imap,intl,ldap,mailparse,mbstring,mysql,oauth,odbc,opcache,pgsql,pspell,psr,raphf,readline,redis,smbclient,sqlite3,tidy,uuid,xhprof,xml,xmlrpc,yaml,zip,zmq}; then echoLog "y" -c; else echoLog "n" -c; fi
 
 echoLog "spacer"
 echoLog "${BR3}PHP8.0${_A} Successfully Installed!"
